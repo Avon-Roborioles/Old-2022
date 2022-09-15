@@ -4,20 +4,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0b8dd9f3-ceb1-4d52-a294-b1cb8182c562" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/2021.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Autonomous/Auto_Base_14.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Autonomous/Auto_Base_15.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Autonomous/Auto_Blue_Left_14.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Autonomous/Auto_Blue_Right_14.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Autonomous/Auto_Red_Left_14.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Autonomous/Auto_Red_Right_14.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Autonomous/Auto_Score_14.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Autonomous/Blue_Left_15.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Autonomous/Blue_Right_15.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Autonomous/Red_Left_15.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Autonomous/Red_Right_15.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Autonomous/STATE_Red_Right_15.java" beforeDir="false" />
+    <list default="true" id="0b8dd9f3-ceb1-4d52-a294-b1cb8182c562" name="Changes" comment="E">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +14,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="d3b53015-6a74-4a91-8c31-46d7903cdd7c" />
+        <option name="url" value="https://github.com/FTCRoborioles/FTC2022.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="ProjectId" id="2EoZRGSoUFoE1BEhhVyeI2Rtprm" />
   <component name="ProjectViewState">
@@ -47,6 +43,14 @@
       <option name="presentableId" value="Default" />
       <updated>1663263898769</updated>
     </task>
+    <task id="LOCAL-00001" summary="E">
+      <created>1663265642175</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1663265642175</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -59,5 +63,10 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="E" />
+    <option name="LAST_COMMIT_MESSAGE" value="E" />
   </component>
 </project>
