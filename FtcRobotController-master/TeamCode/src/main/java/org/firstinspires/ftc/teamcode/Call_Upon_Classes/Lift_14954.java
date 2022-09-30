@@ -30,6 +30,10 @@ public class Lift_14954 {
         }
 
         lift.setPower(speed);
+    }
+
+    //attempt for main lift program that hold position
+    public void runlift2(Gamepad gp, Telemetry telemetry) {
 
     }
 
