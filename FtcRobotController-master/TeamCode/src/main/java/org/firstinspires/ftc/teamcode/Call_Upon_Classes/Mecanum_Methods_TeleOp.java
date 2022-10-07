@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Call_Upon_Classes;
 
+import com.qualcomm.robotcore.hardware.DcMotor.ZeroPowerBehavior.*;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -43,6 +44,10 @@ public class Mecanum_Methods_TeleOp {
         br = hardwareMap.get(DcMotor.class, "br");
         bl.setDirection(DcMotor.Direction.REVERSE);
         fl.setDirection(DcMotor.Direction.REVERSE);
+        bl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        fr.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        fl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        br.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
 

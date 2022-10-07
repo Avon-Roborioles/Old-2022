@@ -25,6 +25,7 @@ public class Mecanum_Methods_Autonomus {
         br = hardwareMap.get(DcMotor.class, "br");
         bl.setDirection(DcMotor.Direction.REVERSE);
         fl.setDirection(DcMotor.Direction.REVERSE);
+
     }
     /*
     the circumference of the wheel is 12.57 in
@@ -48,6 +49,11 @@ public class Mecanum_Methods_Autonomus {
         br.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         br.setTargetPosition(0);
         br.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        bl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        fr.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        fl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        br.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
     public void setRelativeTargetAll(int target) {
