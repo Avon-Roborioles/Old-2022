@@ -22,11 +22,12 @@ public abstract class Auto_Base_14 extends LinearOpMode {
         auto_motors.init_auto_drive_motors(hardwareMap, telemetry);
         lift.init_lift(hardwareMap, "lift");
         intake.init_intake(hardwareMap, "intake");
-        imu_drive.init_drive_motors(hardwareMap, telemetry,false);
-        camera.
+        imu_drive.init_drive_motors(hardwareMap, telemetry, false);
+        camera.initVuforia();
     }
 
-    public void sense_cone (){
-        //use camera to scan cone images
-    }
+
+
+
+
 }
