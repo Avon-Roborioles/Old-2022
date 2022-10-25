@@ -2,8 +2,8 @@ package org.firstinspires.ftc.teamcode;
 
 //import classes for objects;
 import com.qualcomm.robotcore.eventloop.opmode.*;
-import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Mecanum_Methods_TeleOp;
-import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Lift_14954;
+
+import org.firstinspires.ftc.teamcode.Call_Upon_Classes.*;
 
 @TeleOp
 public class TeleOp_14954 extends LinearOpMode {
