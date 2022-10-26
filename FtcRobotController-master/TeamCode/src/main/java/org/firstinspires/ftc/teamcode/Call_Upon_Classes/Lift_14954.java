@@ -14,6 +14,7 @@ public class Lift_14954 {
     public void init_lift (HardwareMap map, String name) {
         lift  = map.get(DcMotor.class, name);
         lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        int pos = lift.getCurrentPosition();
     }
 
     //simple arm program to move arm up will work on position holding soon
@@ -24,7 +25,7 @@ public class Lift_14954 {
         if (ltrigger > 0) {
             speed = .6;
         } else if (rtrigger > 0 ) {
-            speed = -.6;
+            speed = -.3;
         } else {
             speed = 0;
         }
