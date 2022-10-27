@@ -14,6 +14,7 @@ public class Lift_14954 {
     public void init_lift (HardwareMap map, String name) {
         lift  = map.get(DcMotor.class, name);
         lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        lift.setMode(R);
         int pos = lift.getCurrentPosition();
     }
 
