@@ -78,6 +78,26 @@ public class Mecanum_Methods_TeleOp {
         getTelemetry(telemetry);
 
     }
+    public void run_drive_motors_15(Gamepad gamepad1, Telemetry telemetry){
+        ly=-1 * gamepad1.left_stick_y;
+        lx=gamepad1.left_stick_x;
+        rx=gamepad1.right_stick_x;
+
+        if (lx>ly) {
+            fl.setPower(lx-rx);
+            fr.setPower(-lx-rx);
+            br.setPower(lx+rx);
+            bl.setPower(-lx+rx);
+
+        }else{
+            fl.setPower(ly-rx);
+            fr.setPower(ly-rx);
+            bl.setPower(ly+rx);
+            br.setPower(ly+rx);
+        }
+
+        getTelemetry(telemetry);
+    }
 
 
     public void getTelemetry (Telemetry telemetry){
