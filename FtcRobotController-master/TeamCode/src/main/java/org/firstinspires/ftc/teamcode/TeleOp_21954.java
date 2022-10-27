@@ -5,6 +5,15 @@ import com.qualcomm.robotcore.eventloop.opmode.*;
 import org.firstinspires.ftc.teamcode.Call_Upon_Classes.*;
 
 @TeleOp
+
+/*
+*
+* - 3 servos
+* - 5 DC motors
+* - 1 camera
+*
+* */
+
 public class TeleOp_21954 extends LinearOpMode {
     //objects for each function of the robot
     private final org.firstinspires.ftc.teamcode.Call_Upon_Classes.Mecanum_Methods_TeleOp drivingMotors = new Mecanum_Methods_TeleOp(false);
