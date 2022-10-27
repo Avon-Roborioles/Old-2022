@@ -83,13 +83,13 @@ public class Mecanum_Methods_TeleOp {
         lx=gamepad1.left_stick_x;
         rx=gamepad1.right_stick_x;
 
-        if (lx>ly) {
+        if (lx>ly) {//x power only
             fl.setPower(lx-rx);
             fr.setPower(-lx-rx);
             br.setPower(lx+rx);
             bl.setPower(-lx+rx);
 
-        }else{
+        }else{//y power only
             fl.setPower(ly-rx);
             fr.setPower(ly-rx);
             bl.setPower(ly+rx);
