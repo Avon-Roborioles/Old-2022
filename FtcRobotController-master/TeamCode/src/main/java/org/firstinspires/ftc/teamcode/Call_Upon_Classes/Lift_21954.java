@@ -14,7 +14,7 @@ public class Lift_21954 {
     //left bumper linear
     private boolean lb = false;
     //lift power 4 bar
-    
+
     private void init_lift_motor_21954(HardwareMap hardwareMap) {
         lm = hardwareMap.get(DcMotor.class, "lm");
     }
