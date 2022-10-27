@@ -23,7 +23,7 @@ public void runOpMode() throws InterruptedException {
 
     while (opModeIsActive()) {
         //Driver 1 Functions
-        drivingMotors.run_drive_motors(gamepad1, telemetry); //driving
+        drivingMotors.run_drive_motors_cardinal(gamepad1, telemetry); //driving
 
         //Driver 2 Functions
         lift.runlift(gamepad2, telemetry);
