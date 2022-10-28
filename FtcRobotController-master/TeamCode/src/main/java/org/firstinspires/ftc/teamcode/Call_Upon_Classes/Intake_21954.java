@@ -17,12 +17,13 @@ public class Intake_21954 {
     //button a
     private boolean a = false;
     //init
-    private void init_intake_motor_21954(HardwareMap hardwareMap) {
+    public void init_intake_motor_21954(HardwareMap hardwareMap, String name) {
         is = hardwareMap.get(CRServo.class, "is");
     }
     //run
     //method
-    private void run_intake_motor_21954(Gamepad gamepad, Telemetry telemetry){
+    public void run_intake_motor_21954(Gamepad gamepad, Telemetry telemetry){
+        //Assign button "A"
         a = gamepad.a;
 
         if(a){
@@ -31,6 +32,7 @@ public class Intake_21954 {
         else {
             ip = 0;
         }
+        //Set servo power to intake power "ip" var
         is.setPower(ip);
     }
 

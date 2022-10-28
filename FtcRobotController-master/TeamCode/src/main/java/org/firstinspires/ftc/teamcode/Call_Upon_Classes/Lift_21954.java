@@ -23,11 +23,11 @@ public class Lift_21954 {
     //left trigger 4 bar
     private double lt = 0;
 
-    private void init_lift_motor_21954(HardwareMap hardwareMap) {
+    public void init_lift_motor_21954(HardwareMap hardwareMap, String name) {
         lm = hardwareMap.get(DcMotor.class, "lm");
         ls4 = hardwareMap.get(CRServo.class, "ls4");
     }
-    private void run_lift_motor_21954(Gamepad gamepad, Telemetry telemetry) {
+    public void run_lift_motor_21954(Gamepad gamepad, Telemetry telemetry) {
         //linear lift
         rb = gamepad.right_bumper;
         lb = gamepad.left_bumper;
@@ -44,6 +44,7 @@ public class Lift_21954 {
         else {
             lp = 0;
         }
+        //Set motor power to lift power "lp" var
         lm.setPower(lp);
         //4 bar lift
         if(rt > 0.5) {
@@ -55,6 +56,7 @@ public class Lift_21954 {
         else {
             lp4 = 0;
         }
+        //Set servo power to 4 bar lift power  "lp4" var
         ls4.setPower(lp4);
 
 
