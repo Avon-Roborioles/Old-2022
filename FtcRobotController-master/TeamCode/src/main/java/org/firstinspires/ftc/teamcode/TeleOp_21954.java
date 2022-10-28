@@ -35,7 +35,7 @@ public class TeleOp_21954 extends LinearOpMode {
 
             //Driver 2 Functions
             lift.runlift(gamepad2, telemetry);
-            intake.runintake(gamepad2, telemetry);
+            intake.run_intake(gamepad2, telemetry);
 
             telemetry.update();
         }
