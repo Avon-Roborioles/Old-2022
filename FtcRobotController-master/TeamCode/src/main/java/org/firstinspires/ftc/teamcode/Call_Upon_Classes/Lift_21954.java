@@ -23,6 +23,7 @@ public class Lift_21954 {
     //left trigger 4 bar
     private double lt = 0;
 
+
     public void init_lift_motor_21954(HardwareMap hardwareMap, String name) {
         lm = hardwareMap.get(DcMotor.class, "lm");
         ls4 = hardwareMap.get(CRServo.class, "ls4");

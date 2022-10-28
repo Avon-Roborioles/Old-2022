@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae4e172f-c641-4b96-9b64-9a93bf5f4be0" name="Changes" comment="" />
+    <list default="true" id="ae4e172f-c641-4b96-9b64-9a93bf5f4be0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/2022.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/2022.iml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +14,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2Ge5yquabGNm5RoJfkFc6xXjmB1" />
   <component name="ProjectViewState">

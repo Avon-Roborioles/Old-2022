@@ -8,9 +8,10 @@ import org.firstinspires.ftc.teamcode.Call_Upon_Classes.*;
 
 /*
 *
-* - 3 servos
-* - 5 DC motors
-* - 1 camera
+* - 3 servos:2 done
+* - 5 DC motors: 5 done
+* - 1 camera: not done
+*
 *
 * */
 
@@ -22,12 +23,15 @@ public class TeleOp_21954 extends LinearOpMode {
     private final org.firstinspires.ftc.teamcode.Call_Upon_Classes.Lift_21954 lift = new Lift_21954();
     //Intake
     private final org.firstinspires.ftc.teamcode.Call_Upon_Classes.Intake_21954 intake = new Intake_21954();
+    //Turntable
+    private final org.firstinspires.ftc.teamcode.Call_Upon_Classes.Turntable_21954 turntable = new Turntable_21954();
 
     public void runOpMode() throws InterruptedException {
         //Initialize objects
         drivingMotors.init_drive_motors(hardwareMap);
-    lift.init_lift_motor_21954(hardwareMap, "lift");
-    intake.init_intake_motor_21954(hardwareMap, "intake");
+        lift.init_lift_motor_21954(hardwareMap, "lift");
+        intake.init_intake_motor_21954(hardwareMap, "intake");
+        turntable.init_turntable_21954(hardwareMap, "turntable");
 
         waitForStart();
 
@@ -40,8 +44,10 @@ public class TeleOp_21954 extends LinearOpMode {
             //Driver 2 Functions
             lift.run_lift_motor_21954(gamepad2, telemetry);
             intake.run_intake_motor_21954(gamepad2, telemetry);
+            turntable.run_turntable_21954(gamepad2, telemetry);
 
             telemetry.update();
         }
+
     }
 }
