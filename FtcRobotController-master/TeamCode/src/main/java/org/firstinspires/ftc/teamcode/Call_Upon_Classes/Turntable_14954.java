@@ -17,7 +17,7 @@ public class Turntable_14954 {
     private boolean dl = false;
 
     public void init_turntable_14954(HardwareMap hardwareMap, String name){
-        ts = hardwareMap.get(CRServo.class, "ts");
+        ts = hardwareMap.get(CRServo.class, name);
     }
     public void run_turntable_14954(Gamepad gamepad, Telemetry telemetry){
         //buttons
