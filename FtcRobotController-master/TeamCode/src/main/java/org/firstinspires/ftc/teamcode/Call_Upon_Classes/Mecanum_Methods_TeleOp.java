@@ -66,45 +66,54 @@ public class Mecanum_Methods_TeleOp {
 
     }
 
-    public void run_drive_motors_cardinal(Gamepad gamepad1, Telemetry telemetry){
-        ly = gamepad1.left_stick_y;
-        rx = gamepad1.right_stick_x;
-
-        if (ly != 0) {
+    public void run_drive_motors_14(Gamepad gamepad1, Telemetry telemetry){
+        ly=-1 * gamepad1.left_stick_y;
+        rx=gamepad1.right_stick_x;
+        if (ly != 0){
+            ly = -ly;
             fl.setPower(ly);
             bl.setPower(ly);
-            br.setPower(ly);
             fr.setPower(ly);
+            br.setPower(ly);
         }
-        else if (rx != 0) {
-            fl.setPower(-rx);
+        else if (rx > 0){
+            fl.setPower(rx);
+            bl.setPower(-rx);
             fr.setPower(-rx);
-            bl.setPower(rx);
+            br.setPower(rx);
+        }
+        else if (rx<0) {
+            fl.setPower(rx);
+            bl.setPower(-rx);
+            fr.setPower(-rx);
             br.setPower(rx);
         }
         else {
             fl.setPower(0);
             fr.setPower(0);
-            bl.setPower(0);
             br.setPower(0);
+            bl.setPower(0);
         }
+
+        getTelemetry(telemetry);
+
     }
     public void run_drive_motors_15(Gamepad gamepad1, Telemetry telemetry){
         ly=gamepad1.left_stick_y;
         lx=gamepad1.left_stick_x;
         rx=gamepad1.right_stick_x;
 
-        if (lx>ly) {//x power only
-            fl.setPower(lx-rx);
+        if (Math.abs(lx)>Math.abs(ly)) {//x power only
+            fl.setPower(lx+rx);
             fr.setPower(-lx-rx);
-            br.setPower(lx+rx);
+            br.setPower(lx-rx);
             bl.setPower(-lx+rx);
 
         }else{//y power only
-            fl.setPower(ly-rx);
-            fr.setPower(ly-rx);
-            bl.setPower(ly+rx);
-            br.setPower(ly+rx);
+            fl.setPower(-ly+rx);
+            fr.setPower(-ly-rx);
+            bl.setPower(-ly+rx);
+            br.setPower(-ly-rx);
         }
 
         getTelemetry(telemetry);

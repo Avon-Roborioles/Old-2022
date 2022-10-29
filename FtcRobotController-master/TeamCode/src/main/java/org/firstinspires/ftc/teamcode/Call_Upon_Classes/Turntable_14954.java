@@ -1,12 +1,11 @@
 package org.firstinspires.ftc.teamcode.Call_Upon_Classes;
 
-import com.qualcomm.robotcore.hardware.CRServo;
-import com.qualcomm.robotcore.hardware.Gamepad;
-import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.*;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-public class Turntable_21954 {
+
+public class Turntable_14954 {
     //turntable power
     private double tp = 0;
     //turntable servo
@@ -17,10 +16,10 @@ public class Turntable_21954 {
     //left
     private boolean dl = false;
 
-    public void init_turntable_21954(HardwareMap hardwareMap, String name){
-        ts = hardwareMap.get(CRServo.class, "ts");
+    public void init_turntable_14954(HardwareMap hardwareMap, String name){
+        ts = hardwareMap.get(CRServo.class, name);
     }
-    public void run_turntable_21954(Gamepad gamepad, Telemetry telemetry){
+    public void run_turntable_14954(Gamepad gamepad, Telemetry telemetry){
         //buttons
         dr = gamepad.dpad_right;
         dl = gamepad.dpad_left;
