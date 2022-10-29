@@ -86,7 +86,8 @@ public class  Mecanum_Methods_Autonomus {
     }
 
     public void read_encoders(){
-
+    y_encoder.getCurrentPosition();
+    x_encoder.getCurrentPosition();
     }
 
 
