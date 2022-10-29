@@ -25,6 +25,8 @@ public class Turntable_21954 {
         dr = gamepad.dpad_right;
         dl = gamepad.dpad_left;
 
+        // We might have to reverse this
+
         if(dr){
             tp = 0.4;
         }

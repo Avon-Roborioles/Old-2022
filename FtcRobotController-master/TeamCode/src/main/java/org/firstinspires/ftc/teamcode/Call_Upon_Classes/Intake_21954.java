@@ -23,7 +23,7 @@ public class Intake_21954 {
     //run
     //method
     public void run_intake_motor_21954(Gamepad gamepad, Telemetry telemetry){
-        //Assign button "A"
+        //Assign button "a"
         a = gamepad.a;
 
         if(a){

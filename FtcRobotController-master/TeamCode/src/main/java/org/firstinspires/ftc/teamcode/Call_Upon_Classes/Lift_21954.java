@@ -27,6 +27,7 @@ public class Lift_21954 {
     public void init_lift_motor_21954(HardwareMap hardwareMap, String name) {
         lm = hardwareMap.get(DcMotor.class, "lm");
         ls4 = hardwareMap.get(CRServo.class, "ls4");
+        lm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
     public void run_lift_motor_21954(Gamepad gamepad, Telemetry telemetry) {
         //linear lift
@@ -51,7 +52,7 @@ public class Lift_21954 {
         if(rt > 0.5) {
             lp4 = 0.4;
         }
-        else if(lt < 0.5){
+        else if(lt > 0.5){
             lp4 = -0.4;
         }
         else {

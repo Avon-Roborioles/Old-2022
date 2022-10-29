@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.Call_Upon_Classes.*;
 
 /*
 *
-* - 3 servos:2 done
+* - 3 servos:3 done
 * - 5 DC motors: 5 done
 * - 1 camera: not done
 *
