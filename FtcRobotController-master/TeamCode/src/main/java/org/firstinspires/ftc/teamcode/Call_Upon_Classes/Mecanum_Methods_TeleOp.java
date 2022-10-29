@@ -66,28 +66,17 @@ public class Mecanum_Methods_TeleOp {
 
     }
 
-    public void run_drive_motors_cardinal(Gamepad gamepad1, Telemetry telemetry){
-        ly = gamepad1.left_stick_y;
-        rx = gamepad1.right_stick_x;
+    public void run_drive_motors_14(Gamepad gamepad1, Telemetry telemetry){
+        ly=-1 * gamepad1.left_stick_y;
+        lx=gamepad1.left_stick_x;
 
-        if (ly != 0) {
-            fl.setPower(ly);
-            bl.setPower(ly);
-            br.setPower(ly);
-            fr.setPower(ly);
-        }
-        else if (rx != 0) {
-            fl.setPower(-rx);
-            fr.setPower(-rx);
-            bl.setPower(rx);
-            br.setPower(rx);
-        }
-        else {
-            fl.setPower(0);
-            fr.setPower(0);
-            bl.setPower(0);
-            br.setPower(0);
-        }
+        fl.setPower(ly+lx);
+        bl.setPower(ly+lx);
+        fr.setPower(ly-lx);
+        br.setPower(ly-lx);
+
+        getTelemetry(telemetry);
+
     }
     public void run_drive_motors_15(Gamepad gamepad1, Telemetry telemetry){
         ly=gamepad1.left_stick_y;
