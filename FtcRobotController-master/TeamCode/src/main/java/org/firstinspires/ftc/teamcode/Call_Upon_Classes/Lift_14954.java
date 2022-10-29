@@ -11,9 +11,17 @@ public class Lift_14954 {
 
     private DcMotor lift = null;
 
+    private double le = 0;
+    private double min = 0;
+    private double max = 3325;
     public void init_lift (HardwareMap map, String name) {
         lift  = map.get(DcMotor.class, name);
         lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+//        lift.setTargetPosition(0);
+//        lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
         int pos = lift.getCurrentPosition();
     }
 
@@ -21,16 +29,32 @@ public class Lift_14954 {
     public void runlift(Gamepad gp, Telemetry telemetry) {
         double ltrigger = gp.left_trigger;
         double rtrigger = gp.right_trigger;
-
-        if (ltrigger > 0) {
-            speed = .6;
-        } else if (rtrigger > 0 ) {
-            speed = -.3;
-        } else {
+        if (le > min && le < max) {
+            if (ltrigger > 0) {
+                speed = .6;
+            } else if (rtrigger > 0) {
+                speed = -.3;
+            }
+            else {
+                speed = 0;
+            }
+        }
+        else if (le < min){
+            lift.setTargetPosition(2);
+            lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        }
+        else if (le > max) {
+            lift.setTargetPosition(3323);
+            lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        }
+        else {
+            lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
             speed = 0;
         }
 
         lift.setPower(speed);
+        le = lift.getCurrentPosition();
+        telemetry.addData("Lift Encoder: ", le);
     }
 
     //attempt for main lift program that hold position
