@@ -21,9 +21,8 @@ public abstract class Auto_Base_14 extends LinearOpMode {
     public void init_classes(boolean red_alliance) {
         auto_motors.init_auto_drive_motors(hardwareMap, telemetry);
         lift.init_lift(hardwareMap, "lift");
-        intake.init_intake(hardwareMap, "intake");
+//        intake.init_intake(hardwareMap, "intake");
         imu_drive.init_drive_motors(hardwareMap, telemetry, false);
-        camera.initVuforia();
     }
 
 

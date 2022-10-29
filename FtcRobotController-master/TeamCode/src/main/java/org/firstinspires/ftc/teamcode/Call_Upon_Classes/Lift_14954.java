@@ -10,7 +10,9 @@ public class Lift_14954 {
     private double speed = 0;
 
     private DcMotor lift = null;
-
+    private int top = 3000;
+    private int mid = 1600;
+    private int low = 100;
     public void init_lift (HardwareMap map, String name) {
         lift  = map.get(DcMotor.class, name);
         lift.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -34,8 +36,13 @@ public class Lift_14954 {
     }
 
     //attempt for main lift program that hold position
-    public void runlift2(Gamepad gp, Telemetry telemetry) {
-
+    public void runlift_auto(Telemetry telemetry) {
+        lift.setTargetPosition(top);
+        lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        lift.setTargetPosition(mid);
+        lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        lift.setTargetPosition(low);
+        lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
 
