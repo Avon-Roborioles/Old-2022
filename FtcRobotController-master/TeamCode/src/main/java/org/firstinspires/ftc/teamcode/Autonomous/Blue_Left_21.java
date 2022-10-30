@@ -1,4 +1,12 @@
 package org.firstinspires.ftc.teamcode.Autonomous;
 
-public class Blue_Left_21 {
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
+@Autonomous
+public class Blue_Left_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Auto_Base_21 {
+
+    public void runOpMode() throws InterruptedException {
+
+    }
+
 }
