@@ -1,59 +1,59 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.Call_Upon_Classes;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Gamepad;
-import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.*;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-public class Mecanum_Methods_Autonomus {
+public class  Mecanum_Methods_Autonomus {
 
 
     private DcMotor fl = null;
     private DcMotor bl = null;
     private DcMotor fr = null;
     private DcMotor br = null;
+    private DcMotor x_encoder=null;
+    private DcMotor y_encoder=null;
     private Telemetry telemetry = null;
 
 
-
-    private void init_drive_motors(HardwareMap hardwareMap) {
-        fl = hardwareMap.get(DcMotor.class, "fl");
-        fr = hardwareMap.get(DcMotor.class, "fr");
-        bl = hardwareMap.get(DcMotor.class, "bl");
-        br = hardwareMap.get(DcMotor.class, "br");
-        bl.setDirection(DcMotor.Direction.REVERSE);
-        fl.setDirection(DcMotor.Direction.REVERSE);
-
+    public void init_encoders(HardwareMap hardwareMap){
+        x_encoder = hardwareMap.get(DcMotor.class, "x");
+        y_encoder = hardwareMap.get(DcMotor.class, "y");
     }
     /*
-    the circumference of the wheel is 12.57 in
-    belt ration is 1:1
-    1 rotation is 1440 ticks
-    thus 1440 ticks is 12.57 in
-    91 ticks is approx 1 inch
-    */
-    public void init_auto_drive_motors(HardwareMap hardwareMap, Telemetry telemetry) {
-        init_drive_motors(hardwareMap);
-        this.telemetry = telemetry;
-        fl.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        fl.setTargetPosition(0);
-        fl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        fr.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        fr.setTargetPosition(0);
-        fr.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        bl.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        bl.setTargetPosition(0);
-        bl.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        br.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        br.setTargetPosition(0);
-        br.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+    for deadwheels
+    D=35mm
+    C=110mm/2.80in
+    1 rotation = 8192 ticks
+    thus 8192 ticks is 2.8 in
+    2925 ticks is approx 1 inch
+     */
+    /*
+    make one here for normal wheels
+     */
 
-        bl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        fr.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        fl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        br.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    private void init_individual_motor(DcMotor motor, boolean isLeft){
+        if (isLeft) motor.setDirection(DcMotorSimple.Direction.REVERSE);
+        motor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motor.setTargetPosition(0);
+        motor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        motor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    }
+
+    public void init_auto_drive_motors(HardwareMap hardwareMap, Telemetry telemetry) {
+        this.telemetry = telemetry;
+        fl = hardwareMap.get(DcMotor.class, "fl");
+        init_individual_motor(fl, true);
+
+        fr = hardwareMap.get(DcMotor.class, "fr");
+        init_individual_motor(fr, false);
+
+        bl = hardwareMap.get(DcMotor.class, "bl");
+        init_individual_motor(bl, true);
+
+        br = hardwareMap.get(DcMotor.class, "br");
+        init_individual_motor(br, false);
     }
 
     public void setRelativeTargetAll(int target) {
@@ -85,6 +85,12 @@ public class Mecanum_Methods_Autonomus {
 
     }
 
+    public void read_encoders(){
+    y_encoder.getCurrentPosition();
+    x_encoder.getCurrentPosition();
+    }
+
+
     public void goToSpot(int inches, double power){
         inches*=91;
         setRelativeTargetAll(inches);
@@ -92,9 +98,7 @@ public class Mecanum_Methods_Autonomus {
 //        while (isBusy()){}
     }
 
-    public void stopMotors() {
-        setPowerAll(0);
-    }
+    public void stopMotors() {setPowerAll(0);}
 
     public void turn90left (double power){
         setRelativeTargetIndividual((int) Math.floor(-1440*1.2),(int) Math.floor(-1440*1.2),(int) Math.floor(1440*1.2), (int) Math.floor(1440*1.2));
@@ -131,7 +135,7 @@ public class Mecanum_Methods_Autonomus {
         while (isBusy()){}
     }
 
-
+    // probably should re-write this one
     public boolean isBusy (){
 //        getTelemetry(telemetry);
         int totalBusy=0;
@@ -149,9 +153,6 @@ public class Mecanum_Methods_Autonomus {
         else
             return false;
     }
-
-
-
 
 
     public void getTelemetry (Telemetry telemetry){
