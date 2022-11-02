@@ -16,6 +16,8 @@ public class Intake_21954 {
     private CRServo is = null;
     //button a
     private boolean a = false;
+    //button b
+    private boolean b = false;
     //init
     public void init_intake_motor_21954(HardwareMap hardwareMap, String name) {
         is = hardwareMap.get(CRServo.class, "is");
@@ -25,9 +27,13 @@ public class Intake_21954 {
     public void run_intake_motor_21954(Gamepad gamepad, Telemetry telemetry){
         //Assign button "a"
         a = gamepad.a;
+        b = gamepad.b;
 
         if(a){
-            ip=0.4;
+            ip=1;
+        }
+        else if(b){
+            ip=-1;
         }
         else {
             ip = 0;

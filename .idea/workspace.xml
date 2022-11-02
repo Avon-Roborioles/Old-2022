@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae4e172f-c641-4b96-9b64-9a93bf5f4be0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Autonomous/Blue_Left_21.java" beforeDir="false" afterPath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Autonomous/Blue_Left_21.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Autonomous/Blue_Right_21.java" beforeDir="false" afterPath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Autonomous/Blue_Right_21.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Autonomous/Red_Left_21.java" beforeDir="false" afterPath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Autonomous/Red_Left_21.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Autonomous/Red_Right_21.java" beforeDir="false" afterPath="$PROJECT_DIR$/FtcRobotController-master/TeamCode/src/main/java/org/firstinspires/ftc/teamcode/Autonomous/Red_Right_21.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
