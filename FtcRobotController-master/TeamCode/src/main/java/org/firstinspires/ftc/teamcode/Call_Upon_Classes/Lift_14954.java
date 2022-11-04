@@ -10,7 +10,7 @@ public class Lift_14954 {
     private double speed = 0;
 
     private DcMotor lift = null;
-    private int max = 3300;
+    private int max = 3500;
     private int top = 3000;
     private int mid = 1600;
     private int low = 100;

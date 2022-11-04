@@ -25,7 +25,7 @@ public class Intake_14954 {
         if (lb) {
             //intake.setPosition(.01); //need to check
             intake.setPosition(0);
-        } else if (rb) {
+        } else if (rb ) {
             intake.setPosition(1); //need to check
             //sp = -0.4;
         }

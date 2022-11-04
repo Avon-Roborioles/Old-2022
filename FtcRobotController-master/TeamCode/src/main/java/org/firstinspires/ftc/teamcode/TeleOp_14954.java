@@ -28,11 +28,11 @@ public void runOpMode() throws InterruptedException {
     while (opModeIsActive()) {
         //Driver 1 Functions
         drivingMotors.run_drive_motors_14(gamepad1, telemetry); //driving
-        table.run_turntable_14954(gamepad1, telemetry); //turntable
 
         //Driver 2 Functions
-        lift.runlift2(gamepad1, telemetry); //lift
-        intake.run_intake(gamepad1, telemetry); //intake
+        table.run_turntable_14954(gamepad2, telemetry); //turntable
+        lift.runlift2(gamepad2, telemetry); //lift
+        intake.run_intake(gamepad2, telemetry); //intake
         telemetry.update();
         }
     }
