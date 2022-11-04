@@ -6,26 +6,27 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 
 public class Turntable_21954 {
-    //turntable power
+    // Turntable power
     private double tp = 0;
-    //turntable servo
+    // Turntable servo
     private CRServo ts = null;
-    //D pad buttons
-    //right
+    // D pad buttons
+    // Right
     private boolean dr = false;
-    //left
+    // Left
     private boolean dl = false;
 
     public void init_turntable_21954(HardwareMap hardwareMap, String name){
+        // Mapping the turntable
         ts = hardwareMap.get(CRServo.class, name);
     }
     public void run_turntable_21954(Gamepad gamepad, Telemetry telemetry){
-        //buttons
+        // Buttons
         dr = gamepad.dpad_right;
         dl = gamepad.dpad_left;
 
-        // We might have to reverse this
-
+        // Turntable power set
+        // (We might have to reverse this)
         if(dr){
             tp = 0.4;
         }
@@ -35,7 +36,7 @@ public class Turntable_21954 {
         else {
             tp = 0;
         }
-        //set servo power to turntable power "tp" var
+        // Set servo power to turntable power "tp" var (turntable)
         ts.setPower(tp);
     }
 }
