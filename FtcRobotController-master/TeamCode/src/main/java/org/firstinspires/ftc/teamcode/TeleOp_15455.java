@@ -7,14 +7,16 @@ import org.firstinspires.ftc.teamcode.Call_Upon_Classes.*;
 public class TeleOp_15455 extends LinearOpMode {
     //objects for each function of the robot
     private final org.firstinspires.ftc.teamcode.Call_Upon_Classes.Mecanum_Methods_TeleOp drivingMotors = new Mecanum_Methods_TeleOp(false);
-    private final org.firstinspires.ftc.teamcode.Call_Upon_Classes.Lift_14954 lift = new Lift_14954();
+    private final org.firstinspires.ftc.teamcode.Call_Upon_Classes.Lift_15455 lift = new Lift_15455();
     private final org.firstinspires.ftc.teamcode.Call_Upon_Classes.Intake_15455 intake = new Intake_15455();
+    private final org.firstinspires.ftc.teamcode.Call_Upon_Classes.arm_15455 arm = new arm_15455();
 
     public void runOpMode() throws InterruptedException {
         //Initialize objects
         drivingMotors.init_drive_motors(hardwareMap);
-    lift.init_lift(hardwareMap, "lift");
-    intake.init_intake(hardwareMap, "intake");
+        lift.init_lift(hardwareMap, "lift");
+        intake.init_intake(hardwareMap, "intake");
+        arm.init_arm(hardwareMap, "arm");
 
         waitForStart();
 
@@ -24,6 +26,7 @@ public class TeleOp_15455 extends LinearOpMode {
                 //Driver 2 Functions
             lift.runlift(gamepad2, telemetry);
             intake.run_intake(gamepad2, telemetry);
+            arm.run_arm(gamepad2, telemetry);
 
 
             telemetry.update();

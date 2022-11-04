@@ -4,11 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
-import org.opencv.core.Core;
-import org.opencv.core.Mat;
-import org.opencv.core.Point;
-import org.opencv.core.Rect;
-import org.opencv.core.Scalar;
+import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
@@ -20,7 +16,7 @@ import org.openftc.easyopencv.OpenCvWebcam;
 public class Camera_15455 extends LinearOpMode
 {
     OpenCvWebcam webcam;
-    SamplePipeline pipeline;
+    PipeLine pipeline;
 
 
     @Override
@@ -31,7 +27,7 @@ public class Camera_15455 extends LinearOpMode
         webcam = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "camera"), cameraMonitorViewId);
 
         //Specify the image processing pipeline we wish to invoke upon receipt of a frame from the camera.
-        pipeline = new SamplePipeline();
+        pipeline = new PipeLine(5);
         webcam.setPipeline(pipeline);
 //        webcam.setViewportRenderingPolicy(OpenCvWebcam.ViewportRenderingPolicy.OPTIMIZE_VIEW);
 //        webcam.setViewportRenderer(OpenCvCamera.ViewportRenderer.GPU_ACCELERATED);
@@ -54,14 +50,65 @@ public class Camera_15455 extends LinearOpMode
 
         while (opModeIsActive())
         {
-            telemetry.addData("Average0",pipeline.getAverage());
-            telemetry.addData("Type", pipeline.getType());
-            telemetry.update();/*stats for telemetry*/
             sleep(100);
         }
     }
 
     //opmode and pipeline are run on different threads
+
+    public static class PipeLine extends OpenCvPipeline {
+        private static final Scalar BLUE = new Scalar(0, 0, 255);
+        public enum SIDE {
+            YELLOW,PURPLE,BLUE
+        }
+        private int width;
+        private SIDE side;
+
+        public PipeLine (int width){
+            this.width = width;
+        }
+
+
+
+
+        @Override
+        public Mat processFrame(Mat input) {
+            Mat mat = new Mat();
+            Imgproc.cvtColor(input, mat, Imgproc.COLOR_RGB2HSV_FULL);
+
+            Point TopLeft=new Point(50,50);
+            Point BottomRight= new Point(100,100);
+
+            Mat Region_1;
+
+            Scalar lowYELLOW = new Scalar(25, 127,127);
+            Scalar highYELLOW = new Scalar(35,255,255);
+            Mat thresh = new Mat();
+
+            Core.inRange(mat, lowYELLOW, highYELLOW, thresh);
+
+
+//            public void init() {
+//                Region_1 = mat.submat(new Rect(TopLeft, BottomRight));
+//            }
+
+
+
+            Imgproc.rectangle(input, TopLeft, BottomRight, BLUE, 2);
+
+
+            return null;
+        }
+
+
+
+
+
+
+    }
+
+
+
     public static class SamplePipeline extends OpenCvPipeline {
         private static final Scalar BLUE = new Scalar(0, 0, 255);
 

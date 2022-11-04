@@ -45,7 +45,7 @@ public class Mecanum_Methods_TeleOp {
         fr = hardwareMap.get(DcMotor.class, "fr");
         bl = hardwareMap.get(DcMotor.class, "bl");
         br = hardwareMap.get(DcMotor.class, "br");
-        x_encoder = hardwareMap.get(DcMotor.class, "x");
+//        x_encoder = hardwareMap.get(DcMotor.class, "x");
         bl.setDirection(DcMotor.Direction.REVERSE);
         fl.setDirection(DcMotor.Direction.REVERSE);
         bl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -141,7 +141,7 @@ public class Mecanum_Methods_TeleOp {
         telemetry.addData("fr power: ",fr.getPower());
         telemetry.addData("bl power: ",bl.getPower());
         telemetry.addData("br power: ",br.getPower());
-        telemetry.addData("X Dead Wheel Encoder Value: ",x_encoder.getCurrentPosition());
+//        telemetry.addData("X Dead Wheel Encoder Value: ",x_encoder.getCurrentPosition());
 
 
     }

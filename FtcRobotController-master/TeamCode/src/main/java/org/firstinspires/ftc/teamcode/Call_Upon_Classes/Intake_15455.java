@@ -25,9 +25,9 @@ public class Intake_15455 {
         boolean close = gp.b;
 
         if (open) {
-            intake.setPosition(.01); //need to check
+            intake.setPosition(.24); //need to check
         } else if (close) {
-            intake.setPosition(0.4); //need to check
+            intake.setPosition(0.35); //need to check
         }
         get_telemetry(telemetry);
 
