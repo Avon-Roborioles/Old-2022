@@ -92,6 +92,7 @@ public class Mecanum_Methods_TeleOp {
 
 
         } else if (ly != 0 && Math.abs(ly) > 0.5) {
+            ly = -ly;
             fl.setPower(ly);
             bl.setPower(ly);
             fr.setPower(ly);
