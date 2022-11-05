@@ -77,15 +77,26 @@ public class Mecanum_Methods_TeleOp {
     public void run_drive_motors_14(Gamepad gamepad1, Telemetry telemetry){
         ly=-1 * gamepad1.left_stick_y;
         rx=gamepad1.right_stick_x;
-        rt = gamepad1.right_trigger;
-        lt = gamepad1.left_trigger;
+        rt = gamepad1.right_trigger*.75;
+        lt = gamepad1.left_trigger*.75;
 
-        if (ly != 0){
+        //added code so when drivers want to drive slow, THE ROBOT IS SLOW!!!
+        //simple explanation - when the joystick is forword or backwards less than 50%, the robot moves 20% slower
+        //complex explanation - when the absolute value of the joystick (forward or backward) is <= 50%, the robot is 20% slower
+        if (ly != 0 && Math.abs(ly) <= 0.5 ) {
             ly = -ly;
+            fl.setPower(ly * 0.8);
+            bl.setPower(ly * 0.8);
+            fr.setPower(ly * 0.8);
+            br.setPower(ly * 0.8);
+
+
+        } else if (ly != 0 && Math.abs(ly) > 0.5) {
             fl.setPower(ly);
             bl.setPower(ly);
             fr.setPower(ly);
             br.setPower(ly);
+
         } else if (rx > 0){
             fl.setPower(rx);
             bl.setPower(-rx);
