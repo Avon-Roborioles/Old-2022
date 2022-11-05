@@ -39,7 +39,6 @@ public class Camera_14954 extends OpMode {
        });
     }
     public void loop(){
-
     }
     class samplePipeline extends OpenCvPipeline {
         Mat YCbCr = new Mat();

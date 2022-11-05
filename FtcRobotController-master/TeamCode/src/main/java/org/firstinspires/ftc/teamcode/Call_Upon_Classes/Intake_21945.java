@@ -1,15 +1,12 @@
 package org.firstinspires.ftc.teamcode.Call_Upon_Classes;
 
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-public class Intake_21954 {
+public class Intake_21945 {
     // Intake power
     private double ip = 0;
     // Intake servo
@@ -19,12 +16,12 @@ public class Intake_21954 {
     // Button b
     private boolean b = false;
     // Init
-    public void init_intake_motor_21954(HardwareMap hardwareMap, String name) {
+    public void init_intake_motor_21945(HardwareMap hardwareMap, String name) {
         is = hardwareMap.get(CRServo.class, "is");
     }
     // Run
     // Method
-    public void run_intake_motor_21954(Gamepad gamepad, Telemetry telemetry){
+    public void run_intake_motor_21945(Gamepad gamepad, Telemetry telemetry){
         // Assign button "a"
         a = gamepad.a;
         b = gamepad.b;

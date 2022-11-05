@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.*;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-public class Lift_21954 {
+public class Lift_21945 {
     // Lift power linear
     private double lp = 0;
     // Lift motor linear
@@ -24,7 +24,7 @@ public class Lift_21954 {
 
 
 
-    public void init_lift_motor_21954(HardwareMap hardwareMap, String name) {
+    public void init_lift_motor_21945(HardwareMap hardwareMap, String name) {
         // Lift motor linear mapping
         lm = hardwareMap.get(DcMotor.class, "lm");
 
@@ -34,7 +34,7 @@ public class Lift_21954 {
         // Power behavior (if 0 then stop)
         lm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
-    public void run_lift_motor_21954(Gamepad gamepad, Telemetry telemetry) {
+    public void run_lift_motor_21945(Gamepad gamepad, Telemetry telemetry) {
         // Linear lift button controls
         lj = gamepad.left_stick_y;
         // 4 bar lift button controls
