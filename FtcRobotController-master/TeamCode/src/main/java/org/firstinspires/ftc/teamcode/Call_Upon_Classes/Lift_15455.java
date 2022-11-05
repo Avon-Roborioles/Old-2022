@@ -24,9 +24,9 @@ public class Lift_15455 {
         double rtrigger = gp.right_trigger;
 
         if (ltrigger > 0) {
-            speed = .6;
+            speed = 1;
         } else if (rtrigger > 0 ) {
-            speed = -.3;
+            speed = -.7;
         } else {
             speed = 0;
         }

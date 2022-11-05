@@ -9,19 +9,20 @@ public class arm_15455 {
     private Telemetry telemetry = null;
 
 
-    public void init_arm (HardwareMap map, String name) {
-        arm = map.get(Servo.class, name);
-    }
+    public void init_arm (HardwareMap map, String name) {arm = map.get(Servo.class, name);}
 
 
     public void run_arm(Gamepad gp, Telemetry telemetry) {
-        boolean open = gp.x;
-        boolean close = gp.b;
+        boolean left = gp.dpad_left;
+        boolean right = gp.dpad_right;
+        boolean middle = gp.dpad_up;
 
-        if (open) {
-            arm.setPosition(.01); //need to check
-        } else if (close) {
-            arm.setPosition(0.4); //need to check
+        if (left) {
+            arm.setPosition(0.56); //need to check
+        } else if (right) {
+            arm.setPosition(0.44); //need to check
+        }else if(middle) {
+            arm.setPosition(.5);
         }
         get_telemetry(telemetry);
 

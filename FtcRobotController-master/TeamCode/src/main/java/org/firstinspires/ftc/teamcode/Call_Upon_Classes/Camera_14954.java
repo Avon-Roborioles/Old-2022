@@ -1,141 +1,107 @@
 package org.firstinspires.ftc.teamcode.Call_Upon_Classes;
 
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import java.util.List;
-import org.firstinspires.ftc.robotcore.external.ClassFactory;
-import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
-import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer.CameraDirection;
-import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
-import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
-public class Camera_14954 extends LinearOpMode{
+import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
+import org.opencv.core.Core;
+import org.opencv.core.Mat;
+import org.opencv.core.Rect;
+import org.opencv.core.Scalar;
+import org.opencv.imgproc.Imgproc;
+import org.openftc.easyopencv.OpenCvCamera;
+import org.openftc.easyopencv.OpenCvCameraFactory;
+import org.openftc.easyopencv.OpenCvCameraRotation;
+import org.openftc.easyopencv.OpenCvPipeline;
+import org.openftc.easyopencv.OpenCvWebcam;
 
-    private static final String TFOD_MODEL_ASSET = "PowerPlay.tflite";
-    // private static final String TFOD_MODEL_FILE  = "/sdcard/FIRST/tflitemodels/CustomTeamModel.tflite";
-
-    private static final String[] LABELS = {
-            "1 Bolt",
-            "2 Bulb",
-            "3 Panel"
-    };
-
-    /*
-     * IMPORTANT: You need to obtain your own license key to use Vuforia. The string below with which
-     * 'parameters.vuforiaLicenseKey' is initialized is for illustration only, and will not function.
-     * A Vuforia 'Development' license key, can be obtained free of charge from the Vuforia developer
-     * web site at https://developer.vuforia.com/license-manager.
-     *
-     * Vuforia license keys are always 380 characters long, and look as if they contain mostly
-     * random data. As an example, here is a example of a fragment of a valid key:
-     *      ... yIgIzTqZ4mWjk9wd3cZO9T1axEqzuhxoGlfOOI2dRzKS4T0hQ8kT ...
-     * Once you've obtained a license key, copy the string from the Vuforia web site
-     * and paste it in to your code on the next line, between the double quotes.
-     */
-    private static final String VUFORIA_KEY =
-            " -- YOUR NEW VUFORIA KEY GOES HERE  --- ";
-
-    /**
-     * {@link #vuforia} is the variable we will use to store our instance of the Vuforia
-     * localization engine.
-     */
-    private VuforiaLocalizer vuforia;
-
-    /**
-     * {@link #tfod} is the variable we will use to store our instance of the TensorFlow Object
-     * Detection engine.
-     */
-    private TFObjectDetector tfod;
+@Autonomous
+public class Camera_14954 extends OpMode {
+    OpenCvWebcam webcam = null;
 
     @Override
-    public void runOpMode() {
-        // The TFObjectDetector uses the camera frames from the VuforiaLocalizer, so we create that
-        // first.
-        initVuforia();
-        initTfod();
+    public void init(){
+       WebcamName webcamName = hardwareMap.get(WebcamName.class, "webcam");
+       int cameraMonitorVeiwId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorVeiwId", "id", hardwareMap.appContext.getPackageName());
+       webcam = OpenCvCameraFactory.getInstance().createWebcam(webcamName, cameraMonitorVeiwId);
 
-        /**
-         * Activate TensorFlow Object Detection before we wait for the start command.
-         * Do it here so that the Camera Stream window will have the TensorFlow annotations visible.
-         **/
-        if (tfod != null) {
-            tfod.activate();
+       webcam.setPipeline(new samplePipeline());
 
-            // The TensorFlow software will scale the input images from the camera to a lower resolution.
-            // This can result in lower detection accuracy at longer distances (> 55cm or 22").
-            // If your target is at distance greater than 50 cm (20") you can increase the magnification value
-            // to artificially zoom in to the center of image.  For best results, the "aspectRatio" argument
-            // should be set to the value of the images used to create the TensorFlow Object Detection model
-            // (typically 16/9).
-            tfod.setZoom(1.0, 16.0/9.0);
-        }
+       webcam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
+           @Override
+           public void onOpened() {
+               webcam.startStreaming(1280,720,OpenCvCameraRotation.UPRIGHT);
+           }
 
-        /** Wait for the game to begin */
-        telemetry.addData(">", "Press Play to start op mode");
-        telemetry.update();
-        waitForStart();
+           @Override
+           public void onError(int errorCode) {
+           }
+       });
+    }
+    public void loop(){
+    }
+    class samplePipeline extends OpenCvPipeline {
+        Mat YCbCr = new Mat();
+        Mat midcrop;
+        double redavgfin;
+        double blueavgfin;
+        double greenavgfin;
+        double zone = 0;
+        Mat outPut = new Mat();
+        Scalar rectcolor = new Scalar(255.0, 0.0, 0.0);
+        public Mat processFrame(Mat input){
+            Imgproc.cvtColor(input,YCbCr,Imgproc.COLOR_RGB2YCrCb);
+            telemetry.addLine("Pipeline Running");
 
-        if (opModeIsActive()) {
-            while (opModeIsActive()) {
-                if (tfod != null) {
-                    // getUpdatedRecognitions() will return null if no new information is available since
-                    // the last time that call was made.
-                    List<Recognition> updatedRecognitions = tfod.getUpdatedRecognitions();
-                    if (updatedRecognitions != null) {
-                        telemetry.addData("# Objects Detected", updatedRecognitions.size());
+            Rect midrect = new Rect(427, 240, 426, 239);
+            //Red Average
+            input.copyTo(outPut);
+            Imgproc.rectangle(outPut, midrect, rectcolor, 2);
 
-                        // step through the list of recognitions and display image position/size information for each one
-                        // Note: "Image number" refers to the randomized image orientation/number
-                        for (Recognition recognition : updatedRecognitions) {
-                            double col = (recognition.getLeft() + recognition.getRight()) / 2 ;
-                            double row = (recognition.getTop()  + recognition.getBottom()) / 2 ;
-                            double width  = Math.abs(recognition.getRight() - recognition.getLeft()) ;
-                            double height = Math.abs(recognition.getTop()  - recognition.getBottom()) ;
+            midcrop = YCbCr.submat(midrect);
 
-                            telemetry.addData(""," ");
-                            telemetry.addData("Image", "%s (%.0f %% Conf.)", recognition.getLabel(), recognition.getConfidence() * 100 );
-                            telemetry.addData("- Position (Row/Col)","%.0f / %.0f", row, col);
-                            telemetry.addData("- Size (Width/Height)","%.0f / %.0f", width, height);
-                        }
-                        telemetry.update();
-                    }
-                }
+            Core.extractChannel(midcrop, midcrop, 2);
+
+            Scalar midavg = Core.mean(midcrop);
+
+            redavgfin = midavg.val[0];
+
+            //Blue Average
+            input.copyTo(outPut);
+            Imgproc.rectangle(outPut, midrect, rectcolor, 2);
+
+            midcrop = YCbCr.submat(midrect);
+
+            Core.extractChannel(midcrop, midcrop, 1);
+
+            midavg = Core.mean(midcrop);
+
+            blueavgfin = midavg.val[0];
+
+            //Green Average
+            input.copyTo(outPut);
+            Imgproc.rectangle(outPut, midrect, rectcolor, 2);
+
+            midcrop = YCbCr.submat(midrect);
+
+            Core.extractChannel(midcrop, midcrop, 3);
+
+            midavg = Core.mean(midcrop);
+
+            redavgfin = midavg.val[0];
+
+            //Comparing
+            if(blueavgfin>redavgfin && blueavgfin > greenavgfin) {
+                zone = 1;
+            } else if(redavgfin>blueavgfin && redavgfin>greenavgfin) {
+                zone = 2;
+            } else if(greenavgfin>redavgfin && greenavgfin>blueavgfin) {
+                zone = 3;
             }
+            telemetry.addData("Parking Zone: ", zone);
+
+
+            return(outPut);
         }
-    }
-
-    /**
-     * Initialize the Vuforia localization engine.
-     */
-    public void initVuforia() {
-        /*
-         * Configure Vuforia by creating a Parameter object, and passing it to the Vuforia engine.
-         */
-        VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters();
-
-        parameters.vuforiaLicenseKey = VUFORIA_KEY;
-        parameters.cameraDirection = CameraDirection.BACK;
-
-        //  Instantiate the Vuforia engine
-        vuforia = ClassFactory.getInstance().createVuforia(parameters);
-    }
-
-    /**
-     * Initialize the TensorFlow Object Detection engine.
-     */
-    private void initTfod() {
-        int tfodMonitorViewId = hardwareMap.appContext.getResources().getIdentifier(
-                "tfodMonitorViewId", "id", hardwareMap.appContext.getPackageName());
-        TFObjectDetector.Parameters tfodParameters = new TFObjectDetector.Parameters(tfodMonitorViewId);
-        tfodParameters.minResultConfidence = 0.75f;
-        tfodParameters.isModelTensorFlow2 = true;
-        tfodParameters.inputSize = 300;
-        tfod = ClassFactory.getInstance().createTFObjectDetector(tfodParameters, vuforia);
-
-        // Use loadModelFromAsset() if the TF Model is built in as an asset by Android Studio
-        // Use loadModelFromFile() if you have downloaded a custom team model to the Robot Controller's FLASH.
-        tfod.loadModelFromAsset(TFOD_MODEL_ASSET, LABELS);
-        // tfod.loadModelFromFile(TFOD_MODEL_FILE, LABELS);
     }
 }
-
