@@ -6,6 +6,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 
 public class Turntable_21954 {
+    //CHANGE TO NON CONTINUOUS
     // Turntable power
     private double tp = 0;
     // Turntable servo
