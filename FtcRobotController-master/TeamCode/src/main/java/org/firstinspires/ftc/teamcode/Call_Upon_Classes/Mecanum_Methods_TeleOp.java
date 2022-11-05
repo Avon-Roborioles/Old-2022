@@ -24,7 +24,9 @@ public class Mecanum_Methods_TeleOp {
     private DcMotor bl = null;
     private DcMotor fr = null;
     private DcMotor br = null;
-    private DcMotor x_encoder = null;
+    private DcMotor frontEncoder = null;
+    private DcMotor leftEncoder = null;
+    private DcMotor rightEncoder = null;
 
     /**
      *
@@ -45,7 +47,9 @@ public class Mecanum_Methods_TeleOp {
         fr = hardwareMap.get(DcMotor.class, "fr");
         bl = hardwareMap.get(DcMotor.class, "bl");
         br = hardwareMap.get(DcMotor.class, "br");
-//        x_encoder = hardwareMap.get(DcMotor.class, "x");
+        frontEncoder = hardwareMap.get(DcMotor.class, "frontEncoder");
+        leftEncoder = hardwareMap.get(DcMotor.class, "leftEncoder");
+        rightEncoder = hardwareMap.get(DcMotor.class, "rightEncoder");
         bl.setDirection(DcMotor.Direction.REVERSE);
         fl.setDirection(DcMotor.Direction.REVERSE);
         bl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);

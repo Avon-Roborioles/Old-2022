@@ -12,7 +12,6 @@ private final org.firstinspires.ftc.teamcode.Call_Upon_Classes.Mecanum_Methods_T
 private final org.firstinspires.ftc.teamcode.Call_Upon_Classes.Lift_14954 lift = new Lift_14954();
 private final org.firstinspires.ftc.teamcode.Call_Upon_Classes.Intake_14954 intake = new Intake_14954();
 private final org.firstinspires.ftc.teamcode.Call_Upon_Classes.Turntable_14954 table = new Turntable_14954();
-private final org.firstinspires.ftc.teamcode.Call_Upon_Classes.Camera_14954 camera = new Camera_14954();
 
 
 public void runOpMode() throws InterruptedException {
@@ -21,7 +20,6 @@ public void runOpMode() throws InterruptedException {
     lift.init_lift(hardwareMap, "lift");
     intake.init_intake(hardwareMap, "intake");
     table.init_turntable_14954(hardwareMap, "table");
-    camera.init();
 
     waitForStart();
 
