@@ -30,7 +30,7 @@ public void runOpMode() throws InterruptedException {
         drivingMotors.run_drive_motors_14(gamepad1, telemetry); //driving
 
         //Driver 2 Functions
-        table.run_turntable_14954(gamepad2, telemetry); //turntable
+        table.run_turntable_14954_V1(gamepad2, telemetry); //turntable
         lift.runlift2(gamepad2, telemetry); //lift
         intake.run_intake_V1(gamepad2, telemetry); //intake
         telemetry.update();

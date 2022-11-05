@@ -10,14 +10,17 @@ public class Lift_14954 {
     private double speed = 0;
 
     private DcMotor lift = null;
-    private int max = 3500;
-    private int top = 3000;
-    private int mid = 1600;
-    private int low = 100;
+    private int max = 4300;
+    private int top = 4100;
+    private int mid = 2980;
+    private int low = 1850;
+    int currentTarget = 0;
     private boolean a = false;
     private boolean x = false;
     private boolean y = false;
     private boolean b = false;
+    double ltrigger;
+    double rtrigger;
 
 
     public void init_lift (HardwareMap map, String name) {
@@ -26,7 +29,7 @@ public class Lift_14954 {
         lift.setTargetPosition(0);
     }
 
-    //simple arm program to move arm up; will work on position holding soon
+    //old method to use any time
     public void runlift(Gamepad gp, Telemetry telemetry) {
         int pos = lift.getCurrentPosition();
 
@@ -52,22 +55,61 @@ public class Lift_14954 {
         x = gp.x;
         y = gp.y;
         b = gp.b;
+          ltrigger = gp.left_trigger;
+          rtrigger = gp.right_trigger;
+        double pos = lift.getCurrentPosition();
 
+        //buttons for auto control
         if (a) {
             lift.setTargetPosition(0);
+            currentTarget = 0;
         } else if (x) {
             lift.setTargetPosition(low);
+            currentTarget = low;
         } else if (y) {
             lift.setTargetPosition(mid);
+            currentTarget = mid;
         } else if (b) {
             lift.setTargetPosition(top);
+            currentTarget = top;
         }
+
+//        //triggers for manual control
+//        while (ltrigger > 0 && rtrigger == 0) {
+//            lift.setMode(Ru);
+//            lift.setTargetPosition((int) (pos + 5));
+//        }
+//
+//        while (rtrigger > 0 && ltrigger == 0) {
+//            lift.setTargetPosition((int) (pos - 5));
+//        }
+        //manual control
+        if (rtrigger > 0) {
+            currentTarget = currentTarget + 10;
+            lift.setTargetPosition(currentTarget);
+
+        } else if (ltrigger > 0) {
+            currentTarget = currentTarget - 10;
+            lift.setTargetPosition(currentTarget);
+        }
+
+
+        //limits for lift height; both cei
+        if (currentTarget > max) {
+            lift.setTargetPosition(top);
+            currentTarget = top;
+        } else if (currentTarget < 0) {
+            lift.setTargetPosition(0);
+            currentTarget = 0;
+        }
+
+
         lift.setPower(.5);
         lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
+        get_telemetry(telemetry);
     }
 
-    //attempt for main lift program that hold position
+    //main lift function for autonomous
     public void runlift_auto(Telemetry telemetry) {
         lift.setTargetPosition(top);
         lift.setPower(.5);
@@ -82,5 +124,10 @@ public class Lift_14954 {
 //        lift.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
-
+    public void get_telemetry (Telemetry telemetry) {
+        telemetry.addData("Lift Position: ", lift.getCurrentPosition());
+        telemetry.addData("Current Target: ", currentTarget);
+        telemetry.addData("Left Trigger: ", ltrigger);
+        telemetry.addData("Right Trigger: ", rtrigger);
+    }
 }

@@ -32,6 +32,6 @@ public class Intake_14954 {
 
 
     public void get_telemetry (Telemetry telemetry) {
-        //telemetry.addData("Position",intake.getPosition());
+        telemetry.addData("Intake Position: ",intake.getPosition());
     }
 }
