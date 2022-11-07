@@ -15,8 +15,9 @@ public class Lift_21945 {
 
     // Lift power 4 bar
     private double lp4 = 0;
-    // Lift servo 4 bar
-    private CRServo ls4 = null;
+    // Lift servo 4 bar left
+    private CRServo ls4l = null;
+    private CRServo ls4r = null;
     // Left joystick 4 bar
     private double lj = 0;
 
@@ -29,7 +30,8 @@ public class Lift_21945 {
         lm = hardwareMap.get(DcMotor.class, "lm");
 
         // Lift servo 4 bar mapping
-        ls4 = hardwareMap.get(CRServo.class, "ls4");
+        ls4l = hardwareMap.get(CRServo.class, "ls4l");
+        ls4r = hardwareMap.get(CRServo.class, "ls4r");
 
         // Power behavior (if 0 then stop)
         lm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -64,7 +66,8 @@ public class Lift_21945 {
             lp4 = 0;
         }
         // Set servo power to 4 bar lift power "lp4" var (4 bar power)
-        ls4.setPower(lp4);
+        ls4l.setPower(lp4);
+        ls4r.setPower(lp4 * -1);
 
 
 

@@ -12,7 +12,7 @@ public class Turntable_21945 {
     // Turntable servo
     private CRServo ts = null;
 
-    // joystick left
+    // joystick right
     private double rj = 0;
 
     public void init_turntable_21945(HardwareMap hardwareMap, String name){
