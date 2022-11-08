@@ -39,6 +39,7 @@ public class Camera_14954 extends OpMode {
        });
     }
     public void loop(){
+
     }
     class samplePipeline extends OpenCvPipeline {
         Mat YCbCr = new Mat();
@@ -65,40 +66,41 @@ public class Camera_14954 extends OpMode {
             Scalar midavg = Core.mean(midcrop);
 
             redavgfin = midavg.val[0];
-
-            //Blue Average
-            input.copyTo(outPut);
-            Imgproc.rectangle(outPut, midrect, rectcolor, 2);
-
-            midcrop = YCbCr.submat(midrect);
-
-            Core.extractChannel(midcrop, midcrop, 1);
-
-            midavg = Core.mean(midcrop);
-
-            blueavgfin = midavg.val[0];
-
-            //Green Average
-            input.copyTo(outPut);
-            Imgproc.rectangle(outPut, midrect, rectcolor, 2);
-
-            midcrop = YCbCr.submat(midrect);
-
-            Core.extractChannel(midcrop, midcrop, 3);
-
-            midavg = Core.mean(midcrop);
-
-            redavgfin = midavg.val[0];
-
-            //Comparing
-            if(blueavgfin>redavgfin && blueavgfin > greenavgfin) {
-                zone = 1;
-            } else if(redavgfin>blueavgfin && redavgfin>greenavgfin) {
-                zone = 2;
-            } else if(greenavgfin>redavgfin && greenavgfin>blueavgfin) {
-                zone = 3;
-            }
-            telemetry.addData("Parking Zone: ", zone);
+            telemetry.addData("Average", redavgfin);
+//
+//            //Blue Average
+//            input.copyTo(outPut);
+//            Imgproc.rectangle(outPut, midrect, rectcolor, 2);
+//
+//            midcrop = YCbCr.submat(midrect);
+//
+//            Core.extractChannel(midcrop, midcrop, 1);
+//
+//            midavg = Core.mean(midcrop);
+//
+//            blueavgfin = midavg.val[0];
+//
+//            //Green Average
+//            input.copyTo(outPut);
+//            Imgproc.rectangle(outPut, midrect, rectcolor, 2);
+//
+//            midcrop = YCbCr.submat(midrect);
+//
+//            Core.extractChannel(midcrop, midcrop, 3);
+//
+//            midavg = Core.mean(midcrop);
+//
+//            redavgfin = midavg.val[0];
+//
+//            //Comparing
+//            if(blueavgfin>redavgfin && blueavgfin > greenavgfin) {
+//                zone = 1;
+//            } else if(redavgfin>blueavgfin && redavgfin>greenavgfin) {
+//                zone = 2;
+//            } else if(greenavgfin>redavgfin && greenavgfin>blueavgfin) {
+//                zone = 3;
+//            }
+//            telemetry.addData("Parking Zone: ", zone);
 
 
             return(outPut);
