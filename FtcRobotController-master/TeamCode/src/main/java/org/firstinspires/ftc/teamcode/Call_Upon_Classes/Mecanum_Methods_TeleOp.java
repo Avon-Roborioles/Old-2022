@@ -20,6 +20,12 @@ public class Mecanum_Methods_TeleOp {
     private double rx;
     private double lt;
     private double rt;
+    private boolean du;
+    private boolean dd;
+    private boolean dr;
+    private boolean dl;
+    private double gp2_x;
+    private double gp2_y;
     private DcMotor fl = null;
     private DcMotor bl = null;
     private DcMotor fr = null;
@@ -59,16 +65,40 @@ public class Mecanum_Methods_TeleOp {
     }
 
 
-    public void run_drive_motors(Gamepad gamepad1, Telemetry telemetry){
+    public void run_drive_motors(Gamepad gamepad1, Gamepad gamepad2, Telemetry telemetry){
         ly=-1 * gamepad1.left_stick_y;
         lx=gamepad1.left_stick_x;
         rx=gamepad1.right_stick_x;
+        du=gamepad2.dpad_up;
+        dd=gamepad2.dpad_down;
+        dr=gamepad2.dpad_right;
+        dl=gamepad2.dpad_left;
+
+
+        if (du)
+            gp2_y = .1;
+        else if (dd)
+            gp2_y = -0.1;
+        else if (dr)
+            gp2_x = 0.1;
+        else if (dl)
+            gp2_x = -0.1;
+        else{
+            gp2_x = 0;
+            gp2_y = 0;
+        }
+
+
+
+
         denominator = Math.max(Math.abs(ly)+Math.abs(lx)+Math.abs(rx), 1);
 
-        fl.setPower((ly+lx+rx)/denominator);
-        bl.setPower((ly+lx* strafe_set -rx* strafe_set )/denominator);
-        fr.setPower((ly-lx-rx)/denominator);
-        br.setPower((ly-lx* strafe_set +rx* strafe_set )/denominator);
+
+
+        fl.setPower((ly+lx+rx+gp2_y+gp2_x)/denominator);
+        bl.setPower((ly+gp2_y+(lx+gp2_x)* strafe_set -rx* strafe_set )/denominator);
+        fr.setPower((ly+gp2_y-gp2_x-lx-rx)/denominator);
+        br.setPower((ly+gp2_y-(lx+gp2_x)* strafe_set +rx* strafe_set )/denominator);
 
         getTelemetry(telemetry);
 
