@@ -7,6 +7,13 @@ public class Red_Left_14 extends org.firstinspires.ftc.teamcode.Autonomous.Auto_
 
     public void runOpMode() throws InterruptedException {
 
+        init_classes(true);
+
+        waitForStart();
+
+        while (opModeIsActive()) {
+
+        }
     }
 
 }

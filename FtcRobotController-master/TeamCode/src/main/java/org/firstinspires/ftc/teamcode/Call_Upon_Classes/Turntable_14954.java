@@ -37,11 +37,11 @@ public class Turntable_14954 {
 
         if(dl){
             //ts.setPosition(0.4);
-            tp = -0.4;
+            tp = -0.6;
         }
         else if(dr){
             //ts.setPosition(-0.4);
-            tp = 0.4;
+            tp = 0.6;
         } else {
             tp = 0;
         }
@@ -49,7 +49,7 @@ public class Turntable_14954 {
 
         //set servo power to turntable power "tp" var
         table.setPower(tp);
-        get_telemetry(telemetry);
+        //get_telemetry(telemetry);
     }
 
     //auto + manual turntable movement; may not be needed
@@ -64,7 +64,7 @@ public class Turntable_14954 {
     }
 
     public void get_telemetry (Telemetry telemetry) {
-        telemetry.addData("Intake Position: ",tp);
+        //telemetry.addData("Table Position: ",table.);
 
     }
     }

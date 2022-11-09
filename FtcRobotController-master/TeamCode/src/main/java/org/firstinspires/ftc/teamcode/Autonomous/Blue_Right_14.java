@@ -7,6 +7,13 @@ public class Blue_Right_14 extends org.firstinspires.ftc.teamcode.Autonomous.Aut
 
     public void runOpMode() throws InterruptedException {
 
+        init_classes(false);
+
+        waitForStart();
+
+        while (opModeIsActive()) {
+
+        }
     }
 
 }
