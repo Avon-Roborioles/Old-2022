@@ -34,6 +34,23 @@ public class arm_15455 {
     }
 
 
+    //rotates elbow to position left (-1), center (0), or right (1)
+    public void pivotElbow(int position) {
+        //add servo values to pivot the arm left, right, or center
+        if (position == 1) {
+            //add right position below
+
+        }
+        else if (position == 0) {
+            //add center position below
+
+        }
+        else if (position == -1) {
+            //add left position below
+
+        }
+    }
+
 
 
 }

@@ -2,11 +2,7 @@ package org.firstinspires.ftc.teamcode.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Mecanum_IMU;
-import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Mecanum_Methods_Autonomus;
-import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Intake_15455;
-import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Lift_15455;
-//import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Camera_15455;
+import org.firstinspires.ftc.teamcode.Call_Upon_Classes.*;
 
 public abstract class Auto_Base_15 extends LinearOpMode {
     protected org.firstinspires.ftc.teamcode.Call_Upon_Classes.Mecanum_Methods_Autonomus auto_motors = new Mecanum_Methods_Autonomus();
