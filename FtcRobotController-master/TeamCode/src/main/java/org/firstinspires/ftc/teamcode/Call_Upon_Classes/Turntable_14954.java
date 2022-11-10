@@ -37,11 +37,11 @@ public class Turntable_14954 {
 
         if(dl){
             //ts.setPosition(0.4);
-            tp = -0.6;
+            tp = -1;
         }
         else if(dr){
             //ts.setPosition(-0.4);
-            tp = 0.6;
+            tp = 1;
         } else {
             tp = 0;
         }
