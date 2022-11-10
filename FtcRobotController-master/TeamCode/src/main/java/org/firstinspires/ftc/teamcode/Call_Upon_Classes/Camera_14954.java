@@ -45,6 +45,7 @@ public class Camera_14954 extends LinearOpMode
     @Override
     public void runOpMode()
     {
+        auto_wheels.init_auto_drive_motors(hardwareMap, telemetry);
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         camera = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "webcam"), cameraMonitorViewId);
         pipeline = new AprilTagDetectionPipeline(tagsize, fx, fy, cx, cy);
@@ -151,10 +152,13 @@ public class Camera_14954 extends LinearOpMode
         /* Actually do something useful */
         if (tagOfInterest == null || tagOfInterest.id == LEFT) {
             auto_wheels.turn45left(.5);
+            auto_wheels.stopMotors();
         }else if (tagOfInterest.id == MIDDLE) {
             auto_wheels.turn90left(.5);
+            auto_wheels.stopMotors();
         }else {
             auto_wheels.turn45right(.5);
+            auto_wheels.stopMotors();
         }
 
         /* You wouldn't have this in your autonomous, this is just to prevent the sample from ending */
