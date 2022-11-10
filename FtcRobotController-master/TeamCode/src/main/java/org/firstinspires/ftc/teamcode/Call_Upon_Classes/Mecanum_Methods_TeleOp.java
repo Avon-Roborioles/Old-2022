@@ -76,13 +76,13 @@ public class Mecanum_Methods_TeleOp {
 
 
         if (du)
-            gp2_y = .1;
+            gp2_y = .2;
         else if (dd)
-            gp2_y = -0.1;
+            gp2_y = -0.2;
         else if (dr)
-            gp2_x = 0.1;
+            gp2_x = 0.2;
         else if (dl)
-            gp2_x = -0.1;
+            gp2_x = -0.2;
         else{
             gp2_x = 0;
             gp2_y = 0;
