@@ -154,6 +154,27 @@ public class  Mecanum_Methods_Autonomus {
             return false;
     }
 
+    public void park_14(int zone, boolean red_alliance){
+        if (red_alliance) {
+            if (zone == 2) {
+
+            } else if (zone == 3) {
+
+            } else {
+
+            }
+        }
+        else {
+            if (zone == 2) {
+
+            } else if (zone == 3) {
+
+            } else {
+
+            }
+        }
+    }
+
 
     public void getTelemetry (Telemetry telemetry){
         telemetry.addData("fl encoder value: ",fl.getCurrentPosition());

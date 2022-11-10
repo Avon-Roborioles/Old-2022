@@ -8,12 +8,15 @@ import org.openftc.apriltag.AprilTagDetection;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
+import org.firstinspires.ftc.teamcode.Call_Upon_Classes.*;
 
 import java.util.ArrayList;
 
 @TeleOp
 public class Camera_14954 extends LinearOpMode
 {
+    private final org.firstinspires.ftc.teamcode.Call_Upon_Classes.Mecanum_Methods_Autonomus auto_wheels = new Mecanum_Methods_Autonomus();
+
     OpenCvCamera camera;
     AprilTagDetectionPipeline pipeline;
 
@@ -146,11 +149,11 @@ public class Camera_14954 extends LinearOpMode
 
         /* Actually do something useful */
         if (tagOfInterest == null || tagOfInterest.id == LEFT) {
-            //trajectory
+            auto_wheels.turn45left(.5);
         }else if (tagOfInterest.id == MIDDLE) {
-            //trajectory
+            auto_wheels.turn90left(.5);
         }else {
-            //trajectory
+            auto_wheels.turn45right(.5);
         }
 
         /* You wouldn't have this in your autonomous, this is just to prevent the sample from ending */
