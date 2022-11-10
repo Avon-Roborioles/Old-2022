@@ -202,6 +202,17 @@ public class  Mecanum_Methods_Autonomus {
             //determines which direction the robot need to travel (since negative traveled time doesn't mean negative direction)
             if (tiles > 0) {
                 //add motion that takes timePoweredOutput as the time the motors have to be powered for to move right the desired amount of tiles
+<<<<<<< HEAD
+                for (int i=0; tiles > i; i++) {
+                    goToSpot(24, 0.5);
+                }
+            }
+            else if (tiles < 0) {
+                //add motion that takes timePoweredOutput as the time the motors have to be powered for to move left the desired amount of tiles
+                for (int i=0; tiles < i; i--) {
+                    goToSpot((int) (-24* Math.abs(tiles)), -0.5);
+                }
+=======
 //                for (int i; tiles > i; i++) {
 //                    goToSpot(24, 0.5);
 //                }
@@ -211,11 +222,26 @@ public class  Mecanum_Methods_Autonomus {
 //                for (int i; tiles < i; i--) {
 ////                    goToSpot(-24*java.lang.Math.abs(tiles), -0.5);
 //                }
+>>>>>>> b2abca59930a11c3bf91d94fc5fea7633b7375db
             }
         }
     }
 
     //takes integer that multiplies 90 degree turns
+<<<<<<< HEAD
+    public void turn(int turnAmount) {
+        if (turnAmount > 0) {
+            for (int i=0; turnAmount > i; i++) {
+                turn90right(0.5);
+            }
+        }
+        else if (turnAmount < 0) {
+            for (int i=0; turnAmount < i; i--) {
+                turn90left(0.5);
+            }
+        }
+    }
+=======
 //    public void turn(int turnAmount) {
 //        if (turnAmount > 0) {
 //            for (int i; turnAmount > i; i++) {
@@ -228,4 +254,5 @@ public class  Mecanum_Methods_Autonomus {
 //            }
 //        }
 //    }
+>>>>>>> b2abca59930a11c3bf91d94fc5fea7633b7375db
 }
