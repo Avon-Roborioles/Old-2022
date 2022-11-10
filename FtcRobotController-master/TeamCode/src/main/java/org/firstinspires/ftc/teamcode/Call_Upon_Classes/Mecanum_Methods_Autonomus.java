@@ -168,27 +168,27 @@ public class  Mecanum_Methods_Autonomus {
         if (axis == "x") {
             //determines which direction the robot need to travel (since negative traveled time doesn't mean negative direction)
             if (tiles > 0) {
-                timePoweredOutput = tiles*xTimePowered;
                 //add motion that takes timePoweredOutput as the time the motors have to be powered for to move forward the desired amount of tiles
-
+                strafeRight(0.5, 24*tiles);
             }
             else if (tiles < 0) {
-                timePoweredOutput = java.lang.Math.abs(tiles)*xTimePowered;
                 //add motion that takes timePoweredOutput as the time the motors have to be powered for to move backward the desired amount of tiles
-
+                strafeLeft(0.5, 24*java.lang.Math.abs(tiles));
             }
         }
         else if (axis == "y") {
             //determines which direction the robot need to travel (since negative traveled time doesn't mean negative direction)
             if (tiles > 0) {
-                timePoweredOutput = tiles*yTimePowered;
                 //add motion that takes timePoweredOutput as the time the motors have to be powered for to move right the desired amount of tiles
-
+                for (int i; tiles > i; i++) {
+                    goToSpot(24, 0.5);
+                }
             }
             else if (tiles < 0) {
-                timePoweredOutput = java.lang.Math.abs(tiles)*yTimePowered;
                 //add motion that takes timePoweredOutput as the time the motors have to be powered for to move left the desired amount of tiles
-
+                for (int i; tiles < i; i--) {
+                    goToSpot(-24*java.lang.Math.abs(tiles), -0.5);
+                }
             }
         }
     }
@@ -201,7 +201,7 @@ public class  Mecanum_Methods_Autonomus {
             }
         }
         else if (turnAmount < 0) {
-            for (int i; java.lang.Math.abs(turnAmount) > i; i++) {
+            for (int i; turnAmount < i; i--) {
                 turn90left(0.5);
             }
         }
