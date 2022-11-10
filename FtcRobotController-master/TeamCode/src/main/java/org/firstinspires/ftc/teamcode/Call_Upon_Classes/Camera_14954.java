@@ -1,107 +1,170 @@
 package org.firstinspires.ftc.teamcode.Call_Upon_Classes;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
-import org.opencv.core.Core;
-import org.opencv.core.Mat;
-import org.opencv.core.Rect;
-import org.opencv.core.Scalar;
-import org.opencv.imgproc.Imgproc;
+import org.openftc.apriltag.AprilTagDetection;
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
-import org.openftc.easyopencv.OpenCvPipeline;
-import org.openftc.easyopencv.OpenCvWebcam;
 
-@Autonomous
-public class Camera_14954 extends OpMode {
-    OpenCvWebcam webcam = null;
+import java.util.ArrayList;
+
+@TeleOp
+public class Camera_14954 extends LinearOpMode
+{
+    OpenCvCamera camera;
+    AprilTagDetectionPipeline pipeline;
+
+    static final double FEET_PER_METER = 3.28084;
+
+    // Lens intrinsics
+    // UNITS ARE PIXELS
+    // NOTE: this calibration is for the C920 webcam at 800x448.
+    // You will need to do your own calibration for other configurations!
+    double fx = 578.272;
+    double fy = 578.272;
+    double cx = 402.145;
+    double cy = 221.506;
+
+    // UNITS ARE METERS
+    double tagsize = 0.166;
+
+    // Tag ID 1, 2, 3  from the 36h11 family
+    int LEFT = 1;
+    int MIDDLE = 2;
+    int RIGHT = 3;
+
+    AprilTagDetection tagOfInterest = null;
 
     @Override
-    public void init(){
-       WebcamName webcamName = hardwareMap.get(WebcamName.class, "webcam");
-       int cameraMonitorVeiwId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorVeiwId", "id", hardwareMap.appContext.getPackageName());
-       webcam = OpenCvCameraFactory.getInstance().createWebcam(webcamName, cameraMonitorVeiwId);
+    public void runOpMode()
+    {
+        int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
+        camera = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "webcam"), cameraMonitorViewId);
+        pipeline = new AprilTagDetectionPipeline(tagsize, fx, fy, cx, cy);
 
-       webcam.setPipeline(new samplePipeline());
-
-       webcam.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener() {
-           @Override
-           public void onOpened() {
-               webcam.startStreaming(1280,720,OpenCvCameraRotation.UPRIGHT);
-           }
-
-           @Override
-           public void onError(int errorCode) {
-           }
-       });
-    }
-    public void loop(){
-    }
-    class samplePipeline extends OpenCvPipeline {
-        Mat YCbCr = new Mat();
-        Mat midcrop;
-        double redavgfin;
-        double blueavgfin;
-        double greenavgfin;
-        double zone = 0;
-        Mat outPut = new Mat();
-        Scalar rectcolor = new Scalar(255.0, 0.0, 0.0);
-        public Mat processFrame(Mat input){
-            Imgproc.cvtColor(input,YCbCr,Imgproc.COLOR_RGB2YCrCb);
-            telemetry.addLine("Pipeline Running");
-
-            Rect midrect = new Rect(427, 240, 426, 239);
-            //Red Average
-            input.copyTo(outPut);
-            Imgproc.rectangle(outPut, midrect, rectcolor, 2);
-
-            midcrop = YCbCr.submat(midrect);
-
-            Core.extractChannel(midcrop, midcrop, 2);
-
-            Scalar midavg = Core.mean(midcrop);
-
-            redavgfin = midavg.val[0];
-
-            //Blue Average
-            input.copyTo(outPut);
-            Imgproc.rectangle(outPut, midrect, rectcolor, 2);
-
-            midcrop = YCbCr.submat(midrect);
-
-            Core.extractChannel(midcrop, midcrop, 1);
-
-            midavg = Core.mean(midcrop);
-
-            blueavgfin = midavg.val[0];
-
-            //Green Average
-            input.copyTo(outPut);
-            Imgproc.rectangle(outPut, midrect, rectcolor, 2);
-
-            midcrop = YCbCr.submat(midrect);
-
-            Core.extractChannel(midcrop, midcrop, 3);
-
-            midavg = Core.mean(midcrop);
-
-            redavgfin = midavg.val[0];
-
-            //Comparing
-            if(blueavgfin>redavgfin && blueavgfin > greenavgfin) {
-                zone = 1;
-            } else if(redavgfin>blueavgfin && redavgfin>greenavgfin) {
-                zone = 2;
-            } else if(greenavgfin>redavgfin && greenavgfin>blueavgfin) {
-                zone = 3;
+        camera.setPipeline(pipeline);
+        camera.openCameraDeviceAsync(new OpenCvCamera.AsyncCameraOpenListener()
+        {
+            @Override
+            public void onOpened()
+            {
+                camera.startStreaming(800,448, OpenCvCameraRotation.UPRIGHT);
             }
-            telemetry.addData("Parking Zone: ", zone);
 
+            @Override
+            public void onError(int errorCode)
+            {
 
-            return(outPut);
+            }
+        });
+
+        telemetry.setMsTransmissionInterval(50);
+
+        /*
+         * The INIT-loop:
+         * This REPLACES waitForStart!
+         */
+        while (!isStarted() && !isStopRequested())
+        {
+            ArrayList<AprilTagDetection> currentDetections = pipeline.getLatestDetections();
+
+            if(currentDetections.size() != 0)
+            {
+                boolean tagFound = false;
+
+                for(AprilTagDetection tag : currentDetections)
+                {
+                    if(tag.id == LEFT || tag.id == MIDDLE || tag.id == RIGHT)
+                    {
+                        tagOfInterest = tag;
+                        tagFound = true;
+                        break;
+                    }
+                }
+
+                if(tagFound)
+                {
+                    telemetry.addLine("Tag of interest is in sight!\n\nLocation data:");
+                    tagToTelemetry(tagOfInterest);
+                }
+                else
+                {
+                    telemetry.addLine("Don't see tag of interest :(");
+
+                    if(tagOfInterest == null)
+                    {
+                        telemetry.addLine("(The tag has never been seen)");
+                    }
+                    else
+                    {
+                        telemetry.addLine("\nBut we HAVE seen the tag before; last seen at:");
+                        tagToTelemetry(tagOfInterest);
+                    }
+                }
+
+            }
+            else
+            {
+                telemetry.addLine("Don't see tag of interest :(");
+
+                if(tagOfInterest == null)
+                {
+                    telemetry.addLine("(The tag has never been seen)");
+                }
+                else
+                {
+                    telemetry.addLine("\nBut we HAVE seen the tag before; last seen at:");
+                    tagToTelemetry(tagOfInterest);
+                }
+
+            }
+
+            telemetry.update();
+            sleep(20);
         }
+
+        /*
+         * The START command just came in: now work off the latest snapshot acquired
+         * during the init loop.
+         */
+
+        /* Update the telemetry */
+        if(tagOfInterest != null)
+        {
+            telemetry.addLine("Tag snapshot:\n");
+            tagToTelemetry(tagOfInterest);
+            telemetry.update();
+        }
+        else
+        {
+            telemetry.addLine("No tag snapshot available, it was never sighted during the init loop :(");
+            telemetry.update();
+        }
+
+        /* Actually do something useful */
+        if (tagOfInterest == null || tagOfInterest.id == LEFT) {
+            //trajectory
+        }else if (tagOfInterest.id == MIDDLE) {
+            //trajectory
+        }else {
+            //trajectory
+        }
+
+        /* You wouldn't have this in your autonomous, this is just to prevent the sample from ending */
+        while (opModeIsActive()) {sleep(20);}
+    }
+
+    void tagToTelemetry(AprilTagDetection detection)
+    {
+        telemetry.addLine(String.format("\nDetected tag ID=%d", detection.id));
+        telemetry.addLine(String.format("Translation X: %.2f feet", detection.pose.x*FEET_PER_METER));
+        telemetry.addLine(String.format("Translation Y: %.2f feet", detection.pose.y*FEET_PER_METER));
+        telemetry.addLine(String.format("Translation Z: %.2f feet", detection.pose.z*FEET_PER_METER));
+        telemetry.addLine(String.format("Rotation Yaw: %.2f degrees", Math.toDegrees(detection.pose.yaw)));
+        telemetry.addLine(String.format("Rotation Pitch: %.2f degrees", Math.toDegrees(detection.pose.pitch)));
+        telemetry.addLine(String.format("Rotation Roll: %.2f degrees", Math.toDegrees(detection.pose.roll)));
     }
 }
