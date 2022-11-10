@@ -24,6 +24,10 @@ public class Mecanum_Methods_TeleOp {
     private boolean dd;
     private boolean dr;
     private boolean dl;
+    private boolean du1;
+    private boolean dd1;
+    private boolean dr1;
+    private boolean dl1;
     private double gp2_x;
     private double gp2_y;
     private DcMotor fl = null;
@@ -73,6 +77,10 @@ public class Mecanum_Methods_TeleOp {
         dd=gamepad2.dpad_down;
         dr=gamepad2.dpad_right;
         dl=gamepad2.dpad_left;
+        du1=gamepad1.dpad_up;
+        dd1=gamepad1.dpad_down;
+        dr1=gamepad1.dpad_right;
+        dl1=gamepad1.dpad_left;
 
 
         if (du)
@@ -83,11 +91,18 @@ public class Mecanum_Methods_TeleOp {
             gp2_x = 0.2;
         else if (dl)
             gp2_x = -0.2;
+        else if (du1)
+            gp2_y = .2;
+        else if (dd1)
+            gp2_y = -0.2;
+        else if (dr1)
+            gp2_x = 0.2;
+        else if (dl1)
+            gp2_x = -0.2;
         else{
             gp2_x = 0;
             gp2_y = 0;
         }
-
 
 
 
