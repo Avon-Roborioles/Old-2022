@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Call_Upon_Classes;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -12,7 +13,7 @@ import org.firstinspires.ftc.teamcode.Call_Upon_Classes.*;
 
 import java.util.ArrayList;
 
-@TeleOp
+@Autonomous
 public class Camera_14954 extends LinearOpMode
 {
     private final org.firstinspires.ftc.teamcode.Call_Upon_Classes.Mecanum_Methods_Autonomus auto_wheels = new Mecanum_Methods_Autonomus();

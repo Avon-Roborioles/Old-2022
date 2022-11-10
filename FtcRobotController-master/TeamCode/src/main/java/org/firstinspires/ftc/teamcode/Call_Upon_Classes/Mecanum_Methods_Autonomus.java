@@ -15,6 +15,7 @@ public class  Mecanum_Methods_Autonomus {
     private DcMotor x_encoder=null;
     private DcMotor y_encoder=null;
     private Telemetry telemetry = null;
+    private int i = 0;
 
 
     public void init_encoders(HardwareMap hardwareMap){
@@ -201,30 +202,30 @@ public class  Mecanum_Methods_Autonomus {
             //determines which direction the robot need to travel (since negative traveled time doesn't mean negative direction)
             if (tiles > 0) {
                 //add motion that takes timePoweredOutput as the time the motors have to be powered for to move right the desired amount of tiles
-                for (int i; tiles > i; i++) {
-                    goToSpot(24, 0.5);
-                }
+//                for (int i; tiles > i; i++) {
+//                    goToSpot(24, 0.5);
+//                }
             }
             else if (tiles < 0) {
                 //add motion that takes timePoweredOutput as the time the motors have to be powered for to move left the desired amount of tiles
-                for (int i; tiles < i; i--) {
-                    goToSpot(-24*java.lang.Math.abs(tiles), -0.5);
-                }
+//                for (int i; tiles < i; i--) {
+////                    goToSpot(-24*java.lang.Math.abs(tiles), -0.5);
+//                }
             }
         }
     }
 
     //takes integer that multiplies 90 degree turns
-    public void turn(int turnAmount) {
-        if (turnAmount > 0) {
-            for (int i; turnAmount > i; i++) {
-                turn90right(0.5);
-            }
-        }
-        else if (turnAmount < 0) {
-            for (int i; turnAmount < i; i--) {
-                turn90left(0.5);
-            }
-        }
-    }
+//    public void turn(int turnAmount) {
+//        if (turnAmount > 0) {
+//            for (int i; turnAmount > i; i++) {
+//                turn90right(0.5);
+//            }
+//        }
+//        else if (turnAmount < 0) {
+//            for (int i; turnAmount < i; i--) {
+//                turn90left(0.5);
+//            }
+//        }
+//    }
 }
