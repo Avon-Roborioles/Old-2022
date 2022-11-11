@@ -113,15 +113,15 @@ public class Mecanum_Methods_TeleOp {
         //added code so when drivers want to drive slow, THE ROBOT IS SLOW!!!
         //simple explanation - when the joystick is forword or backwards less than 50%, the robot moves 20% slower
         //complex explanation - when the absolute value of the joystick (forward or backward) is <= 50%, the robot is 20% slower
-        if (ly != 0 && Math.abs(ly) <= 0.5 ) {
+        if (ly != 0 && Math.abs(ly) <= 0.7 ) {
             ly = -ly;
-            fl.setPower(ly * 0.8);
-            bl.setPower(ly * 0.8);
-            fr.setPower(ly * 0.8);
-            br.setPower(ly * 0.8);
+            fl.setPower(ly * 0.7);
+            bl.setPower(ly * 0.7);
+            fr.setPower(ly * 0.7);
+            br.setPower(ly * 0.7);
 
 
-        } else if (ly != 0 && Math.abs(ly) > 0.5) {
+        } else if (ly != 0 && Math.abs(ly) > 0.7) {
             ly = -ly;
             fl.setPower(ly);
             bl.setPower(ly);
