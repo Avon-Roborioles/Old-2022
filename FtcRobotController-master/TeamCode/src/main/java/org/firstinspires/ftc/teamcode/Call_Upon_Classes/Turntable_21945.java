@@ -26,11 +26,11 @@ public class Turntable_21945 {
 
         // Turntable power set
         // (We might have to reverse this)
-        if(rj > 0.5){
-            tp = 0.2;
+        if(rj > 0.2){
+            tp = rj * 0.5;
         }
-        else if(rj < -0.5){
-            tp = -0.2;
+        else if(rj < -0.2){
+            tp = rj * -0.5;
         }
         else {
             tp = 0;
@@ -41,6 +41,6 @@ public class Turntable_21945 {
         Get_telemetry(telemetry);
     }
     public void Get_telemetry( Telemetry telemetry){
-        telemetry.addData("power", ts.getPower());
+        telemetry.addData(" turntable power", ts.getPower());
     }
 }
