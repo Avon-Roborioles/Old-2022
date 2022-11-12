@@ -27,10 +27,10 @@ public class Turntable_21945 {
         // Turntable power set
         // (We might have to reverse this)
         if(rj > 0.2){
-            tp = rj * 0.5;
+            tp = rj * 0.2;
         }
         else if(rj < -0.2){
-            tp = rj * -0.5;
+            tp = rj * 0.2;
         }
         else {
             tp = 0;

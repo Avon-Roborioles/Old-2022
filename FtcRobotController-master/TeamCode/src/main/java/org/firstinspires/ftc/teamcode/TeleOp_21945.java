@@ -10,7 +10,7 @@ import org.firstinspires.ftc.teamcode.Call_Upon_Classes.*;
 *
 * - 3 servos:3 done and tested
 * - 5 DC motors: 5 done and tested
-* - 1 camera:instaled
+* - 1 camera: done and tested
 *
 *
 * */
