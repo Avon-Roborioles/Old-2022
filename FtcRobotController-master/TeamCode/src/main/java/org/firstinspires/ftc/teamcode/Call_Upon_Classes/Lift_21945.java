@@ -44,10 +44,10 @@ public class Lift_21945 {
 
         // linear lift power set (move)
         if(rj > 0.1) {
-            lp = -0.1 * rj;
+            lp = -1 * rj;
         }
         else if(rj < -0.1) {
-            lp = 0.1 * Math.abs(rj);
+            lp = 1* Math.abs(rj);
         }
         else {
             lp = 0;

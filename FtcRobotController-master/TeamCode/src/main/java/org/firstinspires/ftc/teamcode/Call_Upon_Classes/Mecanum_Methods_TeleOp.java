@@ -20,14 +20,14 @@ public class Mecanum_Methods_TeleOp {
     private double rx;
     private double lt;
     private double rt;
-    private boolean du;
-    private boolean dd;
-    private boolean dr;
-    private boolean dl;
     private boolean du1;
     private boolean dd1;
     private boolean dr1;
     private boolean dl1;
+    private boolean du;
+    private boolean dd;
+    private boolean dr;
+    private boolean dl;
     private double gp2_x;
     private double gp2_y;
     private DcMotor fl = null;
@@ -92,6 +92,18 @@ public class Mecanum_Methods_TeleOp {
         else if (dl)
             gp2_x = -0.2;
         else if (du1)
+            gp2_y = .2;
+        else if (dd1)
+            gp2_y = -0.2;
+        else if (dr1)
+            gp2_x = 0.2;
+        else if (dl1)
+            gp2_x = -0.2;
+        else{
+            gp2_x = 0;
+            gp2_y = 0;
+        }
+        if (du1)
             gp2_y = .2;
         else if (dd1)
             gp2_y = -0.2;
