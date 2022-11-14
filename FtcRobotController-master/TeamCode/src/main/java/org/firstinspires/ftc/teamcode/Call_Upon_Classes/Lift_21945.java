@@ -43,11 +43,11 @@ public class Lift_21945 {
         rj = gamepad.right_stick_y;
 
         // linear lift power set (move)
-        if(rj > 0.2) {
-            lp = -1 * rj;
+        if(rj > 0.1) {
+            lp = -0.1 * rj;
         }
-        else if(rj < -0.2) {
-            lp = 1 * Math.abs(rj);
+        else if(rj < -0.1) {
+            lp = 0.1 * Math.abs(rj);
         }
         else {
             lp = 0;
