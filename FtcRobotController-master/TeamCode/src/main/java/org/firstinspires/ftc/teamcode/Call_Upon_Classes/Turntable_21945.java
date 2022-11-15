@@ -14,6 +14,9 @@ public class Turntable_21945 {
 
     // joystick right
     private double rj = 0;
+    private boolean rb = false;
+    private boolean lb = false;
+
 
     public void init_turntable_21945(HardwareMap hardwareMap, String name){
         // Mapping the turntable
@@ -23,6 +26,8 @@ public class Turntable_21945 {
         // Buttons
 
         rj = gamepad.right_stick_x;
+        rb = gamepad.right_bumper;
+        lb = gamepad.left_bumper;
 
         // Turntable power set
         // (We might have to reverse this)
@@ -31,6 +36,15 @@ public class Turntable_21945 {
         }
         else if(rj < -0.2){
             tp = rj * 0.2;
+        }
+        else {
+            tp = 0;
+        }
+        if(rb){
+            tp = 0.05;
+        }
+        else if(lb){
+            tp = -0.05;
         }
         else {
             tp = 0;

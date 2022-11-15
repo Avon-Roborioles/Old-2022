@@ -47,7 +47,7 @@ public class Lift_21945 {
             lp = -1 * rj;
         }
         else if(rj < -0.1) {
-            lp = 1* Math.abs(rj);
+            lp = 0.5 * Math.abs(rj);
         }
         else {
             lp = 0;
