@@ -35,6 +35,9 @@ public class Lift_21945 {
 
         // Power behavior (if 0 then stop)
         lm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        //auto
+        //lm.setTargetPosition(0);
+
     }
     public void run_lift_motor_21945(Gamepad gamepad, Telemetry telemetry) {
         // Linear lift button controls
@@ -73,5 +76,12 @@ public class Lift_21945 {
 
 
     }
+    public void run_lift_21945_auto(Telemetry telemetry){
+
+    }
+    public void get_telemetry (Telemetry telemetry){
+
+    }
+
 
 }

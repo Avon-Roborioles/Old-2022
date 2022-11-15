@@ -42,6 +42,9 @@ public class Intake_21945 {
         // Set servo power to intake power "ip" var
         is.setPower(ip);
     }
+    public void run_intake_21945_auto(Telemetry telemetry){
+
+    }
 
 
 }
