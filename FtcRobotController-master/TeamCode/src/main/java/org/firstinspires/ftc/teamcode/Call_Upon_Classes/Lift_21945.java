@@ -47,15 +47,14 @@ public class Lift_21945 {
 
         // linear lift power set (move)
         if(rj > 0.1) {
-            lp = -1 * rj;
+            lp = -1 * Math.abs(rj);
         }
         else if(rj < -0.1) {
-            lp = 0.5 * Math.abs(rj);
+            lp = 0.5 * rj;
         }
         else {
             lp = 0;
-        }
-        // Set motor power to lift power "lp" var (Lift power)
+        }        // Set motor power to lift power "lp" var (Lift power)
         lm.setPower(lp);
 
         // 4 bar lift power set (move)

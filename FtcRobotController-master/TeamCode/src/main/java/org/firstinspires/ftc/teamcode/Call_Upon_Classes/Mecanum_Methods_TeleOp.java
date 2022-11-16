@@ -83,34 +83,42 @@ public class Mecanum_Methods_TeleOp {
         dl1=gamepad1.dpad_left;
 
 
-        if (du)
+        if (du) {
             gp2_y = .2;
-        else if (dd)
-            gp2_y = -0.2;
-        else if (dr)
-            gp2_x = 0.2;
-        else if (dl)
-            gp2_x = -0.2;
-        else if (du1)
-            gp2_y = .2;
-        else if (dd1)
-            gp2_y = -0.2;
-        else if (dr1)
-            gp2_x = 0.2;
-        else if (dl1)
-            gp2_x = -0.2;
-        else{
-            gp2_x = 0;
-            gp2_y = 0;
         }
-        if (du1)
-            gp2_y = .2;
-        else if (dd1)
+        else if (dd) {
             gp2_y = -0.2;
-        else if (dr1)
+        }
+        else if (dr) {
             gp2_x = 0.2;
-        else if (dl1)
+        }
+        else if (dl) {
             gp2_x = -0.2;
+        }
+        else if (du) {
+            gp2_y = .2;
+        }
+        else if (dd) {
+            gp2_y = -0.2;
+        }
+        else if (dr) {
+            gp2_x = 0.2;
+        }
+        else if (dl) {
+            gp2_x = -0.2;
+        }
+        else if (du1) {
+            gp2_y = .2;
+        }
+        else if (dd1) {
+            gp2_y = -0.2;
+        }
+        else if (dr1) {
+            gp2_x = 0.2;
+        }
+        else if (dl1) {
+            gp2_x = -0.2;
+        }
         else{
             gp2_x = 0;
             gp2_y = 0;
