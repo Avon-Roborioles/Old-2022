@@ -9,7 +9,7 @@ public class Lift_21945 {
     private double lp = 0;
     // Lift motor linear
     private DcMotor lm = null;
-    // Right joystick linear
+    // Right joystick y linear
     private double rj = 0;
 
 
@@ -18,7 +18,7 @@ public class Lift_21945 {
     // Lift servo 4 bar left
     private CRServo ls4l = null;
     //private CRServo ls4r = null;
-    // Left joystick 4 bar
+    // Left joystick y 4 bar
     private double lj = 0;
 
 
