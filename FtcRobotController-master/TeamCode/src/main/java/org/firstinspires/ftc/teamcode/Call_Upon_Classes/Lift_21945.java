@@ -66,6 +66,7 @@ public class Lift_21945 {
         lm.setPower(lp);
 
         // 4 bar lift power set (move)
+        //Continuous
 //        if(lj > 0.2) {
 //            lp4 = 0.5 * lj;
 //        }
@@ -75,6 +76,7 @@ public class Lift_21945 {
 //        else {
 //            lp4 = 0;
 //        }
+        //normal servo
         if(lj > 0.2){
             lp4 = lp4 + 0.05;
         }
@@ -104,6 +106,13 @@ public class Lift_21945 {
         else if(a1){
             //driver 1 pos
             lp4 = 0.1;
+        }
+
+        if(lp4 > 1){
+            lp4 = 1;
+        }
+        else if(lp4 < 0){
+            lp4 = 0;
         }
 
         // Set servo powers to 4 bar lift power "lp4" var (4 bar power)

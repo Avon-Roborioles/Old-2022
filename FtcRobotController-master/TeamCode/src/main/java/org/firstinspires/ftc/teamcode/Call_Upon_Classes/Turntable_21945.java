@@ -72,6 +72,13 @@ public class Turntable_21945 {
             //drive pos 1
             tp = 0.5;
         }
+
+        if(tp > 1){
+            tp = 1;
+        }
+        else if(tp < 0){
+            tp = 0;
+        }
         ts.setPosition(tp);
         Get_telemetry(telemetry);
     }
