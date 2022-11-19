@@ -54,11 +54,11 @@ public class Turntable_21945 {
 //        ts.setPower(tp);
         if(rj > 0.2){
             //joystick control
-            tp = tp + 0.05;
+            tp = tp + 0.005;
         }
         else if(rj < -0.2){
             //joystick control
-            tp = tp - 0.05;
+            tp = tp - 0.005;
         }
         else if(rb){
             //middle pos
@@ -73,11 +73,11 @@ public class Turntable_21945 {
             tp = 0.5;
         }
 
-        if(tp > 1){
-            tp = 1;
+        if(tp > 0.9){
+            tp = 0.9;
         }
-        else if(tp < 0){
-            tp = 0;
+        else if(tp < 0.1){
+            tp = 0.1;
         }
         ts.setPosition(tp);
         Get_telemetry(telemetry);

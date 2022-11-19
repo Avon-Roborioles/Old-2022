@@ -78,10 +78,10 @@ public class Lift_21945 {
 //        }
         //normal servo
         if(lj > 0.2){
-            lp4 = lp4 + 0.05;
+            lp4 = lp4 + 0.005;
         }
         else if(lj < 0.2){
-            lp4 = lp4 - 0.05;
+            lp4 = lp4 - 0.005;
         }
         else if(lb){
             //all the way down to flip cone up
@@ -119,7 +119,7 @@ public class Lift_21945 {
         //ls4l.setPower(lp4);
         //ls4r.setPower(lp4 * -1);
         ls4l.setPosition(lp4);
-
+        get_telemetry(telemetry);
     }
     public void run_lift_21945_auto(Telemetry telemetry){
 
