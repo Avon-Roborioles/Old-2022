@@ -24,10 +24,6 @@ public class Mecanum_Methods_TeleOp {
     private boolean dd1;
     private boolean dr1;
     private boolean dl1;
-    private boolean du;
-    private boolean dd;
-    private boolean dr;
-    private boolean dl;
     private double gp2_x;
     private double gp2_y;
     private DcMotor fl = null;
@@ -69,45 +65,19 @@ public class Mecanum_Methods_TeleOp {
     }
 
 
-    public void run_drive_motors(Gamepad gamepad1, Gamepad gamepad2, Telemetry telemetry){
-        ly=-1 * gamepad1.left_stick_y;
-        lx=gamepad1.left_stick_x;
-        rx=gamepad1.right_stick_x;
-        du=gamepad2.dpad_up;
-        dd=gamepad2.dpad_down;
-        dr=gamepad2.dpad_right;
-        dl=gamepad2.dpad_left;
-        du1=gamepad1.dpad_up;
-        dd1=gamepad1.dpad_down;
-        dr1=gamepad1.dpad_right;
-        dl1=gamepad1.dpad_left;
+    public void run_drive_motors(Gamepad gamepad, Telemetry telemetry){
+        ly=-1 * gamepad.left_stick_y;
+        lx=gamepad.left_stick_x;
+        rx=gamepad.right_stick_x;
+
+        du1=gamepad.dpad_up;
+        dd1=gamepad.dpad_down;
+        dr1=gamepad.dpad_right;
+        dl1=gamepad.dpad_left;
 
 
-        if (du) {
-            gp2_y = .2;
-        }
-        else if (dd) {
-            gp2_y = -0.2;
-        }
-        else if (dr) {
-            gp2_x = 0.2;
-        }
-        else if (dl) {
-            gp2_x = -0.2;
-        }
-        else if (du) {
-            gp2_y = .2;
-        }
-        else if (dd) {
-            gp2_y = -0.2;
-        }
-        else if (dr) {
-            gp2_x = 0.2;
-        }
-        else if (dl) {
-            gp2_x = -0.2;
-        }
-        else if (du1) {
+
+        if (du1) {
             gp2_y = .2;
         }
         else if (dd1) {

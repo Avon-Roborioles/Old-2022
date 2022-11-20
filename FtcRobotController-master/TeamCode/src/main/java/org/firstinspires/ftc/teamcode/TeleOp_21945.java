@@ -39,12 +39,12 @@ public class TeleOp_21945 extends LinearOpMode {
             // Driver 1 Functions
 
 
-            drivingMotors.run_drive_motors(gamepad1, gamepad2, telemetry); // driving
+            drivingMotors.run_drive_motors(gamepad1, telemetry); // driving
 
             // Driver 2 Functions
             lift.run_lift_motor_21945(gamepad1, gamepad2, telemetry);
             intake.run_intake_motor_21945(gamepad2, telemetry);
-            turntable.run_turntable_21945(gamepad1, gamepad2, telemetry);
+            turntable.run_turntable_21945(gamepad2, telemetry);
 
             telemetry.update();
         }

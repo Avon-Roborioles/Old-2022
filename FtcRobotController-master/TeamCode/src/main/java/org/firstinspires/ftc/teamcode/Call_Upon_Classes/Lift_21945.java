@@ -121,7 +121,29 @@ public class Lift_21945 {
         ls4l.setPosition(lp4);
         get_telemetry(telemetry);
     }
-    public void run_lift_21945_auto(Telemetry telemetry){
+    public void run_lift_21945_auto(Telemetry telemetry, double llh){
+        //llh Linear lift target Height
+        int llt;
+        double linLiftRevPerIn = 1;
+
+        if (opModeIsActive()){
+            //create target pos
+            llt = (int)(((llh * linLiftRevPerIn) - lm.getCurrentPosition()));
+            //set target pos
+            lm.setTargetPosition(llt);
+            //set lift motor to run to position
+            lm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            //set power
+            lm.setPower(0.5);
+            while (lm.isBusy()){
+
+            }
+            //set power to 0
+            lm.setPower(0);
+
+
+        }
+
 
     }
     public void get_telemetry (Telemetry telemetry){
