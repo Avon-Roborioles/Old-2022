@@ -1,6 +1,9 @@
 package org.firstinspires.ftc.teamcode.Call_Upon_Classes;
 
-import com.qualcomm.robotcore.hardware.*;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Gamepad;
+import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
@@ -25,6 +28,7 @@ public class Lift_21945 {
     private boolean x = false;
     private boolean y = false;
     private boolean a1 = false;
+    private double top = 5;
 
     public void init_lift_motor_21945(HardwareMap hardwareMap, String name) {
         // Lift motor linear mapping
@@ -38,9 +42,10 @@ public class Lift_21945 {
         // Power behavior (if 0 then stop)
         lm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         //auto
-        //lm.setTargetPosition(0);
+        lm.setTargetPosition(0);
 
     }
+
     public void run_lift_motor_21945(Gamepad gamepad1, Gamepad gamepad2, Telemetry telemetry) {
         // Linear lift button controls
         lj = gamepad2.left_stick_y;
@@ -54,13 +59,11 @@ public class Lift_21945 {
         a1 = gamepad1.a;
 
         // linear lift power set (move)
-        if(rj > 0.1) {
+        if (rj > 0.1) {
             lp = -1 * Math.abs(rj);
-        }
-        else if(rj < -0.1) {
+        } else if (rj < -0.1) {
             lp = 0.5 * rj;
-        }
-        else {
+        } else {
             lp = 0;
         }        // Set motor power to lift power "lp" var (Lift power)
         lm.setPower(lp);
@@ -77,75 +80,70 @@ public class Lift_21945 {
 //            lp4 = 0;
 //        }
         //normal servo
-        if(lj > 0.2){
-            lp4 = lp4 + 0.005;
-        }
-        else if(lj < 0.2){
-            lp4 = lp4 - 0.005;
-        }
-        else if(lb){
+        if (lj > 0.2) {
+            lp4 = lp4 - 0.0005;
+        } else if (lj < -0.2) {
+            lp4 = lp4 + 0.0005;
+        } else if (lb) {
             //all the way down to flip cone up
             lp4 = 0;
-        }
-        else if(a){
+        } else if (a) {
             //drive pos
-            lp4 = 0.1;
-        }
-        else if(x){
+            lp4 = 0;
+        } else if (x) {
             //down enough to pickup cone
             lp4 = 0;
-        }
-        else if(y){
+        } else if (y) {
             //just above cone
             lp4 = 0.2;
-        }
-        else if(b){
+        } else if (b) {
             //top for low junction
             lp4 = 0.9;
-        }
-        else if(a1){
+        } else if (a1) {
             //driver 1 pos
             lp4 = 0.1;
         }
 
-        if(lp4 > 1){
-            lp4 = 1;
-        }
-        else if(lp4 < 0){
+        if (lp4 > 0.377) {
+            lp4 = 0.376;
+        } else if (lp4 < 0) {
             lp4 = 0;
         }
-
+//top stop 0.376
         // Set servo powers to 4 bar lift power "lp4" var (4 bar power)
         //ls4l.setPower(lp4);
         //ls4r.setPower(lp4 * -1);
         ls4l.setPosition(lp4);
         get_telemetry(telemetry);
     }
-    public void run_lift_21945_auto(Telemetry telemetry, double llh){
+
+    public void run_lift_21945_auto(Telemetry telemetry, double llh, double l4h) {
         //llh Linear lift target Height
         int llt;
+        int l4t;
         double linLiftRevPerIn = 1;
+        //create target pos
 
-        if (opModeIsActive()){
-            //create target pos
-            llt = (int)(((llh * linLiftRevPerIn) - lm.getCurrentPosition()));
-            //set target pos
-            lm.setTargetPosition(llt);
-            //set lift motor to run to position
-            lm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            //set power
-            lm.setPower(0.5);
-            while (lm.isBusy()){
-
-            }
-            //set power to 0
-            lm.setPower(0);
-
+        llt = (int) (((llh * linLiftRevPerIn) - lm.getCurrentPosition()));
+        //set target pos
+        lm.setTargetPosition(llt);
+        //set lift motor to run to position
+        lm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        //set power
+        lm.setPower(0.5);
+        while (lm.isBusy()) {
 
         }
+        //set power to 0
+        lm.setPower(0);
 
 
     }
+
+
+
+
+
     public void get_telemetry (Telemetry telemetry){
         telemetry.addData("4-Bar Position", ls4l.getPosition());
     }

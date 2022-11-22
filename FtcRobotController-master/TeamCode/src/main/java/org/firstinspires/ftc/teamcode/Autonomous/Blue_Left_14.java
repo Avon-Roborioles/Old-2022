@@ -12,6 +12,7 @@ public class Blue_Left_14 extends org.firstinspires.ftc.teamcode.Autonomous.Auto
         waitForStart();
         while (opModeIsActive()) {
             lift.runlift_auto(telemetry);
+
         }
     }
 
