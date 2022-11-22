@@ -27,14 +27,8 @@ public class Lift_21945 {
     private boolean b = false;
     private boolean x = false;
     private boolean y = false;
-
+    private boolean a1 = false;
     private double top = 5;
-    //auto
-    private double linear_top = 6000;
-    private double linear_bottom = 0;
-    private double arm_top = 0.376;
-    private double arm_drive_pos = 0;
-    private double arm_above_cone = 0.01;
 
     public void init_lift_motor_21945(HardwareMap hardwareMap, String name) {
         // Lift motor linear mapping
@@ -52,17 +46,17 @@ public class Lift_21945 {
 
     }
 
-    public void run_lift_motor_21945(Gamepad gamepad, Telemetry telemetry) {
+    public void run_lift_motor_21945(Gamepad gamepad1, Gamepad gamepad2, Telemetry telemetry) {
         // Linear lift button controls
-        lj = gamepad.left_stick_y;
+        lj = gamepad2.left_stick_y;
         // 4 bar lift button controls
-        rj = gamepad.right_stick_y;
-        a = gamepad.a;
-        lb = gamepad.left_bumper;
-        b = gamepad.b;
-        x = gamepad.x;
-        y = gamepad.y;
-
+        rj = gamepad2.right_stick_y;
+        a = gamepad2.a;
+        lb = gamepad2.left_bumper;
+        b = gamepad2.b;
+        x = gamepad2.x;
+        y = gamepad2.y;
+        a1 = gamepad1.a;
 
         // linear lift power set (move)
         if (rj > 0.1) {
@@ -97,7 +91,7 @@ public class Lift_21945 {
             //drive pos
             lp4 = 0;
         } else if (x) {
-
+            //down enough to pickup cone
             lp4 = 0;
         } else if (y) {
             //just above cone
@@ -105,7 +99,10 @@ public class Lift_21945 {
         } else if (b) {
             //top for low junction
             lp4 = 0.9;
-
+        } else if (a1) {
+            //driver 1 pos
+            lp4 = 0.1;
+        }
 
         if (lp4 > 0.377) {
             lp4 = 0.376;
@@ -120,10 +117,10 @@ public class Lift_21945 {
         get_telemetry(telemetry);
     }
 
-    public void run_lift_21945_auto (Telemetry telemetry, double llh, double l4h){
+    public void run_lift_21945_auto(Telemetry telemetry, double llh, double l4h) {
         //llh Linear lift target Height
         int llt;
-
+        int l4t;
         double linLiftRevPerIn = 1;
         //create target pos
 
@@ -147,7 +144,7 @@ public class Lift_21945 {
 
 
 
-    public void get_telemetry(Telemetry telemetry){
+    public void get_telemetry (Telemetry telemetry){
         telemetry.addData("4-Bar Position", ls4l.getPosition());
     }
 }
