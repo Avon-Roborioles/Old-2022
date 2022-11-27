@@ -27,7 +27,6 @@ public class Lift_21945 {
     private boolean b = false;
     private boolean x = false;
     private boolean y = false;
-    private boolean a1 = false;
     private double top = 5;
 
     public void init_lift_motor_21945(HardwareMap hardwareMap, String name) {
@@ -46,17 +45,16 @@ public class Lift_21945 {
 
     }
 
-    public void run_lift_motor_21945(Gamepad gamepad1, Gamepad gamepad2, Telemetry telemetry) {
+    public void run_lift_motor_21945(Gamepad gamepad, Telemetry telemetry) {
         // Linear lift button controls
-        lj = gamepad2.left_stick_y;
+        lj = gamepad.left_stick_y;
         // 4 bar lift button controls
-        rj = gamepad2.right_stick_y;
-        a = gamepad2.a;
-        lb = gamepad2.left_bumper;
-        b = gamepad2.b;
-        x = gamepad2.x;
-        y = gamepad2.y;
-        a1 = gamepad1.a;
+        rj = gamepad.right_stick_y;
+        a = gamepad.a;
+        lb = gamepad.left_bumper;
+        b = gamepad.b;
+        x = gamepad.x;
+        y = gamepad.y;
 
         // linear lift power set (move)
         if (rj > 0.1) {
@@ -99,9 +97,6 @@ public class Lift_21945 {
         } else if (b) {
             //top for low junction
             lp4 = 0.9;
-        } else if (a1) {
-            //driver 1 pos
-            lp4 = 0.1;
         }
 
         if (lp4 > 0.377) {
