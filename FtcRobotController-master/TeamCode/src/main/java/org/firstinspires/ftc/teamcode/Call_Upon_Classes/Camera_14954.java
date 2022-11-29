@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Call_Upon_Classes;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.openftc.apriltag.AprilTagDetection;
@@ -12,9 +13,7 @@ import org.firstinspires.ftc.teamcode.Call_Upon_Classes.*;
 
 import java.util.ArrayList;
 
-@Autonomous
-public class Camera_14954 extends LinearOpMode
-{
+public class Camera_14954 extends LinearOpMode {
     private final org.firstinspires.ftc.teamcode.Call_Upon_Classes.Mecanum_Methods_Autonomus auto_wheels = new Mecanum_Methods_Autonomus();
 
     OpenCvCamera camera;
@@ -38,6 +37,7 @@ public class Camera_14954 extends LinearOpMode
     int LEFT = 1;
     int MIDDLE = 2;
     int RIGHT = 3;
+    int zone = 1;
 
     AprilTagDetection tagOfInterest = null;
 
@@ -149,15 +149,8 @@ public class Camera_14954 extends LinearOpMode
         }
 
         /* Actually do something useful */
-        if (tagOfInterest == null || tagOfInterest.id == LEFT) {
-            auto_wheels.turn45left(.5);
-            auto_wheels.stopMotors();
-        }else if (tagOfInterest.id == MIDDLE) {
-            auto_wheels.turn90left(.5);
-            auto_wheels.stopMotors();
-        }else {
-            auto_wheels.turn45right(.5);
-            auto_wheels.stopMotors();
+        if (tagOfInterest != null) {
+            zone = tagOfInterest.id;
         }
 
         /* You wouldn't have this in your autonomous, this is just to prevent the sample from ending */
