@@ -115,7 +115,7 @@ public class Lift_21945 {
     public void run_lift_21945_auto(Telemetry telemetry, double llh, double l4h) {
         //llh Linear lift target Height
         int llt;
-        int l4t;
+
         double linLiftRevPerIn = 1;
         //create target pos
 
@@ -131,6 +131,7 @@ public class Lift_21945 {
         }
         //set power to 0
         lm.setPower(0);
+        ls4l.setPosition(l4h);
 
 
     }
