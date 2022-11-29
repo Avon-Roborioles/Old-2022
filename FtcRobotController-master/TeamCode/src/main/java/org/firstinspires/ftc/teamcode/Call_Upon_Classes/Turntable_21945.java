@@ -60,7 +60,7 @@ public class Turntable_21945 {
         Get_telemetry(telemetry);
     }
 
-    public void turntable_21945_auto(Telemetry telemetry, double tp){
+    public void run_turntable_21945_auto(Telemetry telemetry, double tp){
     //tp = target pos
         ts.setPosition(tp);
 
@@ -68,4 +68,6 @@ public class Turntable_21945 {
     public void Get_telemetry( Telemetry telemetry){
         telemetry.addData("Turntable Position", ts.getPosition());
     }
+
+
 }
