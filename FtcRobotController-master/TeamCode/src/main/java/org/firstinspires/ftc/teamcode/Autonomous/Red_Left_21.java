@@ -14,6 +14,9 @@ public class Red_Left_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Auto
         //START
 
         //Scan cone
+        lift.run_lift_21945_auto(telemetry, 0, 0.376);
+        camera.init_camera(hardwareMap, "webcam", telemetry);
+        zone = camera.zone();
 
         //Move forward
         auto_motors.goToSpot(15, 0.5);
