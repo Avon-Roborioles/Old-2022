@@ -15,6 +15,7 @@ public class Red_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Aut
 
         //scan cone
         lift.run_lift_21945_auto(telemetry, 0, 0.376);
+        wait(1000);
         camera.init_camera(hardwareMap, "webcam", telemetry);
         zone = camera.zone();
 
@@ -25,7 +26,6 @@ public class Red_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Aut
         }
         //4- bar to top
         lift.run_lift_21945_auto(telemetry, 0, 0.376);
-        wait(1000);
         //turntable 90 degrees to the left
         turntable.run_turntable_21945_auto(telemetry, 0);
         wait(1000);
