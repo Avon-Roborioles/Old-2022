@@ -31,6 +31,7 @@ public class Turntable_21945 {
         lb = gamepad.left_bumper;
 
         // Turntable power set
+        //right limit is 5635
 
 
         if(rj > 0.2){

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 @Autonomous
 public class Camera_21945 extends LinearOpMode
+
 {
     private final org.firstinspires.ftc.teamcode.Call_Upon_Classes.Mecanum_Methods_Autonomus auto_wheels = new Mecanum_Methods_Autonomus();
 
@@ -30,6 +31,7 @@ public class Camera_21945 extends LinearOpMode
     double fy = 578.272;
     double cx = 402.145;
     double cy = 221.506;
+
 
     // UNITS ARE METERS
     double tagsize = 0.166;
@@ -160,8 +162,8 @@ public class Camera_21945 extends LinearOpMode
             auto_wheels.stopMotors();
         }
 
-        /* You wouldn't have this in your autonomous, this is just to prevent the sample from ending */
-        while (opModeIsActive()) {sleep(20);}
+//        /* You wouldn't have this in your autonomous, this is just to prevent the sample from ending */
+//        while (opModeIsActive()) {sleep(20);}
     }
 
     void tagToTelemetry(AprilTagDetection detection)
@@ -175,3 +177,4 @@ public class Camera_21945 extends LinearOpMode
         telemetry.addLine(String.format("Rotation Roll: %.2f degrees", Math.toDegrees(detection.pose.roll)));
     }
 }
+
