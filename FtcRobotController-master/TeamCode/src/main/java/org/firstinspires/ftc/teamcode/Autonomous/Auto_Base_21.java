@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Camera_21945;
 import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Intake_21945;
@@ -27,6 +28,7 @@ public abstract class Auto_Base_21 extends LinearOpMode {
 
     protected int inchToTicks = 91;
     protected int scorePosition;
+    int zone = 1;
 
     public void init_classes(boolean red_alliance) {
         //init
@@ -35,6 +37,8 @@ public abstract class Auto_Base_21 extends LinearOpMode {
         intake.init_intake_motor_21945(hardwareMap, "intake");
         imu_drive.init_drive_motors(hardwareMap, telemetry, false);
         turntable.init_turntable_21945(hardwareMap, "turntable");
+        camera.init_camera(hardwareMap, "webcam", telemetry);
+        zone = camera.zone();
     }
 
 
