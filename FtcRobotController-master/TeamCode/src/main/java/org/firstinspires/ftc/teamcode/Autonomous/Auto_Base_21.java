@@ -37,8 +37,6 @@ public abstract class Auto_Base_21 extends LinearOpMode {
         intake.init_intake_motor_21945(hardwareMap, "intake");
         imu_drive.init_drive_motors(hardwareMap, telemetry, false);
         turntable.init_turntable_21945(hardwareMap, "turntable");
-        camera.init_camera(hardwareMap, "webcam", telemetry);
-        zone = camera.zone();
     }
 
 
