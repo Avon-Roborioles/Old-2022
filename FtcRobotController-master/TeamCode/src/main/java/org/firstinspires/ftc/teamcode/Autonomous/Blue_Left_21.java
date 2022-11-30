@@ -13,7 +13,7 @@ public class Blue_Left_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Aut
         //START
 
         //Scan cone
-        lift.run_lift_21945_auto(telemetry, 0, 0.376);
+        lift.run_lift_21945_auto(telemetry, 0.376);
         camera.init_camera(hardwareMap, "webcam", telemetry);
         zone = camera.zone();
 
@@ -25,19 +25,19 @@ public class Blue_Left_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Aut
         }
 
         //Lift 4-Bar up over chassis
-        lift.run_lift_21945_auto(telemetry,null, 0.1);
+        //lift.run_lift_21945_auto(telemetry, 0.1);
         //turntable right 90 degrees
-        turntable.run_turntable_21945_auto(telemetry, 0.5635);
+        //turntable.run_turntable_21945_auto(telemetry, 0.5635);
         //4-bar down to put cone in junction
-        lift.run_lift_21945_auto(telemetry,0, 0.05);
+        //lift.run_lift_21945_auto(telemetry, 0.05);
         //intake out
-        intake.run_intake_21945_auto(telemetry, 1, -1);
+        //intake.run_intake_21945_auto(telemetry, 1, -1);
         //4-Bar up
-        lift.run_lift_21945_auto(telemetry,0, 0.1);
+        //lift.run_lift_21945_auto(telemetry, 0.1);
         //turntable left 90 degrees
-        turntable.run_turntable_21945_auto(telemetry, 0.5);
+        //turntable.run_turntable_21945_auto(telemetry, 0.5);
         //4-Bar down
-        lift.run_lift_21945_auto(telemetry,0, 0);
+        //lift.run_lift_21945_auto(telemetry, 0);
         //drive forward to middle
         auto_motors.goToSpot(6, 0.5);
         while (auto_motors.isBusy()){
