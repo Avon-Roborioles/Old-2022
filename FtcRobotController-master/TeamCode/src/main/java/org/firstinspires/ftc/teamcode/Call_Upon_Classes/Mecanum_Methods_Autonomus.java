@@ -93,7 +93,7 @@ public class  Mecanum_Methods_Autonomus {
 
 
     public void goToSpot(int inches, double power){
-        inches*=91;
+        inches*=91/2;
         setRelativeTargetAll(inches);
         setPowerAll(power);
 //        while (isBusy()){}

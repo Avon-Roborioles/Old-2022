@@ -20,7 +20,7 @@ public class Blue_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Au
         zone = camera.zone();
 
         //move forward  line under center of bot
-        auto_motors.goToSpot(15/2, 0.5);
+        auto_motors.goToSpot(15, 0.5);
         while (auto_motors.isBusy()) {
 
         }
@@ -45,7 +45,7 @@ public class Blue_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Au
         //lift.run_lift_21945_auto(telemetry,  0);
         //simpleWait(1000);
         //drive forward to middle
-        auto_motors.goToSpot(5, 0.5);
+        auto_motors.goToSpot(10, 0.5);
         while (auto_motors.isBusy()) {
 
         }
@@ -56,17 +56,17 @@ public class Blue_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Au
         //LEFT (1)
         if (zone == 1) {
             //turn bot left 90 degrees
-            auto_motors.turn45left(0.4);
+            auto_motors.turn90left(0.4);
             while (auto_motors.isBusy()) {
 
             }
             //drive forward to middle of
-            auto_motors.goToSpot(12, 0.5);
+            auto_motors.goToSpot(24, 0.5);
             while (auto_motors.isBusy()) {
 
             }
             //turn bot right 90 degrees
-            auto_motors.turn45right(0.6);
+            auto_motors.turn90right(0.6);
             while (auto_motors.isBusy()) {
 
             }
@@ -81,18 +81,18 @@ public class Blue_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Au
         //Right
         else if (zone == 3) {
             //Turn right 90 degrees
-            auto_motors.turn45right(0.4);
+            auto_motors.turn90right(0.4);
             while (auto_motors.isBusy()) {
 
             }
 
             //forward to
-            auto_motors.goToSpot(12, 0.5);
+            auto_motors.goToSpot(24, 0.5);
             while (auto_motors.isBusy()) {
 
             }
             //left 90 degrees
-            auto_motors.turn45left(0.6);
+            auto_motors.turn90left(0.6);
             while (auto_motors.isBusy()) {
 
             }
