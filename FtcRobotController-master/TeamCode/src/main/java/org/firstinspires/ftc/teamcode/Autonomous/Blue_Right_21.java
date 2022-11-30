@@ -43,19 +43,20 @@ public class Blue_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Au
             simpleWait(1000);
         }
         lift.run_lift_21945_auto(telemetry,  0);
-        simpleWait(100);
+        simpleWait(1000);
         //drive forward to middle
-        auto_motors.goToSpot(6, 0.5);
+        auto_motors.goToSpot(5, 0.5);
         while (auto_motors.isBusy()) {
 
         }
+
 
         //SPLIT TO PARK
 
         //LEFT (1)
         if (zone == 1) {
             //turn bot left 90 degrees
-            auto_motors.turn45left(0.5);
+            auto_motors.turn45left(0.4);
             while (auto_motors.isBusy()) {
 
             }
@@ -65,7 +66,7 @@ public class Blue_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Au
 
             }
             //turn bot right 90 degrees
-            auto_motors.turn45right(0.5);
+            auto_motors.turn45right(0.6);
             while (auto_motors.isBusy()) {
 
             }
@@ -80,7 +81,7 @@ public class Blue_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Au
         //Right
         else if (zone == 3) {
             //Turn right 90 degrees
-            auto_motors.turn45right(0.5);
+            auto_motors.turn45right(0.4);
             while (auto_motors.isBusy()) {
 
             }
@@ -91,7 +92,7 @@ public class Blue_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Au
 
             }
             //left 90 degrees
-            auto_motors.turn45left(0.5);
+            auto_motors.turn45left(0.6);
             while (auto_motors.isBusy()) {
 
             }

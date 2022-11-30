@@ -31,7 +31,7 @@ public class TeleOp_21945 extends LinearOpMode {
         drivingMotors.init_drive_motors(hardwareMap);
         lift.init_lift_motor_21945(hardwareMap, "lift");
         intake.init_intake_motor_21945(hardwareMap, "intake");
-        turntable.init_turntable_21945(hardwareMap, "ts");
+        turntable.init_turntable_21945(hardwareMap, "turntable");
 
         waitForStart();
 

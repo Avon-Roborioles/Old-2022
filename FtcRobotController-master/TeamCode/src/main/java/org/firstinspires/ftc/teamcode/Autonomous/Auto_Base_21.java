@@ -38,12 +38,13 @@ public abstract class Auto_Base_21 extends LinearOpMode {
 
         turntable.init_turntable_21945(hardwareMap, "turntable");
     }
-    public void simpleWait(int miliseconds ){
+    public void simpleWait(int TimeMiliS ){
         double currTime = getRuntime();
-        double waitUntil = currTime + (double)(miliseconds / 1000);
+        double waitUntil = currTime + (double)(TimeMiliS / 1000);
         while (getRuntime() < waitUntil){
 
         }
+
 
     }
 

@@ -36,11 +36,11 @@ public class Turntable_21945 {
 
         if(rj > 0.2){
             //joystick control
-            tp = tp + 0.0005;
+            tp = tp + 0.001;
         }
         else if(rj < -0.2){
             //joystick control
-            tp = tp - 0.0005;
+            tp = tp - 0.001;
         }
         else if(rb){
             //middle pos

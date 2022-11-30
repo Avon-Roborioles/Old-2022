@@ -60,7 +60,7 @@ public class Lift_21945 {
         if (rj > 0.1) {
             lp = -1 * Math.abs(rj);
         } else if (rj < -0.1) {
-            lp = 0.5 * rj;
+            lp = 0.5 * Math.abs(rj);
         } else {
             lp = 0;
         }        // Set motor power to lift power "lp" var (Lift power)
@@ -90,13 +90,13 @@ public class Lift_21945 {
             lp4 = 0;
         } else if (x) {
             //down enough to pickup cone
-            lp4 = 0;
+            lp4 = 0.01;
         } else if (y) {
             //just above cone
             lp4 = 0.2;
         } else if (b) {
             //top for low junction
-            lp4 = 0.9;
+            lp4 = 1;
         }
 
         if (lp4 > 0.375) {
