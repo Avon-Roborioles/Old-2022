@@ -1,9 +1,12 @@
 package org.firstinspires.ftc.teamcode.Call_Upon_Classes;
 
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.*;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
+
+import java.util.Objects;
 
 public class  Mecanum_Methods_Autonomus {
 
@@ -15,7 +18,7 @@ public class  Mecanum_Methods_Autonomus {
     private DcMotor x_encoder=null;
     private DcMotor y_encoder=null;
     private Telemetry telemetry = null;
-    private int i = 0;
+    private final int i = 0;
 
 
     public void init_encoders(HardwareMap hardwareMap){
@@ -93,8 +96,8 @@ public class  Mecanum_Methods_Autonomus {
 
 
     public void goToSpot(int inches, double power){
-        inches*=91/2;
-        setRelativeTargetAll(inches);
+        inches*=91;
+        setRelativeTargetAll(inches/2);
         setPowerAll(power);
 //        while (isBusy()){}
     }
@@ -149,30 +152,16 @@ public class  Mecanum_Methods_Autonomus {
         if (fr.isBusy())
             totalBusy++;
 
-        if (totalBusy>=4)
-            return true;
-        else
-            return false;
+        return totalBusy >= 4;
     }
 
     public void park_14(int zone, boolean red_alliance){
-        if (red_alliance) {
-            if (zone == 2) {
+        if (zone == 2) {
 
-            } else if (zone == 3) {
+        } else if (zone == 3) {
 
-            } else {
+        } else {
 
-            }
-        }
-        else {
-            if (zone == 2) {
-
-            } else if (zone == 3) {
-
-            } else {
-
-            }
         }
     }
 
@@ -187,7 +176,7 @@ public class  Mecanum_Methods_Autonomus {
     //move method takes axis the bot is meant to move on and the amount of tiles it is meant to move (and simplify calling)
     public void move(String axis, double tiles) {
         //determine what axis wants to be moved on
-        if (axis == "x") {
+        if (Objects.equals(axis, "x")) {
             //determines which direction the robot need to travel (since negative traveled time doesn't mean negative direction)
             if (tiles > 0) {
                 //add motion that takes timePoweredOutput as the time the motors have to be powered for to move forward the desired amount of tiles
@@ -198,7 +187,7 @@ public class  Mecanum_Methods_Autonomus {
                 strafeLeft(0.5, 24*java.lang.Math.abs(tiles));
             }
         }
-        else if (axis == "y") {
+        else if (Objects.equals(axis, "y")) {
             //determines which direction the robot need to travel (since negative traveled time doesn't mean negative direction)
             if (tiles > 0) {
                 //add motion that takes timePoweredOutput as the time the motors have to be powered for to move right the desired amount of tiles
@@ -213,12 +202,6 @@ public class  Mecanum_Methods_Autonomus {
                 }
 //                for (int i; tiles > i; i++) {
 //                    goToSpot(24, 0.5);
-//                }
-            }
-            else if (tiles < 0) {
-                //add motion that takes timePoweredOutput as the time the motors have to be powered for to move left the desired amount of tiles
-//                for (int i; tiles < i; i--) {
-////                    goToSpot(-24*java.lang.Math.abs(tiles), -0.5);
 //                }
             }
         }
