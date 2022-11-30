@@ -27,13 +27,14 @@ public abstract class Auto_Base_21 extends LinearOpMode {
 
     protected int inchToTicks = 91;
     protected int scorePosition;
+    int zone = 1;
 
     public void init_classes(boolean red_alliance) {
         //init
         auto_motors.init_auto_drive_motors(hardwareMap, telemetry);
         lift.init_lift_motor_21945(hardwareMap, "lift");
         intake.init_intake_motor_21945(hardwareMap, "intake");
-        imu_drive.init_drive_motors(hardwareMap, telemetry, false);
+
         turntable.init_turntable_21945(hardwareMap, "turntable");
     }
 

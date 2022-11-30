@@ -44,8 +44,7 @@ public class Intake_21945 {
     }
     public void run_intake_21945_auto(Telemetry telemetry, double time, double direction ) throws InterruptedException {
         is.setPower(direction * 0.5);
-        wait((long) (time * 1000));
-        is.setPower(0);
+
 
 
 

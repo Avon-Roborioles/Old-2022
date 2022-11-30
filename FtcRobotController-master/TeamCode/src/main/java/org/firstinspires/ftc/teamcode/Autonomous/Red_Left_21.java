@@ -7,93 +7,92 @@ public class Red_Left_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Auto
 
     public void runOpMode() throws InterruptedException {
         init_classes(true);
-        double parkingSpot = 0;
         waitForStart();
         //one tile is 24 in
 
         //START
 
         //Scan cone
+        lift.run_lift_21945_auto(telemetry, 0.376);
+        camera.init_camera(hardwareMap, "webcam", telemetry);
+        zone = camera.zone();
+
 
         //Move forward
-        auto_motors.goToSpot(15, 0.5);
+        auto_motors.goToSpot(15/2, 0.5);
         while (auto_motors.isBusy()){
 
         }
+
         //Lift 4-Bar up over chassis
-        lift.run_lift_21945_auto(telemetry,0, 0.1);
-        wait(1000);
+        //lift.run_lift_21945_auto(telemetry, 0.1);
         //turntable right 90 degrees
-        turntable.run_turntable_21945_auto(telemetry, 0.5635);
-        wait(1000);
+        //turntable.run_turntable_21945_auto(telemetry, 0.5635);
         //4-bar down to put cone in junction
-        lift.run_lift_21945_auto(telemetry,0, 0.05);
-        wait(1000);
+        //lift.run_lift_21945_auto(telemetry, 0.05);
         //intake out
-        intake.run_intake_21945_auto(telemetry, 1, -1);
-        wait(1000);
+        //intake.run_intake_21945_auto(telemetry, 1, -1);
         //4-Bar up
-        lift.run_lift_21945_auto(telemetry,0, 0.1);
-        wait(1000);
+        //lift.run_lift_21945_auto(telemetry, 0.1);
         //turntable left 90 degrees
-        turntable.run_turntable_21945_auto(telemetry, 0.5);
-        wait(1000);
+        //turntable.run_turntable_21945_auto(telemetry, 0.5);
         //4-Bar down
-        lift.run_lift_21945_auto(telemetry,0, 0);
-        wait(1000);
+        //lift.run_lift_21945_auto(telemetry, 0);
         //drive forward to middle
-        auto_motors.goToSpot(12, 0.5);
-        while (auto_motors.isBusy()) {
+        auto_motors.goToSpot(6, 0.5);
+        while (auto_motors.isBusy()){
 
         }
+        //intake.run_intake_21945_auto(telemetry, 1, 0);
 
         //SPLIT TO PARK
 
         //LEFT (1)
-        if (parkingSpot == 1) {
+        if (zone == 1) {
             //turn bot left 90 degrees
-            auto_motors.turn90left(0.5);
-            while (auto_motors.isBusy()) {
+            auto_motors.turn45left(0.5);
+            while (auto_motors.isBusy()){
 
             }
             //drive forward to middle of
-            auto_motors.goToSpot(24, 0.5);
-            while (auto_motors.isBusy()) {
+            auto_motors.goToSpot(12, 0.5);
+            while (auto_motors.isBusy()){
 
             }
             //turn bot right 90 degrees
-            auto_motors.turn90right(0.5);
-            while (auto_motors.isBusy()) {
+            auto_motors.turn45right(0.5);
+            while (auto_motors.isBusy()){
 
             }
             //stop
-            stop();
+
         }
         //Middle (2)
-        else if (parkingSpot == 2) {
+        else if (zone == 2) {
             //stop
-            stop();
+
         }
         //Right
-        else if (parkingSpot == 3) {
+        else if (zone == 3) {
             //Turn right 90 degrees
-            auto_motors.turn90right(0.5);
-            while (auto_motors.isBusy()) {
+            auto_motors.turn45right(0.5);
+            while (auto_motors.isBusy()){
 
             }
+
             //forward to
-            auto_motors.goToSpot(24, 0.5);
-            while (auto_motors.isBusy()) {
+            auto_motors.goToSpot(12, 0.5);
+            while (auto_motors.isBusy()){
 
             }
             //left 90 degrees
-            auto_motors.turn90left(0.5);
-            while (auto_motors.isBusy()) {
+            auto_motors.turn45left(0.5);
+            while (auto_motors.isBusy()){
 
             }
             //stop
-            stop();
-        } else stop();
+
+        }
     }
 }
 
