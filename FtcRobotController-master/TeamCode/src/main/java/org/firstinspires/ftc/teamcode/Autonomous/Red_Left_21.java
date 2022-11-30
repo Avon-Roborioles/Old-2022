@@ -48,8 +48,8 @@ public class Red_Left_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Auto
             lift.run_lift_21945_auto(telemetry, 0);
             simpleWait(1000);
         }
-        lift.run_lift_21945_auto(telemetry, 0);
-        simpleWait(1000);
+        //lift.run_lift_21945_auto(telemetry, 0);
+        //simpleWait(1000);
         //drive forward to middle
         auto_motors.goToSpot(5, 0.5);
         while (auto_motors.isBusy()){
