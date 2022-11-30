@@ -15,7 +15,7 @@ public class Red_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Aut
 
         //scan cone
         lift.run_lift_21945_auto(telemetry,  0.5);
-        simpleWait(1000);
+        simpleWait(10);
         camera.init_camera(hardwareMap, "webcam", telemetry);
         zone = camera.zone();
 
@@ -24,6 +24,8 @@ public class Red_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Aut
         while (auto_motors.isBusy()) {
 
         }
+        lift.run_lift_21945_auto(telemetry,  0);
+        simpleWait(1000);
         if (placeCone) {
             //4- bar to top
             lift.run_lift_21945_auto(telemetry, 1);

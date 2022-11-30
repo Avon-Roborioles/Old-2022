@@ -15,7 +15,7 @@ public class Blue_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Au
 
         //scan cone
         lift.run_lift_21945_auto(telemetry,  0.5);
-        simpleWait(1000);
+        simpleWait(10);
         camera.init_camera(hardwareMap, "webcam", telemetry);
         zone = camera.zone();
 
@@ -24,6 +24,8 @@ public class Blue_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Au
         while (auto_motors.isBusy()) {
 
         }
+        lift.run_lift_21945_auto(telemetry,  0);
+        simpleWait(1000);
         if (placeCone) {
             //4- bar to top
             lift.run_lift_21945_auto(telemetry, 1);
@@ -42,8 +44,7 @@ public class Blue_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Au
             lift.run_lift_21945_auto(telemetry, 0);
             simpleWait(1000);
         }
-        //lift.run_lift_21945_auto(telemetry,  0);
-        //simpleWait(1000);
+
         //drive forward to middle
         auto_motors.goToSpot(10, 0.5);
         while (auto_motors.isBusy()) {

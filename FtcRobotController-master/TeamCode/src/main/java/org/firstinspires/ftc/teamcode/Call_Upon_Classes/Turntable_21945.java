@@ -29,7 +29,7 @@ public class Turntable_21945 {
         aButton = gamepad.a;
         rightBumper = gamepad.right_bumper;
         rightJoystick = gamepad.right_stick_x;
-        
+
 
         // Turntable power set
         //right limit is 5635
