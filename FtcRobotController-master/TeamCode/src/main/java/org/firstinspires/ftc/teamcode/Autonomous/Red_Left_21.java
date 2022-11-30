@@ -13,7 +13,7 @@ public class Red_Left_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Auto
         //START
 
         //Scan cone
-        lift.run_lift_21945_auto(telemetry, 0.376);
+        lift.run_lift_21945_auto(telemetry, 0.5);
         camera.init_camera(hardwareMap, "webcam", telemetry);
         zone = camera.zone();
 
@@ -23,27 +23,39 @@ public class Red_Left_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Auto
         while (auto_motors.isBusy()){
 
         }
+        if (placeCone) {
 
-        //Lift 4-Bar up over chassis
-        //lift.run_lift_21945_auto(telemetry, 0.1);
-        //turntable right 90 degrees
-        //turntable.run_turntable_21945_auto(telemetry, 0.5635);
-        //4-bar down to put cone in junction
-        //lift.run_lift_21945_auto(telemetry, 0.05);
-        //intake out
-        //intake.run_intake_21945_auto(telemetry, 1, -1);
-        //4-Bar up
-        //lift.run_lift_21945_auto(telemetry, 0.1);
-        //turntable left 90 degrees
-        //turntable.run_turntable_21945_auto(telemetry, 0.5);
-        //4-Bar down
-        //lift.run_lift_21945_auto(telemetry, 0);
+            //Lift 4-Bar up over chassis
+            lift.run_lift_21945_auto(telemetry, 0.15);
+            simpleWait(1000);
+            //turntable left 90 degrees
+            turntable.run_turntable_21945_auto(telemetry, 0.);
+            simpleWait(1000);
+            //4-bar down to put cone in junction
+            lift.run_lift_21945_auto(telemetry, 0.05);
+            simpleWait(1000);
+            //intake out
+            intake.run_intake_21945_auto(telemetry,  1);
+            simpleWait(1000);
+            intake.run_intake_21945_auto(telemetry,  0);
+            //4-Bar up
+            lift.run_lift_21945_auto(telemetry, 0.15);
+            simpleWait(1000);
+            //turntable right 90 degrees
+            turntable.run_turntable_21945_auto(telemetry, 0.5);
+            simpleWait(1000);
+            //4-Bar down
+            lift.run_lift_21945_auto(telemetry, 0);
+            simpleWait(1000);
+        }
+        lift.run_lift_21945_auto(telemetry, 0);
+        simpleWait(1000);
         //drive forward to middle
         auto_motors.goToSpot(6, 0.5);
         while (auto_motors.isBusy()){
 
         }
-        //intake.run_intake_21945_auto(telemetry, 1, 0);
+
 
         //SPLIT TO PARK
 

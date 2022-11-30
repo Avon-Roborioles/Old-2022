@@ -42,7 +42,7 @@ public class Intake_21945 {
         // Set servo power to intake power "ip" var
         is.setPower(ip);
     }
-    public void run_intake_21945_auto(Telemetry telemetry, double time, double direction ) throws InterruptedException {
+    public void run_intake_21945_auto(Telemetry telemetry, double direction ){
         is.setPower(direction * 0.5);
 
 

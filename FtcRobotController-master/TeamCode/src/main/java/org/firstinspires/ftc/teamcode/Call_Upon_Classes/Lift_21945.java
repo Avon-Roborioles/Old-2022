@@ -99,12 +99,12 @@ public class Lift_21945 {
             lp4 = 0.9;
         }
 
-        if (lp4 > 0.377) {
-            lp4 = 0.376;
+        if (lp4 > 0.375) {
+            lp4 = 0.375;
         } else if (lp4 < 0) {
             lp4 = 0;
         }
-//top stop 0.376
+//top stop 0.375
         // Set servo powers to 4 bar lift power "lp4" var (4 bar power)
         //ls4l.setPower(lp4);
         //ls4r.setPower(lp4 * -1);
@@ -131,7 +131,7 @@ public class Lift_21945 {
 //        }
 //        //set power to 0
 //        lm.setPower(0);
-        ls4l.setPosition(l4h);
+        ls4l.setPosition(l4h * 0.375);
 
 
     }

@@ -28,6 +28,7 @@ public abstract class Auto_Base_21 extends LinearOpMode {
     protected int inchToTicks = 91;
     protected int scorePosition;
     int zone = 1;
+    boolean placeCone = false;
 
     public void init_classes(boolean red_alliance) {
         //init
@@ -36,6 +37,14 @@ public abstract class Auto_Base_21 extends LinearOpMode {
         intake.init_intake_motor_21945(hardwareMap, "intake");
 
         turntable.init_turntable_21945(hardwareMap, "turntable");
+    }
+    public void simpleWait(int miliseconds ){
+        double currTime = getRuntime();
+        double waitUntil = currTime + (double)(miliseconds / 1000);
+        while (getRuntime() < waitUntil){
+
+        }
+
     }
 
 
