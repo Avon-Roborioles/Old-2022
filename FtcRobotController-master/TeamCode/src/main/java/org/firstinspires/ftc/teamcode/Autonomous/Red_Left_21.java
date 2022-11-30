@@ -15,7 +15,6 @@ public class Red_Left_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Auto
 
         //Scan cone
         lift.run_lift_21945_auto(telemetry, 0, 0.376);
-        wait(1000);
         camera.init_camera(hardwareMap, "webcam", telemetry);
         zone = camera.zone();
 
@@ -26,25 +25,18 @@ public class Red_Left_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Auto
         }
         //Lift 4-Bar up over chassis
         lift.run_lift_21945_auto(telemetry,0, 0.1);
-        wait(1000);
         //turntable right 90 degrees
         turntable.run_turntable_21945_auto(telemetry, 0.5635);
-        wait(1000);
         //4-bar down to put cone in junction
         lift.run_lift_21945_auto(telemetry,0, 0.05);
-        wait(1000);
         //intake out
         intake.run_intake_21945_auto(telemetry, 1, -1);
-        wait(1000);
         //4-Bar up
         lift.run_lift_21945_auto(telemetry,0, 0.1);
-        wait(1000);
         //turntable left 90 degrees
         turntable.run_turntable_21945_auto(telemetry, 0.5);
-        wait(1000);
         //4-Bar down
         lift.run_lift_21945_auto(telemetry,0, 0);
-        wait(1000);
         //drive forward to middle
         auto_motors.goToSpot(12, 0.5);
         while (auto_motors.isBusy()) {

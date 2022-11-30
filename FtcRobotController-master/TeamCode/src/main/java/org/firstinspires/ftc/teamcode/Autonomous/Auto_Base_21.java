@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Camera_21945;
 import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Intake_21945;
@@ -35,7 +34,7 @@ public abstract class Auto_Base_21 extends LinearOpMode {
         auto_motors.init_auto_drive_motors(hardwareMap, telemetry);
         lift.init_lift_motor_21945(hardwareMap, "lift");
         intake.init_intake_motor_21945(hardwareMap, "intake");
-        imu_drive.init_drive_motors(hardwareMap, telemetry, false);
+
         turntable.init_turntable_21945(hardwareMap, "turntable");
     }
 

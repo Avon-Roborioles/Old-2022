@@ -15,7 +15,6 @@ public class Blue_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Au
 
         //scan cone
         lift.run_lift_21945_auto(telemetry, 0, 0.376);
-        wait(1000);
         camera.init_camera(hardwareMap, "webcam", telemetry);
         zone = camera.zone();
 
@@ -26,19 +25,14 @@ public class Blue_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Au
         }
         //4- bar to top
         lift.run_lift_21945_auto(telemetry,0, 0.376);
-        wait(1000);
         //turntable 90 degrees to the left
         turntable.run_turntable_21945_auto(telemetry, 0);
-        wait(1000);
         //intake drop cone
         intake.run_intake_21945_auto(telemetry, 1, -1);
-        wait(1000);
         //turntable right 90 degrees
         turntable.run_turntable_21945_auto(telemetry, 0.5);
-        wait(1000);
         //4-bar down
         lift.run_lift_21945_auto(telemetry,0, 0);
-        wait(1000);
         //drive forward to middle
         auto_motors.goToSpot(12, 0.5);
         while (auto_motors.isBusy()){
