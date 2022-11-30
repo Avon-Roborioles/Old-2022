@@ -5,7 +5,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Camera_21945;
 import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Intake_21945;
 import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Lift_21945;
-import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Mecanum_IMU;
 import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Mecanum_Methods_Autonomus;
 import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Turntable_21945;
 
@@ -17,16 +16,14 @@ public abstract class Auto_Base_21 extends LinearOpMode {
     protected org.firstinspires.ftc.teamcode.Call_Upon_Classes.Lift_21945 lift = new Lift_21945();
     //Intake
     protected org.firstinspires.ftc.teamcode.Call_Upon_Classes.Intake_21945 intake = new Intake_21945();
-    //Movement tracking
-    protected org.firstinspires.ftc.teamcode.Call_Upon_Classes.Mecanum_IMU imu_drive = new Mecanum_IMU();
     //Camera
     protected org.firstinspires.ftc.teamcode.Call_Upon_Classes.Camera_21945 camera = new Camera_21945();
     //Turntable
     protected Turntable_21945 turntable = new Turntable_21945();
 
 
-    protected int inchToTicks = 91;
-    protected int scorePosition;
+    //protected int inchToTicks = 91;
+    //protected int scorePosition;
     int zone = 1;
     boolean placeCone = false;
 
