@@ -24,7 +24,7 @@ public abstract class Auto_Base_21 extends LinearOpMode {
 
     //protected int inchToTicks = 91;
     //protected int scorePosition;
-    int zone = 1;
+    int zone = 2;
     boolean placeCone = false;
 
     public void init_classes(boolean red_alliance) {

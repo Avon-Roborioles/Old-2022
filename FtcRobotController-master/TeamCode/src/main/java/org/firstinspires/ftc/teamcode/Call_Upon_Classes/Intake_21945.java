@@ -8,42 +8,42 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class Intake_21945 {
     // Intake power
-    private double ip = 0;
+    private double intakePower = 0;
     // Intake servo
-    private CRServo is = null;
+    private CRServo intakeServo = null;
 
-    private double rt = 0;
-    private double lt = 0;
+    private double rightTrigger = 0;
+    private double leftTrigger = 0;
 
     // Init
     public void init_intake_motor_21945(HardwareMap hardwareMap, String name) {
-        is = hardwareMap.get(CRServo.class, "is");
+        intakeServo = hardwareMap.get(CRServo.class, "is");
     }
     // Run
     // Method
     public void run_intake_motor_21945(Gamepad gamepad, Telemetry telemetry){
         // Assign button "a"
-        rt = gamepad.right_trigger;
-        lt = gamepad.left_trigger;
+        rightTrigger = gamepad.right_trigger;
+        leftTrigger = gamepad.left_trigger;
 
 
-        if(rt > 0.1){
-            ip=1;
+        if(rightTrigger > 0.1){
+            intakePower =1;
         }
-        else if(lt > 0.1){
-            ip=-1;
+        else if(leftTrigger > 0.1){
+            intakePower =-1;
         }
         else  {
-            ip = 0;
+            intakePower = 0;
         }
 
 
 
         // Set servo power to intake power "ip" var
-        is.setPower(ip);
+        intakeServo.setPower(intakePower);
     }
     public void run_intake_21945_auto(Telemetry telemetry, double direction ){
-        is.setPower(direction * 0.5);
+        intakeServo.setPower(direction * 0.5);
 
 
 

@@ -9,129 +9,96 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class Lift_21945 {
     // Lift power linear
-    private double lp = 0;
+    private double linLiftPower = 0;
     // Lift motor linear
-    private DcMotor lm = null;
+    private DcMotor linLiftMotor = null;
     // Right joystick y linear
-    private double rj = 0;
+    private double rightJoystick = 0;
     // Lift power 4 bar
-    private double lp4 = 0;
+    private double liftPos4Bar = 0;
     // Lift servo 4 bar left
-    //private CRServo ls4l = null;
-    private Servo ls4l = null;
+    private Servo liftServo4Bar = null;
     //private CRServo ls4r = null;
     // Left joystick y 4 bar
-    private double lj = 0;
-    private boolean a = false;
-    private boolean lb = false;
-    private boolean b = false;
-    private boolean x = false;
-    private boolean y = false;
-    private double top = 5;
+    private double leftJoystick = 0;
+    private boolean aButton = false;
+    private boolean leftBumper = false;
+    private boolean bButton = false;
+    private boolean xButton = false;
+    private boolean yButton = false;
+
 
     public void init_lift_motor_21945(HardwareMap hardwareMap, String name) {
         // Lift motor linear mapping
-        lm = hardwareMap.get(DcMotor.class, "lm");
+        linLiftMotor = hardwareMap.get(DcMotor.class, "lm");
 
         // Lift servos 4 bar mapping
-        //ls4l = hardwareMap.get(CRServo.class, "ls4l");
-        ls4l = hardwareMap.get(Servo.class, "ls4l");
-        //ls4r = hardwareMap.get(CRServo.class, "ls4r");
+        liftServo4Bar = hardwareMap.get(Servo.class, "ls4");
+
 
         // Power behavior (if 0 then stop)
-        lm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        linLiftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         //auto
-        lm.setTargetPosition(0);
+        linLiftMotor.setTargetPosition(0);
 
     }
 
     public void run_lift_motor_21945(Gamepad gamepad, Telemetry telemetry) {
         // Linear lift button controls
-        lj = gamepad.left_stick_y;
+        leftJoystick = gamepad.left_stick_y;
         // 4 bar lift button controls
-        rj = gamepad.right_stick_y;
-        a = gamepad.a;
-        lb = gamepad.left_bumper;
-        b = gamepad.b;
-        x = gamepad.x;
-        y = gamepad.y;
+        rightJoystick = gamepad.right_stick_y;
+        aButton = gamepad.a;
+        leftBumper = gamepad.left_bumper;
+        bButton = gamepad.b;
+        xButton = gamepad.x;
+        yButton = gamepad.y;
 
         // linear lift power set (move)
-        if (rj > 0.1) {
-            lp = -1 * Math.abs(rj);
-        } else if (rj < -0.1) {
-            lp = 0.5 * Math.abs(rj);
+        if (rightJoystick > 0.1) {
+            linLiftPower = -1 * Math.abs(rightJoystick);
+        } else if (rightJoystick < -0.1) {
+            linLiftPower = 0.5 * Math.abs(rightJoystick);
         } else {
-            lp = 0;
+            linLiftPower = 0;
         }        // Set motor power to lift power "lp" var (Lift power)
-        lm.setPower(lp);
+        linLiftMotor.setPower(linLiftPower);
 
-        // 4 bar lift power set (move)
-        //Continuous
-//        if(lj > 0.2) {
-//            lp4 = 0.5 * lj;
-//        }
-//        else if(lj < -0.2){
-//            lp4 = 0.5 * lj;
-//        }
-//        else {
-//            lp4 = 0;
-//        }
         //normal servo
-        if (lj > 0.2) {
-            lp4 = lp4 - 0.0005;
-        } else if (lj < -0.2) {
-            lp4 = lp4 + 0.0005;
-        } else if (lb) {
+        if (leftJoystick > 0.2) {
+            liftPos4Bar = liftPos4Bar - 0.0005;
+        } else if (leftJoystick < -0.2) {
+            liftPos4Bar = liftPos4Bar + 0.0005;
+        } else if (leftBumper) {
             //all the way down to flip cone up
-            lp4 = 0;
-        } else if (a) {
+            liftPos4Bar = 0;
+        } else if (aButton) {
             //drive pos
-            lp4 = 0;
-        } else if (x) {
+            liftPos4Bar = 0;
+        } else if (xButton) {
             //down enough to pickup cone
-            lp4 = 0.01;
-        } else if (y) {
+            liftPos4Bar = 0.01;
+        } else if (yButton) {
             //just above cone
-            lp4 = 0.2;
-        } else if (b) {
+            liftPos4Bar = 0.2;
+        } else if (bButton) {
             //top for low junction
-            lp4 = 1;
+            liftPos4Bar = 1;
         }
 
-        if (lp4 > 0.375) {
-            lp4 = 0.375;
-        } else if (lp4 < 0) {
-            lp4 = 0;
+        if (liftPos4Bar > 0.375) {
+            liftPos4Bar = 0.375;
+        } else if (liftPos4Bar < 0) {
+            liftPos4Bar = 0;
         }
 //top stop 0.375
-        // Set servo powers to 4 bar lift power "lp4" var (4 bar power)
-        //ls4l.setPower(lp4);
-        //ls4r.setPower(lp4 * -1);
-        ls4l.setPosition(lp4);
+        // Set servo powers to 4 bar lift power
+        liftServo4Bar.setPosition(liftPos4Bar);
         get_telemetry(telemetry);
     }
 
     public void run_lift_21945_auto(Telemetry telemetry, double l4h) {
-        //llh Linear lift target Height
-        //int llt;
-
-        //double linLiftRevPerIn = 1;
-        //create target pos
-
-        //llt = (int) (((llh * linLiftRevPerIn) - lm.getCurrentPosition()));
-        //set target pos
-//        lm.setTargetPosition(llt);
-//        //set lift motor to run to position
-//        lm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-//        //set power
-//        lm.setPower(0.5);
-//        while (lm.isBusy()) {
-//
-//        }
-//        //set power to 0
-//        lm.setPower(0);
-        ls4l.setPosition(l4h * 0.375);
+        liftServo4Bar.setPosition(l4h * 0.375);
 
 
     }
@@ -141,6 +108,6 @@ public class Lift_21945 {
 
 
     public void get_telemetry (Telemetry telemetry){
-        telemetry.addData("4-Bar Position", ls4l.getPosition());
+        telemetry.addData("4-Bar Position", liftServo4Bar.getPosition());
     }
 }

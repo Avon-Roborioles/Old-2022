@@ -8,66 +8,67 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 public class Turntable_21945 {
     // Turntable power
 
-    private Servo ts = null;
+    private Servo turntableServo = null;
     // joystick right
-    private double rj = 0;
-    private boolean rb = false;
-    private boolean lb = false;
-    private double tp = 0.5;
-    private boolean a = false;
+    private double rightJoystick = 0;
+    private boolean rightBumper = false;
+
+    private double turntablePos = 0.5;
+
+    private boolean aButton = false;
 
 
 
     public void init_turntable_21945(HardwareMap hardwareMap, String name){
         // Mapping the turntable
         //ts = hardwareMap.get(CRServo.class, name);
-        ts = hardwareMap.get(Servo.class, name);
+        turntableServo = hardwareMap.get(Servo.class, "ts");
     }
     public void run_turntable_21945( Gamepad gamepad, Telemetry telemetry){
         // Buttons
-        a = gamepad.a;
-        rb = gamepad.right_bumper;
-        rj = gamepad.right_stick_x;
-        lb = gamepad.left_bumper;
+        aButton = gamepad.a;
+        rightBumper = gamepad.right_bumper;
+        rightJoystick = gamepad.right_stick_x;
+        
 
         // Turntable power set
         //right limit is 5635
 
 
-        if(rj > 0.2){
+        if(rightJoystick > 0.2){
             //joystick control
-            tp = tp + 0.001;
+            turntablePos = turntablePos + 0.001;
         }
-        else if(rj < -0.2){
+        else if(rightJoystick < -0.2){
             //joystick control
-            tp = tp - 0.001;
+            turntablePos = turntablePos - 0.001;
         }
-        else if(rb){
+        else if(rightBumper){
             //middle pos
-            tp =0.5;
+            turntablePos =0.5;
         }
-        else if(a){
+        else if(aButton){
             //drive pos
-            tp = 0.5;
+            turntablePos = 0.5;
         }
 
-        if(tp > 0.5935){
-            tp = 0.5635;
+        if(turntablePos > 0.5935){
+            turntablePos = 0.5635;
         }
-        else if(tp < 0.0){
-            tp = 0;
+        else if(turntablePos < 0.0){
+            turntablePos = 0;
         }
-        ts.setPosition(tp);
+        turntableServo.setPosition(turntablePos);
         Get_telemetry(telemetry);
     }
 
     public void run_turntable_21945_auto(Telemetry telemetry, double tp){
     //tp = target pos
-        ts.setPosition(tp);
+        turntableServo.setPosition(tp);
 
     }
     public void Get_telemetry( Telemetry telemetry){
-        telemetry.addData("Turntable Position", ts.getPosition());
+        telemetry.addData("Turntable Position", turntableServo.getPosition());
     }
 
 
