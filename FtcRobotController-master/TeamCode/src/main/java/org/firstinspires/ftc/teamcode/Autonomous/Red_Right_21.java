@@ -13,13 +13,14 @@ public class Red_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Aut
 
         //Start
 
-        //scan cone
+        //run lift up so camera can see
         lift.run_lift_21945_auto(telemetry,  0.5);
         simpleWait(100);
+        //Scan the cone
         camera.init_camera(hardwareMap, "webcam", telemetry);
         zone = camera.zone();
 
-        //move forward  line under center of bot
+        //move forward until the seam is under center of bot
         auto_motors.goToSpot(15, 0.5);
         while (auto_motors.isBusy()) {
 
@@ -27,7 +28,7 @@ public class Red_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Aut
         lift.run_lift_21945_auto(telemetry,  0);
         simpleWait(1000);
         if (placeCone) {
-            //4- bar to top
+            //4-bar to top
             lift.run_lift_21945_auto(telemetry, 1);
             simpleWait(1000);
             //turntable 90 degrees to the left
@@ -37,19 +38,20 @@ public class Red_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Aut
             intake.run_intake_21945_auto(telemetry, 1);
             simpleWait(1000);
             intake.run_intake_21945_auto(telemetry, 0);
-            //turntable right 90 degrees
+            //turntable back to the middle (right 90 degrees)
             turntable.run_turntable_21945_auto(telemetry, 0.5);
             simpleWait(1000);
-            //4-bar down
+            //4-bar down to drive
             lift.run_lift_21945_auto(telemetry, 0);
             simpleWait(1000);
         }
 
-        //drive forward to middle
+        //drive forward to push cone forward past the tile
         auto_motors.goToSpot(15, 0.5);
         while (auto_motors.isBusy()) {
 
         }
+        //dive back to the middle of the tile
         auto_motors.goToSpot(5, -0.5);
         while (auto_motors.isBusy()) {
 
@@ -60,6 +62,7 @@ public class Red_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Aut
 
         //LEFT (1)
         if (zone == 1) {
+            //go to zone 1
             auto_motors.strafeLeft(0.5, 24);
 //            //turn bot left 90 degrees
 //            auto_motors.turn90left(0.4);
@@ -81,12 +84,16 @@ public class Red_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Aut
         }
         //Middle (2)
         else if (zone == 2) {
+            //stay
             //stop
 
         }
         //Right
         else if (zone == 3) {
+            //go to zone 3
+
             auto_motors.strafeRight(0.5, 24);
+
 //            //Turn right 90 degrees
 //            auto_motors.turn90right(0.4);
 //            while (auto_motors.isBusy()) {
