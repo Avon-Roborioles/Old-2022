@@ -26,6 +26,8 @@ public class Lift_21945 {
     private boolean bButton = false;
     private boolean xButton = false;
     private boolean yButton = false;
+    //if we need to reverse the direction of the linear  change this from 1 to -1 or vice versa
+    private double linLiftDirection = 1;
 
 
     public void init_lift_motor_21945(HardwareMap hardwareMap, String name) {
@@ -55,13 +57,25 @@ public class Lift_21945 {
         yButton = gamepad.y;
 
         // linear lift power set (move)
-        if (rightJoystick > 0.1) {
-            linLiftPower = -1 * Math.abs(rightJoystick);
-        } else if (rightJoystick < -0.1) {
-            linLiftPower = 0.5 * Math.abs(rightJoystick);
-        } else {
-            linLiftPower = 0;
-        }        // Set motor power to lift power "lp" var (Lift power)
+        if (linLiftDirection == 1){
+            if (rightJoystick < -0.1) {
+                linLiftPower = 1 * Math.abs(rightJoystick);
+            } else if (rightJoystick > 0.1) {
+                linLiftPower = -1 * Math.abs(rightJoystick);
+            } else {
+                linLiftPower = 0;
+            }
+        }
+        if (linLiftDirection == -1) {
+            if (rightJoystick < -0.1) {
+                linLiftPower = -1 * Math.abs(rightJoystick);
+            } else if (rightJoystick > 0.1) {
+                linLiftPower = 1 * Math.abs(rightJoystick);
+            } else {
+                linLiftPower = 0;
+            }
+        }
+        // Set motor power to lift power "lp" var (Lift power)
         linLiftMotor.setPower(linLiftPower);
 
         //normal servo

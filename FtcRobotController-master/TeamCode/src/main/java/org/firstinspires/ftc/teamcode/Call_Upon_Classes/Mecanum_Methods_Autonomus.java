@@ -105,35 +105,35 @@ public class  Mecanum_Methods_Autonomus {
     public void stopMotors() {setPowerAll(0);}
 
     public void turn90left (double power){
-        setRelativeTargetIndividual((int) Math.floor(-1440*1.2),(int) Math.floor(-1440*1.2),(int) Math.floor(1440*1.2), (int) Math.floor(1440*1.2));
-        setPowerIndividual(-power,power,power,-power);
-        while (isBusy()){}
-    }
-    public void turn90right (double power){
-        setRelativeTargetIndividual((int) Math.floor(1440*1.2),(int) Math.floor(1440*1.2),(int) Math.floor(-1440*1.2), (int) Math.floor(-1440*1.2));
-        setPowerIndividual(power,-power,-power,power);
-        while (isBusy()){}
-    }
-    public void turn45left (double power){
         setRelativeTargetIndividual((int) Math.floor(-1440*1.2*.5),(int) Math.floor(-1440*1.2*.5),(int) Math.floor(1440*1.2*.5), (int) Math.floor(1440*1.2*.5));
         setPowerIndividual(-power,power,power,-power);
         while (isBusy()){}
     }
-    public void turn45right (double power){
+    public void turn90right (double power){
         setRelativeTargetIndividual((int) Math.floor(1440*1.2*.5),(int) Math.floor(1440*1.2*.5),(int) Math.floor(-1440*1.2*.5), (int) Math.floor(-1440*1.2*.5));
+        setPowerIndividual(power,-power,-power,power);
+        while (isBusy()){}
+    }
+    public void turn45left (double power){
+        setRelativeTargetIndividual((int) Math.floor(-1440*1.2*.25),(int) Math.floor(-1440*1.2*.25),(int) Math.floor(1440*1.2*.25), (int) Math.floor(1440*1.2*.25));
+        setPowerIndividual(-power,power,power,-power);
+        while (isBusy()){}
+    }
+    public void turn45right (double power){
+        setRelativeTargetIndividual((int) Math.floor(1440*1.2*.25),(int) Math.floor(1440*1.2*.25),(int) Math.floor(-1440*1.2*.25), (int) Math.floor(-1440*1.2*.25));
         setPowerIndividual(power,-power,-power,power);
         while (isBusy()){}
     }
 
     public void strafeLeft(double power, double inches) {
         //107 ticks= 1 inch
-        inches*=107;
+        inches*=53.5;
         setRelativeTargetIndividual((int)-inches,(int) inches,(int)inches,(int)-inches);
         setPowerIndividual(-power, power, -power, power);
         while (isBusy()){}
     }
     public void strafeRight(double power, double inches) {
-        inches*=107;
+        inches*=53.5;
         setRelativeTargetIndividual((int)inches,(int)-inches,(int)-inches,(int)inches);
         setPowerIndividual(power, -power, power, -power);
         while (isBusy()){}

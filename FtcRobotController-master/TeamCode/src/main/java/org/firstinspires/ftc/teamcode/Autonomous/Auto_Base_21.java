@@ -22,8 +22,7 @@ public abstract class Auto_Base_21 extends LinearOpMode {
     protected Turntable_21945 turntable = new Turntable_21945();
 
 
-    //protected int inchToTicks = 91;
-    //protected int scorePosition;
+    //protected int inchToTicks = 45;
     int zone = 2;
     boolean placeCone = false;
 

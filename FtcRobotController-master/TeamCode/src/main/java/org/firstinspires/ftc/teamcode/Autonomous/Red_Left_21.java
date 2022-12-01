@@ -63,21 +63,23 @@ public class Red_Left_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Auto
 
         //LEFT (1)
         if (zone == 1) {
+            auto_motors.strafeLeft(0.5, 24);
+
             //turn bot left 90 degrees
-            auto_motors.turn90left(0.4);
-            while (auto_motors.isBusy()) {
-
-            }
-            //drive forward to middle of
-            auto_motors.goToSpot(24, 0.5);
-            while (auto_motors.isBusy()) {
-
-            }
-            //turn bot right 90 degrees
-            auto_motors.turn90right(0.6);
-            while (auto_motors.isBusy()) {
-
-            }
+//            auto_motors.turn90left(0.4);
+//            while (auto_motors.isBusy()) {
+//
+//            }
+//            //drive forward to middle of
+//            auto_motors.goToSpot(24, 0.5);
+//            while (auto_motors.isBusy()) {
+//
+//            }
+//            //turn bot right 90 degrees
+//            auto_motors.turn90right(0.6);
+//            while (auto_motors.isBusy()) {
+//
+//            }
             //stop
 
         }
@@ -88,23 +90,24 @@ public class Red_Left_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Auto
         }
         //Right
         else if (zone == 3) {
-            //Turn right 90 degrees
-            auto_motors.turn90right(0.4);
-            while (auto_motors.isBusy()) {
-
-            }
-
-            //forward to
-            auto_motors.goToSpot(24, 0.5);
-            while (auto_motors.isBusy()) {
-
-            }
-            //left 90 degrees
-            auto_motors.turn90left(0.6);
-            while (auto_motors.isBusy()) {
-
-            }
-            //stop
+            auto_motors.strafeRight(0.5, 24);
+//            //Turn right 90 degrees
+//            auto_motors.turn90right(0.4);
+//            while (auto_motors.isBusy()) {
+//
+//            }
+//
+//            //forward to
+//            auto_motors.goToSpot(24, 0.5);
+//            while (auto_motors.isBusy()) {
+//
+//            }
+//            //left 90 degrees
+//            auto_motors.turn90left(0.6);
+//            while (auto_motors.isBusy()) {
+//
+//            }
+//            //stop
 
         }
 
