@@ -77,12 +77,12 @@ public class Lift_21945 {
 //        }
         if (linLiftDirection == 1){
             if (rightJoystick < -0.1) {
-                linLiftPos += 0.005;
+                linLiftPos += 1;
             } else if (rightJoystick > 0.1) {
-                linLiftPos += 0.005;
+                linLiftPos += 1;
             }
-            if (linliftPos > 1995){
-
+            if (linLiftPos > 1995){
+                linLiftPos = 1994;
             }
         }
         if (linLiftDirection == -1) {
