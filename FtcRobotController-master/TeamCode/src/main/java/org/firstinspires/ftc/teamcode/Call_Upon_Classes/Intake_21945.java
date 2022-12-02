@@ -7,25 +7,17 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class Intake_21945 {
-    // Intake power
-    private double intakePower = 0;
-    // Intake servo
     private CRServo intakeServo = null;
-
+    private double intakePower = 0;
     private boolean rightBumper = false;
     private boolean leftBumper = false;
 
-    // Init
     public void init_intake_motor_21945(HardwareMap hardwareMap, String name) {
         intakeServo = hardwareMap.get(CRServo.class, "is");
     }
-    // Run
-    // Method
     public void run_intake_motor_21945(Gamepad gamepad, Telemetry telemetry){
-        // Assign button "a"
         rightBumper = gamepad.right_bumper;
         leftBumper = gamepad.left_bumper;
-
 
         if(rightBumper){
             intakePower =1;
@@ -36,19 +28,9 @@ public class Intake_21945 {
         else  {
             intakePower = 0;
         }
-
-
-
-        // Set servo power to intake power "ip" var
         intakeServo.setPower(intakePower);
     }
     public void run_intake_21945_auto(Telemetry telemetry, double direction ){
         intakeServo.setPower(direction * 0.5);
-
-
-
-
-    }
-
-
+   }
 }

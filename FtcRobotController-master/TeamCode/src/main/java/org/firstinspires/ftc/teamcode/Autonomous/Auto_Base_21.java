@@ -40,12 +40,5 @@ public abstract class Auto_Base_21 extends LinearOpMode {
         while (getRuntime() < waitUntil){
 
         }
-
-
     }
-
-
-
-
-
 }

@@ -8,22 +8,17 @@ public class Red_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Aut
     public void runOpMode() throws InterruptedException {
         init_classes(true);
         waitForStart();
-
         //one tile is 24 in
-
         //Start
-
         //run lift up so camera can see
         lift.run_lift_21945_auto(telemetry,  0.5);
         simpleWait(100);
         //Scan the cone
         camera.init_camera(hardwareMap, "webcam", telemetry);
         zone = camera.zone();
-
         //move forward until the seam is under center of bot
         auto_motors.goToSpot(15, 0.5);
         while (auto_motors.isBusy()) {
-
         }
         lift.run_lift_21945_auto(telemetry,  0);
         simpleWait(1000);
@@ -45,68 +40,24 @@ public class Red_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Aut
             lift.run_lift_21945_auto(telemetry, 0);
             simpleWait(1000);
         }
-
-
-
         //drive forward to middle
         auto_motors.goToSpot(10, 0.5);
         while (auto_motors.isBusy()){
-
         }
-
-
-
-    //SPLIT TO PARK
-
+        //SPLIT TO PARK
         //LEFT (1)
         if (zone == 1) {
             auto_motors.strafeLeft(0.5, 24);
-
-            //turn bot left 90 degrees
-//            auto_motors.turn90left(0.4);
-//            while (auto_motors.isBusy()) {
-//
-//            }
-//            //drive forward to middle of
-//            auto_motors.goToSpot(24, 0.5);
-//            while (auto_motors.isBusy()) {
-//
-//            }
-//            //turn bot right 90 degrees
-//            auto_motors.turn90right(0.6);
-//            while (auto_motors.isBusy()) {
-//
-//            }
             //stop
-
         }
         //Middle (2)
-        else if (zone == 2) {
+        else if (zone == 2){
             //stop
-
         }
         //Right
         else if (zone == 3) {
             auto_motors.strafeRight(0.5, 24);
-//            //Turn right 90 degrees
-//            auto_motors.turn90right(0.4);
-//            while (auto_motors.isBusy()) {
-//
-//            }
-//
-//            //forward to
-//            auto_motors.goToSpot(24, 0.5);
-//            while (auto_motors.isBusy()) {
-//
-//            }
-//            //left 90 degrees
-//            auto_motors.turn90left(0.6);
-//            while (auto_motors.isBusy()) {
-//
-//            }
-//            //stop
-
+            //stop
         }
-
     }
 }
