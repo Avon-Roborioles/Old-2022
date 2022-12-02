@@ -8,9 +8,9 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class Intake_21945 {
     private CRServo intakeServo = null;
-    private double intakePower = 0;
     private boolean rightBumper = false;
     private boolean leftBumper = false;
+    private double intakePower = 0;
 
     public void init_intake_motor_21945(HardwareMap hardwareMap, String name) {
         intakeServo = hardwareMap.get(CRServo.class, "is");
@@ -33,4 +33,7 @@ public class Intake_21945 {
     public void run_intake_21945_auto(Telemetry telemetry, double direction ){
         intakeServo.setPower(direction * 0.5);
    }
+    public void get_telemetry (Telemetry telemetry){
+        telemetry.addData("Intake power", intakePower);
+    }
 }

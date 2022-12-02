@@ -8,20 +8,19 @@ import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class Lift_21945 {
-
     private DcMotor linLiftMotor = null;
     private Servo liftServo4Bar = null;
-    private double leftJoystick = 0;
     private double rightJoystick = 0;
-    private double leftTrigger;
+    private double leftJoystick = 0;
+    private boolean dPadRight = false;
+    private boolean dPadLeft = false;
+    private boolean dPaddown = false;
+    private boolean dPadUp = false;
     private boolean aButton = false;
     private boolean bButton = false;
     private boolean xButton = false;
     private boolean yButton = false;
-    private boolean dPadUp = false;
-    private boolean dPaddown = false;
-    private boolean dPadLeft = false;
-    private boolean dPadRight = false;
+    private double leftTrigger;
     private double linLiftDirection = 1;
     private double linLiftPos = 0;
     private double liftPos4Bar = 0;
@@ -31,9 +30,8 @@ public class Lift_21945 {
     private double medium4Bar = 1;
     private double lowLin = 0;
     private double low4Bar = 1;
-    private double groundLin = 100;
+    private double groundLin = 0;
     private double ground4Bar = 0.1;
-
     public void init_lift_motor_21945(HardwareMap hardwareMap, String name) {
         linLiftMotor = hardwareMap.get(DcMotor.class, "lm");
         liftServo4Bar = hardwareMap.get(Servo.class, "ls4");
@@ -105,7 +103,7 @@ public class Lift_21945 {
         //set points
         if (dPaddown){
             linLiftPos = 0;
-            liftPos4Bar = 0.1;
+            liftPos4Bar = 0;
         }else if (dPadUp) {
             linLiftPos = mediumLin;
             liftPos4Bar = medium4Bar;
@@ -136,7 +134,8 @@ public class Lift_21945 {
     }
 
     public void get_telemetry (Telemetry telemetry){
-        telemetry.addData("4-Bar Position", liftServo4Bar.getPosition());
+        telemetry.addData("4-Bar  Position", liftServo4Bar.getPosition()/0.375);
+        telemetry.addData("4-Bar Servo Position", liftServo4Bar.getPosition());
         telemetry.addData("Linear lift Current Position", linLiftMotor.getCurrentPosition());
         telemetry.addData("Linear lift Target Position", linLiftMotor.getTargetPosition());
     }
