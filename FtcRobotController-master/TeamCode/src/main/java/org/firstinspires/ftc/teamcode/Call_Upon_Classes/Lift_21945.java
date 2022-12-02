@@ -9,7 +9,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class Lift_21945 {
     // Lift power linear
-    private double linLiftPower = 0;
+    private double linLiftPos = 0;
     // Lift motor linear
     private DcMotor linLiftMotor = null;
     // Right joystick y linear
@@ -22,7 +22,7 @@ public class Lift_21945 {
     // Left joystick y 4 bar
     private double leftJoystick = 0;
     private boolean aButton = false;
-    private boolean leftBumper = false;
+    private double leftTrigger;
     private boolean bButton = false;
     private boolean xButton = false;
     private boolean yButton = false;
@@ -51,51 +51,70 @@ public class Lift_21945 {
         // 4 bar lift button controls
         rightJoystick = gamepad.right_stick_y;
         aButton = gamepad.a;
-        leftBumper = gamepad.left_bumper;
+        leftTrigger = gamepad.left_trigger;
         bButton = gamepad.b;
         xButton = gamepad.x;
         yButton = gamepad.y;
 
         // linear lift power set (move)
+//        if (linLiftDirection == 1){
+//            if (rightJoystick < -0.1) {
+//                linLiftPower = 0.5 * Math.abs(rightJoystick);
+//            } else if (rightJoystick > 0.1) {
+//                linLiftPower = -0.5 * Math.abs(rightJoystick);
+//            } else {
+//                linLiftPower = 0;
+//            }
+//        }
+//        if (linLiftDirection == -1) {
+//            if (rightJoystick < -0.1) {
+//                linLiftPower = -1 * Math.abs(rightJoystick);
+//            } else if (rightJoystick > 0.1) {
+//                linLiftPower = 1 * Math.abs(rightJoystick);
+//            } else {
+//                linLiftPower = 0;
+//            }
+//        }
         if (linLiftDirection == 1){
             if (rightJoystick < -0.1) {
-                linLiftPower = 1 * Math.abs(rightJoystick);
+                linLiftPos += 0.005;
             } else if (rightJoystick > 0.1) {
-                linLiftPower = -1 * Math.abs(rightJoystick);
-            } else {
-                linLiftPower = 0;
+                linLiftPos += 0.005;
+            }
+            if (linliftPos > 1995){
+
             }
         }
         if (linLiftDirection == -1) {
             if (rightJoystick < -0.1) {
-                linLiftPower = -1 * Math.abs(rightJoystick);
+                linLiftPos += 0.005;
             } else if (rightJoystick > 0.1) {
-                linLiftPower = 1 * Math.abs(rightJoystick);
+                linLiftPos += 0.005;
             } else {
-                linLiftPower = 0;
+                linLiftPos = 0;
             }
         }
         // Set motor power to lift power "lp" var (Lift power)
-        linLiftMotor.setPower(linLiftPower);
+        linLiftMotor.setPower(linLiftPos);
 
         //normal servo
         if (leftJoystick > 0.2) {
             liftPos4Bar = liftPos4Bar - 0.0005;
         } else if (leftJoystick < -0.2) {
             liftPos4Bar = liftPos4Bar + 0.0005;
-        } else if (leftBumper) {
+        } else if (leftTrigger > 0.5) {
             //all the way down to flip cone up
             liftPos4Bar = 0;
         } else if (aButton) {
             //drive pos
             liftPos4Bar = 0;
-        } else if (xButton) {
+        } else if (yButton) {
             //down enough to pickup cone
             liftPos4Bar = 0.01;
-        } else if (yButton) {
+        } else if (bButton) {
             //just above cone
             liftPos4Bar = 0.2;
-        } else if (bButton) {
+        } else if (xButton) {
             //top for low junction
             liftPos4Bar = 1;
         }
@@ -108,6 +127,7 @@ public class Lift_21945 {
 //top stop 0.375
         // Set servo powers to 4 bar lift power
         liftServo4Bar.setPosition(liftPos4Bar);
+
         get_telemetry(telemetry);
     }
 
@@ -123,5 +143,6 @@ public class Lift_21945 {
 
     public void get_telemetry (Telemetry telemetry){
         telemetry.addData("4-Bar Position", liftServo4Bar.getPosition());
+        telemetry.addData("Linear lift Position", linLiftMotor.getCurrentPosition());
     }
 }

@@ -11,7 +11,7 @@ public class Turntable_21945 {
     private Servo turntableServo = null;
     // joystick right
     private double rightJoystick = 0;
-    private boolean rightBumper = false;
+    private double rightTrigger = 0;
 
     private double turntablePos = 0.5;
 
@@ -27,7 +27,7 @@ public class Turntable_21945 {
     public void run_turntable_21945( Gamepad gamepad, Telemetry telemetry){
         // Buttons
         aButton = gamepad.a;
-        rightBumper = gamepad.right_bumper;
+        rightTrigger = gamepad.right_trigger;
         rightJoystick = gamepad.right_stick_x;
 
 
@@ -43,7 +43,7 @@ public class Turntable_21945 {
             //joystick control
             turntablePos = turntablePos - 0.001;
         }
-        else if(rightBumper){
+        else if(rightTrigger > 0.5){
             //middle pos
             turntablePos =0.5;
         }
@@ -53,7 +53,7 @@ public class Turntable_21945 {
         }
 
         if(turntablePos > 0.5935){
-            turntablePos = 0.5635;
+            turntablePos = 0.5634;
         }
         else if(turntablePos < 0.0){
             turntablePos = 0;

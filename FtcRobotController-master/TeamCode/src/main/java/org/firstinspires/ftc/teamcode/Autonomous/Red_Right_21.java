@@ -46,25 +46,23 @@ public class Red_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Aut
             simpleWait(1000);
         }
 
-        //drive forward to push cone forward past the tile
-        auto_motors.goToSpot(15, 0.5);
-        while (auto_motors.isBusy()) {
 
-        }
-        //dive back to the middle of the tile
-        auto_motors.goToSpot(5, -0.5);
-        while (auto_motors.isBusy()) {
+
+        //drive forward to middle
+        auto_motors.goToSpot(10, 0.5);
+        while (auto_motors.isBusy()){
 
         }
 
 
-        //SPLIT TO PARK
+
+    //SPLIT TO PARK
 
         //LEFT (1)
         if (zone == 1) {
-            //go to zone 1
             auto_motors.strafeLeft(0.5, 24);
-//            //turn bot left 90 degrees
+
+            //turn bot left 90 degrees
 //            auto_motors.turn90left(0.4);
 //            while (auto_motors.isBusy()) {
 //
@@ -79,21 +77,17 @@ public class Red_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Aut
 //            while (auto_motors.isBusy()) {
 //
 //            }
-//            //stop
+            //stop
 
         }
         //Middle (2)
         else if (zone == 2) {
-            //stay
             //stop
 
         }
         //Right
         else if (zone == 3) {
-            //go to zone 3
-
             auto_motors.strafeRight(0.5, 24);
-
 //            //Turn right 90 degrees
 //            auto_motors.turn90right(0.4);
 //            while (auto_motors.isBusy()) {
@@ -113,7 +107,6 @@ public class Red_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Aut
 //            //stop
 
         }
-
 
     }
 }

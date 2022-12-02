@@ -31,7 +31,7 @@ public class Red_Left_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Auto
             lift.run_lift_21945_auto(telemetry, 0.15);
             simpleWait(1000);
             //turntable left 90 degrees
-            turntable.run_turntable_21945_auto(telemetry, 0.);
+            turntable.run_turntable_21945_auto(telemetry, 0.0);
             simpleWait(1000);
             //4-bar down to put cone in junction
             lift.run_lift_21945_auto(telemetry, 0.05);

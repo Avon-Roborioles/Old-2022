@@ -12,8 +12,8 @@ public class Intake_21945 {
     // Intake servo
     private CRServo intakeServo = null;
 
-    private double rightTrigger = 0;
-    private double leftTrigger = 0;
+    private boolean rightBumper = false;
+    private boolean leftBumper = false;
 
     // Init
     public void init_intake_motor_21945(HardwareMap hardwareMap, String name) {
@@ -23,14 +23,14 @@ public class Intake_21945 {
     // Method
     public void run_intake_motor_21945(Gamepad gamepad, Telemetry telemetry){
         // Assign button "a"
-        rightTrigger = gamepad.right_trigger;
-        leftTrigger = gamepad.left_trigger;
+        rightBumper = gamepad.right_bumper;
+        leftBumper = gamepad.left_bumper;
 
 
-        if(rightTrigger > 0.1){
+        if(rightBumper){
             intakePower =1;
         }
-        else if(leftTrigger > 0.1){
+        else if(leftBumper){
             intakePower =-1;
         }
         else  {
