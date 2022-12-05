@@ -26,7 +26,7 @@ public class Lift_21945 {
     private double liftPos4Bar = 0;
     private double maxLinLiftPos = 1995;
     private double minLinLiftPos = 0;
-    private double mediumLin = 1995;
+    private double mediumLin = 1994;
     private double medium4Bar = 1;
     private double lowLin = 0;
     private double low4Bar = 1;
@@ -55,9 +55,9 @@ public class Lift_21945 {
 
         if (linLiftDirection == 1){
             if (rightJoystick < -0.1) {
-                linLiftPos += 1;
+                linLiftPos += 15;
             } else if (rightJoystick > 0.1) {
-                linLiftPos += 1;
+                linLiftPos -= 15;
             }
             if (linLiftPos > maxLinLiftPos){
                 linLiftPos = maxLinLiftPos;
@@ -71,19 +71,19 @@ public class Lift_21945 {
             if (rightJoystick < -0.1) {
                 linLiftPos -= 1;
             } else if (rightJoystick > 0.1) {
-                linLiftPos -= 1;
+                linLiftPos += 1;
             }
-            if (linLiftPos > maxLinLiftPos){
-                linLiftPos = maxLinLiftPos;
+            if (linLiftPos < (maxLinLiftPos * -1)){
+                linLiftPos = maxLinLiftPos * -1;
             }
-            else if (linLiftPos < minLinLiftPos ){
+            else if (linLiftPos > minLinLiftPos ){
                 linLiftPos = minLinLiftPos;
             }
         }
         if (leftJoystick > 0.2) {
-            liftPos4Bar = liftPos4Bar - 0.0005;
+            liftPos4Bar -=  0.005;
         } else if (leftJoystick < -0.2) {
-            liftPos4Bar = liftPos4Bar + 0.0005;
+            liftPos4Bar += 0.005;
         } else if (leftTrigger > 0.5) {
             liftPos4Bar = 0;
         }

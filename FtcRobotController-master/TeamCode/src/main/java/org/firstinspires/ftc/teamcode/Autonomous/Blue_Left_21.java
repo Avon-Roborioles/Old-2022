@@ -26,15 +26,23 @@ public class Blue_Left_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Aut
                 lift.run_lift_21945_auto(telemetry, 0.15);
                 simpleWait(1000);
                 //turntable left 90 degrees
-                turntable.run_turntable_21945_auto(telemetry, 0.0);
-                simpleWait(1000);
-                //4-bar down to put cone in junction
+
+                turntable.run_turntable_21945_auto(telemetry, 0.18);
+                simpleWait(2500);
+                turntable.run_turntable_21945_auto(telemetry, 0.18);
+                simpleWait(700);
                 lift.run_lift_21945_auto(telemetry, 0.05);
-                simpleWait(1000);
-                //intake out
-                intake.run_intake_21945_auto(telemetry, 1);
+                simpleWait(100);
+                //4-bar down to put cone in junction
+
+                auto_motors.strafeLeft(0.3, 3);
+                simpleWait(2500);
+                intake.run_intake_21945_auto(telemetry, -1);
                 simpleWait(1000);
                 intake.run_intake_21945_auto(telemetry, 0);
+                simpleWait(10);
+                //intake out
+
                 //4-Bar up
                 lift.run_lift_21945_auto(telemetry, 0.15);
                 simpleWait(1000);
@@ -53,18 +61,18 @@ public class Blue_Left_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Aut
             //LEFT (1)
             if (zone == 1) {
                 auto_motors.strafeLeft(0.5, 24);
-                requestOpModeStop();
+
                 //stop
             }
             //Middle (2)
             else if (zone == 2) {
-                requestOpModeStop();
+
                 //stop
             }
             //Right
             else if (zone == 3) {
                 auto_motors.strafeRight(0.5, 24);
-                requestOpModeStop();
+
                 //stop
             }
     }

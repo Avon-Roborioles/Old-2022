@@ -21,10 +21,10 @@ public class Turntable_21945 {
         rightJoystick = gamepad.right_stick_x;
 
         if(rightJoystick > 0.2){
-            turntablePos = turntablePos + 0.001;
+            turntablePos = turntablePos + 0.005;
         }
         else if(rightJoystick < -0.2){
-            turntablePos = turntablePos - 0.001;
+            turntablePos = turntablePos - 0.005;
         }
         else if(rightTrigger > 0.5){
             turntablePos =0.5;
@@ -33,8 +33,8 @@ public class Turntable_21945 {
             turntablePos = 0.5;
         }
 
-        if(turntablePos > 0.5935){
-            turntablePos = 0.5634;
+        if(turntablePos > 0.5){
+            turntablePos = 0.49;
         }
         else if(turntablePos < 0.0){
             turntablePos = 0;
@@ -43,8 +43,9 @@ public class Turntable_21945 {
         Get_telemetry(telemetry);
     }
 
-    public void run_turntable_21945_auto(Telemetry telemetry, double tp){
-        turntableServo.setPosition(tp);
+    public void run_turntable_21945_auto(Telemetry telemetry, double turntablePosAuto){
+        turntableServo.setPosition(turntablePosAuto);
+        Get_telemetry(telemetry);
     }
     public void Get_telemetry( Telemetry telemetry){
         telemetry.addData("Turntable Position", turntableServo.getPosition());

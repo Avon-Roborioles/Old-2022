@@ -22,21 +22,26 @@ public class Blue_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Au
         lift.run_lift_21945_auto(telemetry,  0);
         simpleWait(1000);
         if (placeCone) {
-            //4- bar to top
+            //4-bar to top
             lift.run_lift_21945_auto(telemetry, 1);
             simpleWait(1000);
             //turntable 90 degrees to the left
-            turntable.run_turntable_21945_auto(telemetry, 0);
+            turntable.run_turntable_21945_auto(telemetry, 0.18);
+            simpleWait(2500);
+            turntable.run_turntable_21945_auto(telemetry, 0.2);
+            auto_motors.strafeLeft(0.3, 3);
             simpleWait(1000);
             //intake drop cone
-            intake.run_intake_21945_auto(telemetry, 1);
+            intake.run_intake_21945_auto(telemetry, -1);
             simpleWait(1000);
             intake.run_intake_21945_auto(telemetry, 0);
-            //turntable right 90 degrees
+            //turntable back to the middle (right 90 degrees)
             turntable.run_turntable_21945_auto(telemetry, 0.5);
             simpleWait(1000);
-            //4-bar down
+            //4-bar down to drive
             lift.run_lift_21945_auto(telemetry, 0);
+            simpleWait(1000);
+            auto_motors.strafeRight(0.3, 3);
             simpleWait(1000);
         }
         //drive forward to middle
