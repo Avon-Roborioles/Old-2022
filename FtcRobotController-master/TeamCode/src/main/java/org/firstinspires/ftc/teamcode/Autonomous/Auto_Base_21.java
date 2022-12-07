@@ -40,22 +40,29 @@ public abstract class Auto_Base_21 extends LinearOpMode {
 
         }
     }
-    public void parking21(double spot){
-        if (spot == 1) {
-            auto_motors.strafeLeft(0.5, 24);
-
-            //stop
+    public void parking21(double pspot){
+        switch ((int) pspot){
+            case(1):
+                auto_motors.strafeLeft(0.5, 24);
+                break;
+            case(2):
+                break;
+            case(3):
+                auto_motors.strafeRight(0.5, 24);
+                break;
         }
-        //Middle (2)
-        else if (spot == 2) {
-
-            //stop
-        }
-        //Right
-        else if (spot == 3) {
-            auto_motors.strafeRight(0.5, 24);
-
-            //stop
-        }
+//        if (spot == 1) {
+//            auto_motors.strafeLeft(0.5, 24);
+//            //stop
+//        }
+//        //Middle (2)
+//        else if (spot == 2) {
+//            //stop
+//        }
+//        //Right
+//        else if (spot == 3) {
+//            auto_motors.strafeRight(0.5, 24);
+//            //stop
+//        }
     }
 }
