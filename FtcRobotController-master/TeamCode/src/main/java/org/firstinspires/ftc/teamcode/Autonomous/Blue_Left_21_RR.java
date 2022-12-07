@@ -21,6 +21,8 @@ public class Blue_Left_21_RR extends  Auto_Base_21 {
             }
             lift.run_lift_21945_auto(telemetry, 0);
             simpleWait(1000);
+            
+            /*
             if (placeCone) {
                 //Lift 4-Bar up over chassis
                 lift.run_lift_21945_auto(telemetry, 0.15);
@@ -53,6 +55,8 @@ public class Blue_Left_21_RR extends  Auto_Base_21 {
                 lift.run_lift_21945_auto(telemetry, 0);
                 simpleWait(1000);
             }
+            */
+
             //drive forward to middle
             auto_motors.goToSpot(10, 0.5);
             while (auto_motors.isBusy()) {
