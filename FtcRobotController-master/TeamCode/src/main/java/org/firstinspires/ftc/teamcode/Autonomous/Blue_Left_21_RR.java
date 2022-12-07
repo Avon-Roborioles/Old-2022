@@ -58,7 +58,8 @@
 //            */
 //
 //            //drive forward to middle
-//            auto_motors.goToSpot(10, 0.5);
+//            new TrajectoryBuilder(new Pose2d)
+//                .forward(33)
 //            while (auto_motors.isBusy()) {
 //            }
 //            //SPLIT TO PARK
@@ -66,7 +67,11 @@
 //            if (zone == 1) {
 //                auto_motors.strafeLeft(0.5, 24);
 //
-//                //stop
+//                new TrajectoryBuilder(new Pose2d())
+//                    .strafeLeft(24)
+//                    .build()
+//
+//
 //            }
 //            //Middle (2)
 //            else if (zone == 2) {
@@ -75,7 +80,9 @@
 //            }
 //            //Right
 //            else if (zone == 3) {
-//                auto_motors.strafeRight(0.5, 24);
+//               new TrajectoryBuilder(new Pose2d())
+//                   .strafeRight(24)
+//                   .build()
 //
 //                //stop
 //            }
