@@ -27,6 +27,10 @@ public class Park_21 extends  Auto_Base_21 {
             while (auto_motors.isBusy()) {
             }
             //SPLIT TO PARK
+            //needs to be in middle of 2
+            //LEFT (1)
+            
+            //SPLIT TO PARK
             //LEFT (1)
             if (zone == 1) {
                 auto_motors.strafeLeft(0.5, 24);
