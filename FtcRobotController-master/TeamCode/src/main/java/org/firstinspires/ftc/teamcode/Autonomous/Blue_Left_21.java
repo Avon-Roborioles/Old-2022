@@ -16,23 +16,39 @@ public class Blue_Left_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Aut
         zone = camera.zone();
         lift.run_lift_21945_auto(telemetry, 0, 0);
         simpleWait(1000);
-        auto_motors.goToSpot(33, 0.5);
+        auto_motors.goToSpot(34, 0.5);
         simpleWait(1000);
-        auto_motors.strafeRight(0.5, 12);
+        auto_motors.strafeRight(0.5, 10);
         simpleWait(1000);
-        auto_motors.goToSpot(5, 0.5);
+        auto_motors.goToSpot(7, 0.5);
         simpleWait(1000);
         //place cone
-        lift.run_lift_21945_auto(telemetry, 1, 1994);
+        lift.run_lift_21945_auto(telemetry, 0.9, 1994);
         simpleWait(5000);
         intake.run_intake_21945_auto(telemetry, -1);
         simpleWait(1000);
-        lift.run_lift_21945_auto(telemetry, 0, 0,);
+        lift.run_lift_21945_auto(telemetry, 0, 0);
 
 
         auto_motors.goToSpot(-5, 0.5);
         simpleWait(1000);
         auto_motors.strafeLeft(0.5, 12);
         simpleWait(1000);
+        if (zone == 1) {
+            auto_motors.strafeLeft(0.5, 24);
+
+            //stop
+        }
+        //Middle (2)
+        else if (zone == 2) {
+
+            //stop
+        }
+        //Right
+        else if (zone == 3) {
+            auto_motors.strafeRight(0.5, 24);
+
+            //stop
+        }
     }
 }
