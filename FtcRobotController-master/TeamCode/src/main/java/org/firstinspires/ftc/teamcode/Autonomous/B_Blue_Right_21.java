@@ -3,7 +3,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 
 @Autonomous
-public class Blue_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Auto_Base_21 {
+public class B_Blue_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Auto_Base_21 {
     public void runOpMode() throws InterruptedException {
 
         init_classes(false);
@@ -29,12 +29,6 @@ public class Blue_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Au
         //SPLIT TO PARK
         //needs to be in middle of 2
         //LEFT (1)
-        switch(zone) {
-            case(1):
-                auto_motors.strafeLeft(0.5, 24);
-            case(3):
-                auto_motors.strafeRight(0.5, 24);
-        }
 
     }
 }

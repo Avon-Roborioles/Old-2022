@@ -32,6 +32,7 @@ public class Intake_21945 {
     }
     public void run_intake_21945_auto(Telemetry telemetry, double direction ){
         intakeServo.setPower(direction * 0.5);
+        telemetry.update();
    }
     public void get_telemetry (Telemetry telemetry){
         telemetry.addData("Intake power", intakePower);

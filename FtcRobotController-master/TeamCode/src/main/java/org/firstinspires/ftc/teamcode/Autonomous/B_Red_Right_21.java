@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 @Autonomous
-public class Red_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Auto_Base_21 {
+public class B_Red_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Auto_Base_21 {
 
     public void runOpMode() throws InterruptedException {
         init_classes(true);
