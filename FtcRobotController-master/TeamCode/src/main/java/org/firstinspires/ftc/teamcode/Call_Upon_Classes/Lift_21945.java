@@ -129,8 +129,10 @@ public class Lift_21945 {
         get_telemetry(telemetry);
     }
 
-    public void run_lift_21945_auto(Telemetry telemetry, double l4h) {
-        liftServo4Bar.setPosition(l4h * 0.375);
+    public void run_lift_21945_auto(Telemetry telemetry, double lift4hight, int linLiftHight) {
+        liftServo4Bar.setPosition(lift4hight * 0.375);
+        linLiftMotor.setTargetPosition(linLiftHight);
+        linLiftMotor.setPower(0.5);
     }
 
     public void get_telemetry (Telemetry telemetry){

@@ -11,7 +11,7 @@ public class Park_21 extends  Auto_Base_21 {
             //one tile is 24 in
             //START
             //Scan cone
-            lift.run_lift_21945_auto(telemetry, 0.5);
+            lift.run_lift_21945_auto(telemetry, 0.5, 0);
             simpleWait(10);
             camera.init_camera(hardwareMap, "webcam", telemetry);
             zone = camera.zone();
@@ -19,7 +19,7 @@ public class Park_21 extends  Auto_Base_21 {
             auto_motors.goToSpot(15, 0.5);
             while (auto_motors.isBusy()) {
             }
-            lift.run_lift_21945_auto(telemetry, 0);
+            lift.run_lift_21945_auto(telemetry, 0, 0);
             simpleWait(1000);
 
             //drive forward to middle

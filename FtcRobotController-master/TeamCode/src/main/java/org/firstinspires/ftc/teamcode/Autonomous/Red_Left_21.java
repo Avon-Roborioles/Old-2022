@@ -10,7 +10,7 @@ public class Red_Left_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Auto
         //one tile is 24 in
         //START
         //Scan cone
-        lift.run_lift_21945_auto(telemetry, 0.5);
+        lift.run_lift_21945_auto(telemetry, 0.5,0);
         simpleWait(10);
         camera.init_camera(hardwareMap, "webcam", telemetry);
         zone = camera.zone();

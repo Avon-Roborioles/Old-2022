@@ -11,12 +11,12 @@ public class Red_Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Aut
         //one tile is 24 in
         //Start
         //run lift up so camera can see
-        lift.run_lift_21945_auto(telemetry,  0.5);
+        lift.run_lift_21945_auto(telemetry,  0.5, 0);
         simpleWait(100);
         //Scan the cone
         camera.init_camera(hardwareMap, "webcam", telemetry);
         zone = camera.zone();
-        lift.run_lift_21945_auto(telemetry,  0);
+        lift.run_lift_21945_auto(telemetry,  0, 0);
         simpleWait(100);
         auto_motors.goToSpot(39, 0.5);
         simpleWait(1000);
