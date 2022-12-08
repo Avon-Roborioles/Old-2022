@@ -1,11 +1,8 @@
 package org.firstinspires.ftc.teamcode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-
-
 @Autonomous
 public class Right_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Auto_Base_21 {
     public void runOpMode() throws InterruptedException {
-
         init_classes(false);
         waitForStart();
         //one tile is 24 in
