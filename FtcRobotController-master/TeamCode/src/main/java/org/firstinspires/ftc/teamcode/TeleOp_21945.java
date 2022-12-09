@@ -42,6 +42,7 @@ public class TeleOp_21945 extends LinearOpMode {
     private final org.firstinspires.ftc.teamcode.Call_Upon_Classes.Lift_21945 lift = new Lift_21945();
     private final org.firstinspires.ftc.teamcode.Call_Upon_Classes.Intake_21945 intake = new Intake_21945();
     private final Turntable_21945 turntable = new Turntable_21945();
+    private int liftDriveLimit = 1;
 
     public void runOpMode() throws InterruptedException {
         drivingMotors.init_drive_motors(hardwareMap);
@@ -51,7 +52,13 @@ public class TeleOp_21945 extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()) {
-            drivingMotors.run_drive_motors(gamepad1, telemetry); // driving
+            lift.isLiftUp();
+            if(lift.isLinLiftUp){
+                liftDriveLimit = 2;
+            }else{
+                liftDriveLimit = 1;
+            }
+            drivingMotors.run_drive_motors(gamepad1, telemetry, liftDriveLimit); // driving
             lift.run_lift_motor_21945(gamepad2, telemetry);
             intake.run_intake_motor_21945(gamepad2, telemetry);
             turntable.run_turntable_21945(gamepad2, telemetry);
