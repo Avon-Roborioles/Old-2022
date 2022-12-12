@@ -52,13 +52,8 @@ public class TeleOp_21945 extends LinearOpMode {
         waitForStart();
 
         while (opModeIsActive()) {
-            lift.isLiftUp();
-            if(lift.isLinLiftUp){
-                liftDriveLimit = 2;
-            }else{
-                liftDriveLimit = 1;
-            }
-            drivingMotors.run_drive_motors(gamepad1, telemetry, liftDriveLimit); // driving
+
+            drivingMotors.run_drive_motors(gamepad1, telemetry); // driving
             lift.run_lift_motor_21945(gamepad2, telemetry);
             intake.run_intake_motor_21945(gamepad2, telemetry);
             turntable.run_turntable_21945(gamepad2, telemetry);

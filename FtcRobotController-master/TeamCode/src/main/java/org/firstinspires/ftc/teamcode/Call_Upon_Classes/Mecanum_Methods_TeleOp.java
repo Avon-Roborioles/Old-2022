@@ -65,7 +65,7 @@ public class Mecanum_Methods_TeleOp {
     }
 
 
-    public void run_drive_motors(Gamepad gamepad, Telemetry telemetry, int liftDive){
+    public void run_drive_motors(Gamepad gamepad, Telemetry telemetry){
         ly=-1 * gamepad.left_stick_y;
         lx=gamepad.left_stick_x;
         rx=gamepad.right_stick_x;
@@ -100,10 +100,10 @@ public class Mecanum_Methods_TeleOp {
 
 
 
-        fl.setPower((ly+lx+rx+gp2_y+gp2_x)/denominator*liftDive);
-        bl.setPower((ly+gp2_y+(lx+gp2_x)* strafe_set -rx* strafe_set )/denominator*liftDive);
-        fr.setPower((ly+gp2_y-gp2_x-lx-rx)/denominator*liftDive);
-        br.setPower((ly+gp2_y-(lx+gp2_x)* strafe_set +rx* strafe_set )/denominator*liftDive);
+        fl.setPower((ly+lx+rx+gp2_y+gp2_x)/denominator);
+        bl.setPower((ly+gp2_y+(lx+gp2_x)* strafe_set -rx* strafe_set )/denominator);
+        fr.setPower((ly+gp2_y-gp2_x-lx-rx)/denominator);
+        br.setPower((ly+gp2_y-(lx+gp2_x)* strafe_set +rx* strafe_set )/denominator);
 
         getTelemetry(telemetry);
 

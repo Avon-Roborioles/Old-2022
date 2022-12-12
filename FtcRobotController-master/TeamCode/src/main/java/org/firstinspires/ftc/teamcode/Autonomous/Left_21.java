@@ -1,6 +1,12 @@
 package org.firstinspires.ftc.teamcode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+
 @Autonomous
+//
+
+
+// @Disabled
 public class Left_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Auto_Base_21 {
     public void runOpMode() throws InterruptedException {
         init_classes(false);
@@ -17,16 +23,17 @@ public class Left_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Auto_Bas
         //GO FOR CONE PLACE
         //push signal cone out of the way then come back
         auto_motors.goToSpot(43, 0.5);
-        simpleWait(1500);
-        auto_motors.goToSpot(-10, 0.5);
+        simpleWait(5000);
+        auto_motors.goToSpot(-14, 0.5);
+        simpleWait(2000);
         //Move in front of the junction
-        auto_motors.strafeRight(0.4, 12);
+        auto_motors.strafeRight(0.4, 12.);
         simpleWait(1500);
         //lift up
         lift.run_lift_21945_auto(telemetry, 0.9, 1990);
         simpleWait(3000);
         //move over junction
-        auto_motors.goToSpot(7, 0.2);
+        auto_motors.goToSpot(1, 0.2);
         simpleWait(1500);
         //release cone
         intake.run_intake_21945_auto(telemetry, -1);
@@ -34,6 +41,7 @@ public class Left_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Auto_Bas
         intake.run_intake_21945_auto(telemetry,0);
         //back up and lift down
         auto_motors.goToSpot(-5, 0.2);
+        simpleWait(1000);
         lift.run_lift_21945_auto(telemetry, 0, 0);
         simpleWait(1500);
         //back to middle of 2 tile
@@ -42,21 +50,21 @@ public class Left_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Auto_Bas
         //park
         parking21(zone);
 
-//        if (zone == 1) {
-//            auto_motors.strafeLeft(0.5, 24);
-//
-//            //stop
-//        }
-//        //Middle (2)
-//        else if (zone == 2) {
-//
-//            //stop
-//        }
-//        //Right
-//        else if (zone == 3) {
-//            auto_motors.strafeRight(0.5, 24);
-//
-//            //stop
+////        if (zone == 1) {
+////            auto_motors.strafeLeft(0.5, 24);
+////
+////            //stop
+////        }
+////        //Middle (2)
+////        else if (zone == 2) {
+////
+////            //stop
+////        }
+////        //Right
+////        else if (zone == 3) {
+////            auto_motors.strafeRight(0.5, 24);
+////
+////            //stop
 //        }
     }
 }

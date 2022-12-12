@@ -32,7 +32,7 @@ public class Lift_21945 {
     private double low4Bar = 1;
     private double groundLin = 0;
     private double ground4Bar = 0.1;
-    public boolean isLinLiftUp = false;
+
     public void init_lift_motor_21945(HardwareMap hardwareMap, String name) {
         linLiftMotor = hardwareMap.get(DcMotor.class, "lm");
         liftServo4Bar = hardwareMap.get(Servo.class, "ls4");
@@ -82,9 +82,9 @@ public class Lift_21945 {
             }
         }
         if (leftJoystick > 0.2) {
-            liftPos4Bar -=  0.005;
+            liftPos4Bar -=  0.01;
         } else if (leftJoystick < -0.2) {
-            liftPos4Bar += 0.005;
+            liftPos4Bar += 0.01;
         } else if (leftTrigger > 0.5) {
             liftPos4Bar = 0;
         }
@@ -127,15 +127,11 @@ public class Lift_21945 {
 
 
         linLiftMotor.setTargetPosition((int) linLiftPos);
-        linLiftMotor.setPower(.5);
+        linLiftMotor.setPower(.75);
         linLiftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         liftServo4Bar.setPosition(liftPos4Bar * 0.375);
         get_telemetry(telemetry);
     }
-    public void isLiftUp(){
-        isLinLiftUp = linLiftMotor.getCurrentPosition() > 100;
-    }
-
 
     public void run_lift_21945_auto(Telemetry telemetry, double lift4height, int linLiftHeight) {
         liftServo4Bar.setPosition(lift4height * 0.375);
