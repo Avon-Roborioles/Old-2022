@@ -12,7 +12,6 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 import java.util.ArrayList;
 
 public class Camera_21945 extends LinearOpMode{
-    private final org.firstinspires.ftc.teamcode.Call_Upon_Classes.Mecanum_Methods_Autonomus auto_wheels = new Mecanum_Methods_Autonomus();
 
     OpenCvCamera camera;
     AprilTagDetectionPipeline pipeline;
@@ -43,7 +42,6 @@ public class Camera_21945 extends LinearOpMode{
 
     public void init_camera(HardwareMap hardwareMap, String name, Telemetry telemetry)
     {
-        auto_wheels.init_auto_drive_motors(hardwareMap, telemetry);
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
         camera = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, name), cameraMonitorViewId);
         pipeline = new AprilTagDetectionPipeline(tagsize, fx, fy, cx, cy);
@@ -100,6 +98,7 @@ public class Camera_21945 extends LinearOpMode{
                         telemetry.addLine("(The tag has never been seen)");
                     }
 
+
                 }
 
             }
@@ -120,9 +119,9 @@ public class Camera_21945 extends LinearOpMode{
         /* Actually do something useful */
         if (tagOfInterest != null) {
             zone = tagOfInterest.id;
-        } else {
-            zone = 1;
         }
+        telemetry.addData("Sleeve Id: ", zone);
+        telemetry.update();
     }
 
     @Override
@@ -133,4 +132,5 @@ public class Camera_21945 extends LinearOpMode{
     public int zone() {
         return zone;
     }
+   
 }
