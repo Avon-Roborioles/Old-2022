@@ -82,12 +82,13 @@ public class Lift_21945 {
             }
         }
         if (leftJoystick > 0.2) {
-            liftPos4Bar -=  0.01;
+            liftPos4Bar -=  0.005;
         } else if (leftJoystick < -0.2) {
-            liftPos4Bar += 0.01;
-        } else if (leftTrigger > 0.5) {
-            liftPos4Bar = 0;
+            liftPos4Bar += 0.005;
         }
+        //else if (leftTrigger > 0.5) {
+         //   liftPos4Bar = 0;
+        //}
         if (aButton) {
             //drive pos
             liftPos4Bar = 0;

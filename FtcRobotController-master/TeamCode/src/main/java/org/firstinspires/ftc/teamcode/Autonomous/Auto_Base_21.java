@@ -3,10 +3,10 @@ package org.firstinspires.ftc.teamcode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Camera_21945;
+import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Distance_Sensor;
 import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Intake_21945;
 import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Lift_21945;
 import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Mecanum_Methods_Autonomus;
-import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Turntable_21945;
 
 public abstract class Auto_Base_21 extends LinearOpMode {
     //objects for each function of the robot
@@ -18,10 +18,10 @@ public abstract class Auto_Base_21 extends LinearOpMode {
     protected org.firstinspires.ftc.teamcode.Call_Upon_Classes.Intake_21945 intake = new Intake_21945();
     //Camera
     protected org.firstinspires.ftc.teamcode.Call_Upon_Classes.Camera_21945 camera = new Camera_21945();
-    //Turntable
-    protected Turntable_21945 turntable = new Turntable_21945();
+    protected org.firstinspires.ftc.teamcode.Call_Upon_Classes.Distance_Sensor distance_sensor = new Distance_Sensor();
 
-
+    // distance ds
+    // color cs
     //protected int inchToTicks = 45;
     int zone = 2;
 
@@ -29,9 +29,8 @@ public abstract class Auto_Base_21 extends LinearOpMode {
         //init
         auto_motors.init_auto_drive_motors(hardwareMap, telemetry);
         lift.init_lift_motor_21945(hardwareMap, "lift");
+        distance_sensor.initDistance(hardwareMap, "Distance Sensor");
         intake.init_intake_motor_21945(hardwareMap, "intake");
-
-        turntable.init_turntable_21945(hardwareMap, "turntable");
     }
     public void simpleWait(int TimeMiliS ){
         double currTime = getRuntime();
@@ -51,18 +50,6 @@ public abstract class Auto_Base_21 extends LinearOpMode {
                 auto_motors.strafeRight(0.5, 24);
                 break;
         }
-//        if (spot == 1) {
-//            auto_motors.strafeLeft(0.5, 24);
-//            //stop
-//        }
-//        //Middle (2)
-//        else if (spot == 2) {
-//            //stop
-//        }
-//        //Right
-//        else if (spot == 3) {
-//            auto_motors.strafeRight(0.5, 24);
-//            //stop
-//        }
+
     }
 }

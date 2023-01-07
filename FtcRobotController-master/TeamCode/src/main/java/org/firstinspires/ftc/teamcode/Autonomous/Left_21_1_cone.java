@@ -1,13 +1,12 @@
 package org.firstinspires.ftc.teamcode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 @Autonomous
 //
 
 
 // @Disabled
-public class Left_21 extends  org.firstinspires.ftc.teamcode.Autonomous.Auto_Base_21 {
+public class Left_21_1_cone extends  org.firstinspires.ftc.teamcode.Autonomous.Auto_Base_21 {
     public void runOpMode() throws InterruptedException {
         init_classes(false);
         waitForStart();
