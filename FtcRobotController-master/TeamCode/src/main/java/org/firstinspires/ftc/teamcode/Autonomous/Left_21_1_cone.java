@@ -47,7 +47,7 @@ public class Left_21_1_cone extends  org.firstinspires.ftc.teamcode.Autonomous.A
         auto_motors.strafeLeft(0.5, 12);
         simpleWait(1500);
         //park
-        parking21(zone);
+        parking21();
 
 ////        if (zone == 1) {
 ////            auto_motors.strafeLeft(0.5, 24);

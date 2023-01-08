@@ -1,23 +1,41 @@
 package org.firstinspires.ftc.teamcode.Call_Upon_Classes;
 
 import com.qualcomm.hardware.rev.RevColorSensorV3;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 
-public class Color_Sensor {
-    private RevColorSensorV3 cs = null;
+public class Color_Sensor{
+    private ColorSensor cs;
+    private double threshold = 2;
+    boolean correctColor;
 
-    public void init(HardwareMap hardwareMap) {
-       cs =hardwareMap.get(RevColorSensorV3.class, "cs");
+    public void initColor(HardwareMap hardwareMap) {
+        cs = hardwareMap.colorSensor.get("color");
     }
 
-    public void getColor(Telemetry telemetry){
-        cs.getNormalizedColors();
+    public void Red(Telemetry telemetry){
+        if(cs.red() > threshold){
+            correctColor = true;
+        }else {
+            correctColor = false;
+        }
         getTelemetry(telemetry);
+    }
+    public void blue(Telemetry telemetry){
+        if(cs.blue() > threshold){
+            correctColor = true;
+        }else {
+            correctColor = false;
+        }
     }
 
     public void getTelemetry(Telemetry telemetry) {
-        telemetry.addData("Colors",cs.getNormalizedColors());
+        telemetry.addData("Red",cs.red());
+        telemetry.addData("Green",cs.green());
+        telemetry.addData("Blue",cs.blue());
+        telemetry.addData("alpha",cs.alpha());
+        telemetry.addData("argb",cs.argb());
     }
 }

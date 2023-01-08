@@ -45,7 +45,7 @@ public class Right_21_2_cone extends  Auto_Base_21 {
             auto_motors.strafeRight(0.5, 12);
             simpleWait(1500);
             //park
-            parking21(zone);
+            parking21();
 
 ////        if (zone == 1) {
 ////            auto_motors.strafeLeft(0.5, 24);

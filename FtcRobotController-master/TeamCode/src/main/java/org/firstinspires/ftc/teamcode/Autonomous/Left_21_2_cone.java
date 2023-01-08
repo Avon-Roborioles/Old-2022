@@ -50,7 +50,7 @@ public class Left_21_2_cone extends  Auto_Base_21 {
 
 
         //park
-        parking21(zone);
+        parking21();
 
 
 
