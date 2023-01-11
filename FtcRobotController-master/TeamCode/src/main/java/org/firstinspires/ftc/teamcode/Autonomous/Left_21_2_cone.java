@@ -10,6 +10,7 @@ public class Left_21_2_cone extends  Auto_Base_21 {
     public void runOpMode() throws InterruptedException {
         init_classes(false);
         waitForStart();
+
         //one tile is 24 in
         //START
         //Scan cone
@@ -31,26 +32,28 @@ public class Left_21_2_cone extends  Auto_Base_21 {
         //lift up
         lift.run_lift_21945_auto(telemetry, 0.9, 1990);
         simpleWait(3000);
-        //move over junction
-        auto_motors.goToSpot(1, 0.2);
-        simpleWait(1500);
-        //release cone
-        intake.run_intake_21945_auto(telemetry, -1);
-        simpleWait(1500);
-        intake.run_intake_21945_auto(telemetry,0);
-        //back up and lift down
-        auto_motors.goToSpot(-5, 0.2);
-        simpleWait(1000);
-        lift.run_lift_21945_auto(telemetry, 0, 0);
-        simpleWait(1500);
-        //back to middle of 2 tile
-        auto_motors.strafeLeft(0.5, 12);
-        simpleWait(1500);
-
-
-
-        //park
-        parking21();
+        alignWithPole();
+//
+//        //move over junction
+//        auto_motors.goToSpot(1, 0.2);
+//        simpleWait(1500);
+//        //release cone
+//        intake.run_intake_21945_auto(telemetry, -1);
+//        simpleWait(1500);
+//        intake.run_intake_21945_auto(telemetry,0);
+//        //back up and lift down
+//        auto_motors.goToSpot(-5, 0.2);
+//        simpleWait(1000);
+//        lift.run_lift_21945_auto(telemetry, 0, 0);
+//        simpleWait(1500);
+//        //back to middle of 2 tile
+//        auto_motors.strafeLeft(0.5, 12);
+//        simpleWait(1500);
+//
+//
+//
+//        //park
+//        parking21();
 
 
 

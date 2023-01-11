@@ -125,6 +125,11 @@ public class  Mecanum_Methods_Autonomus {
         setPowerIndividual(power,-power,-power,power);
         while (isBusy()){}
     }
+    public void turnByDegree (double power, double degrees){
+        setRelativeTargetIndividual((int) Math.floor(1440*1.2*(.25/45)*degrees),(int) Math.floor(1440*1.2*(2.5/45)*degrees),(int) Math.floor(-1440*1.2*(2.5/45)*degrees), (int) Math.floor(-1440*1.2*(2.5/45)*degrees));
+        setPowerIndividual(power,-power,-power,power);
+        while (isBusy()){}
+    }
 
     public void strafeLeft(double power, double inches) {
         //107 ticks= 1 inch
