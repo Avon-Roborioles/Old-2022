@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Camera_21945;
 import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Color_Sensor;
@@ -66,40 +65,54 @@ public abstract class Auto_Base_21 extends LinearOpMode {
         double tries = 0;
         while (!alligned) {
             int distanceToPole = (int) distance.getDistance(telemetry);
-            if(distanceToPole == 6){
-                //alligned
-                alligned = true;
-            }else if(distanceToPole >10 && distanceToPole < 15){
+            if(distanceToPole < 15){
                 //drive to allign front and back
-            }else if(distanceToPole > 15){
+                if(distanceToPole <8){
+                    auto_motors.goToSpot(-1, 0.5);
+
+                } else {
+                    auto_motors.goToSpot(1,0.5);
+                }
+            } else if(distanceToPole > 15){
                 //turn left and right to fing pole.
                 if (direction){
                     if(tries < allignmenttries){
                         //panning left
-                        auto_motors.turnByDegree(0.5, 1);
+                        //auto_motors.turnByDegree(0.5, 1);
+                        auto_motors.strafeLeft(0.5, 0.25);
                         tries += 1;
-                    }else{
+                    } else {
                         //reset to pan right
                         direction = false;
                         tries = 0;
                     }
-                }else{
+                } else {
                     if(tries > 0) {
-                        auto_motors.turnByDegree(0.5, -1);
-                        tries += -0.5;
+                        //auto_motors.turnByDegree(0.5, -1);
+                        auto_motors.strafeRight(0.5, 0.25);
+                        tries -= 0.5;
                     }
-
                 }
+            }else if(distanceToPole == 8){
+                //alligned
+                alligned = true;
             }
-
-
+            while (auto_motors.isBusy());
         }
-
-
     }
     public void alignWithTapeDot(){
         org.firstinspires.ftc.teamcode.Call_Upon_Classes.Color_Sensor color = new Color_Sensor();
         color.initColor(hardwareMap);
+        boolean alligned = false;
+        double tries = 0;
+        while (!alligned) {
+            if (color.blue() || color.Red()) {
+                alligned = true;
+            }else{
+
+            }
+
+        }
 
     }
     public void alignWithTapeLine(){

@@ -26,23 +26,11 @@ public class Color_Sensor{
         return cs.alpha();
     }
 
-
-
-
-    public void Red(Telemetry telemetry){
-        if(cs.red() > threshold){
-            correctColor = true;
-        }else {
-            correctColor = false;
-        }
-        getTelemetry(telemetry);
+    public boolean Red(){
+        return cs.red() > threshold;
     }
-    public void blue(Telemetry telemetry){
-        if(cs.blue() > threshold){
-            correctColor = true;
-        }else {
-            correctColor = false;
-        }
+    public boolean blue(){
+        return cs.blue() > threshold;
     }
 
     public void getTelemetry(Telemetry telemetry) {

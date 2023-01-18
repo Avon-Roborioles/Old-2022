@@ -53,7 +53,6 @@ public class Lift_21945 {
         dPaddown = gamepad.dpad_down;
         dPadLeft = gamepad.dpad_left;
         dPadRight = gamepad.dpad_right;
-
         if (linLiftDirection == 1){
             if (rightJoystick < -0.1) {
                 linLiftPos += 15;
@@ -82,9 +81,21 @@ public class Lift_21945 {
             }
         }
         if (leftJoystick > 0.2) {
-            liftPos4Bar -=  0.0125;
+            if (bButton) {
+                liftPos4Bar -= 0.0125;
+            }else {
+                liftPos4Bar -= 0.125;
+            }
+            if (!bButton){
+                liftPos4Bar -= 0.125;
+            }
         } else if (leftJoystick < -0.2) {
-            liftPos4Bar += 0.0125;
+            if (bButton) {
+                //just above cone
+                liftPos4Bar += 0.0075;
+            }else {
+                liftPos4Bar += 0.0075;
+            }
         }
         //else if (leftTrigger > 0.5) {
          //   liftPos4Bar = 0;
@@ -96,10 +107,8 @@ public class Lift_21945 {
         } else if (yButton) {
             //down enough to pickup cone
             liftPos4Bar = 0.1;
-        } else if (bButton) {
-            //just above cone
-            liftPos4Bar = 0.2;
-        } else if (xButton) {
+        }
+        else if (xButton) {
             //top for low junction
             liftPos4Bar = 1;
         }
