@@ -149,6 +149,7 @@ public class Lift_21945 {
         linLiftMotor.setTargetPosition(linLiftHeight);
         linLiftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         linLiftMotor.setPower(0.5);
+
     }
 
     public void get_telemetry (Telemetry telemetry){

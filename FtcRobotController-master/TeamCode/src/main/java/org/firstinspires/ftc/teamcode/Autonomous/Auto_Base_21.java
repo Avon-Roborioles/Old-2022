@@ -8,7 +8,6 @@ import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Distance_Sensor;
 import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Intake_21945;
 import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Lift_21945;
 import org.firstinspires.ftc.teamcode.Call_Upon_Classes.Mecanum_Methods_Autonomus;
-
 public abstract class Auto_Base_21 extends LinearOpMode {
     //objects for each function of the robot
     //Chassis drive motors
@@ -41,17 +40,18 @@ public abstract class Auto_Base_21 extends LinearOpMode {
         while (getRuntime() < waitUntil){
 
         }
+        telemetry.update();
     }
     public void parking21(){
         zone = camera.zone();
         switch (zone){
             case(1):
-                auto_motors.strafeLeft(0.5, 24);
+                auto_motors.strafeLeft(0.25, 24);
                 break;
             case(2):
                 break;
             case(3):
-                auto_motors.strafeRight(0.5, 24);
+                auto_motors.strafeRight(0.25, 24);
                 break;
         }
 

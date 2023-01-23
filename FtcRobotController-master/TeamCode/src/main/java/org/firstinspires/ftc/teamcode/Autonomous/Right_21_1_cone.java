@@ -5,13 +5,14 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 @Autonomous
 //@Disabled
 public class Right_21_1_cone extends  org.firstinspires.ftc.teamcode.Autonomous.Auto_Base_21 {
+        @Override
     public void runOpMode() throws InterruptedException {
             init_classes(false);
             waitForStart();
             //one tile is 24 in
             //START
             //Scan cone
-            auto_motors.strafeRight(0.5, 4);
+            auto_motors.strafeLeft(0.5, 4);
             lift.run_lift_21945_auto(telemetry, 0.5, 0);
             simpleWait(500);
             camera.init_camera(hardwareMap, "webcam", telemetry);
@@ -48,21 +49,5 @@ public class Right_21_1_cone extends  org.firstinspires.ftc.teamcode.Autonomous.
             //park
             parking21();
 
-////        if (zone == 1) {
-////            auto_motors.strafeLeft(0.5, 24);
-////
-////            //stop
-////        }
-////        //Middle (2)
-////        else if (zone == 2) {
-////
-////            //stop
-////        }
-////        //Right
-////        else if (zone == 3) {
-////            auto_motors.strafeRight(0.5, 24);
-////
-////            //stop
-//        }
     }
 }

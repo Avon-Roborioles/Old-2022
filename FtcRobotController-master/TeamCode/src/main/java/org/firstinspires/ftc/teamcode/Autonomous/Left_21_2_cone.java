@@ -7,6 +7,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 // @Disabled
 public class Left_21_2_cone extends  Auto_Base_21 {
+    @Override
     public void runOpMode() throws InterruptedException {
         init_classes(false);
         waitForStart();
@@ -65,11 +66,8 @@ public class Left_21_2_cone extends  Auto_Base_21 {
         auto_motors.goToSpot(-60, 0.5);
         simpleWait(5000);
         auto_motors.strafeLeft(0.5, 6);
-
+        simpleWait(1000);
         //park
         parking21();
-
-
-
     }
 }
