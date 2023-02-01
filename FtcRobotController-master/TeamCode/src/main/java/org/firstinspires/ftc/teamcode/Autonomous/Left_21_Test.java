@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 
 // @Disabled
-public class Left_21_2_cone extends  Auto_Base_21 {
+public class Left_21_Test extends  Auto_Base_21 {
     @Override
     public void runOpMode() throws InterruptedException {
         init_classes(false);
