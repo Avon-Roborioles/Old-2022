@@ -8,6 +8,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 import java.util.Objects;
 
+@SuppressWarnings("IntegerDivisionInFloatingPointContext")
 public class Mecanum_Methods_Autonomus_Power_Curve {
 
 
@@ -65,15 +66,14 @@ public class Mecanum_Methods_Autonomus_Power_Curve {
         bl.setTargetPosition(bl.getCurrentPosition() + target);
         fr.setTargetPosition(fr.getCurrentPosition() + target);
         br.setTargetPosition(br.getCurrentPosition() + target);
-
-        double x = fl.getCurrentPosition()/ fl.getTargetPosition();
-        double a = -4 * (Math.pow(x, 2));
-        double b = 4 * x;
-        power = (a + b) * power;
-        fl.setPower(power);
-        bl.setPower(power);
-        fr.setPower(power);
-        br.setPower(power);
+        double flpower = ((-4 * (Math.pow(fl.getCurrentPosition()/ fl.getTargetPosition(), 2))) + (4 * fl.getCurrentPosition()/ fl.getTargetPosition())) * power;
+        double blpower = ((-4 * (Math.pow(bl.getCurrentPosition()/ bl.getTargetPosition(), 2))) + (4 * bl.getCurrentPosition()/ bl.getTargetPosition())) * power;
+        double frpower = ((-4 * (Math.pow(fr.getCurrentPosition()/ fr.getTargetPosition(), 2))) + (4 * fr.getCurrentPosition()/ fr.getTargetPosition())) * power;
+        double brpower = ((-4 * (Math.pow(br.getCurrentPosition()/ br.getTargetPosition(), 2))) + (4 * br.getCurrentPosition()/ br.getTargetPosition())) * power;
+        fl.setPower(flpower);
+        bl.setPower(blpower);
+        fr.setPower(frpower);
+        br.setPower(brpower);
     }
     public void setPowerAll(double power) {
         fl.setPower(power);
@@ -82,21 +82,23 @@ public class Mecanum_Methods_Autonomus_Power_Curve {
         br.setPower(power);
     }
 
-    public void setRelativeTargetIndividual(int fl_target, int bl_target, int fr_target, int br_target) {
+    public void setRelativeTargetIndividualsetPowerIndividual(int fl_target, int bl_target, int fr_target, int br_target,double FL, double FR, double BR, double BL) {
         fl.setTargetPosition(fl_target + fl.getCurrentPosition());
         bl.setTargetPosition(bl_target + bl.getCurrentPosition());
         fr.setTargetPosition(fr_target + fr.getCurrentPosition());
         br.setTargetPosition(br_target + br.getCurrentPosition());
+        double flpower = ((-4 * (Math.pow(fl.getCurrentPosition()/ fl.getTargetPosition(), 2))) + (4 * fl.getCurrentPosition()/ fl.getTargetPosition())) * FL;
+        double blpower = ((-4 * (Math.pow(bl.getCurrentPosition()/ bl.getTargetPosition(), 2))) + (4 * bl.getCurrentPosition()/ bl.getTargetPosition())) * BL;
+        double frpower = ((-4 * (Math.pow(fr.getCurrentPosition()/ fr.getTargetPosition(), 2))) + (4 * fr.getCurrentPosition()/ fr.getTargetPosition())) * FR;
+        double brpower = ((-4 * (Math.pow(br.getCurrentPosition()/ br.getTargetPosition(), 2))) + (4 * br.getCurrentPosition()/ br.getTargetPosition())) * BR;
+        fl.setPower(flpower);
+        br.setPower(brpower);
+        bl.setPower(blpower);
+        fr.setPower(frpower);
     }
 
 
-    public void setPowerIndividual(double FL, double FR, double BR, double BL){
-        fl.setPower(FL);
-        br.setPower(BR);
-        bl.setPower(BL);
-        fr.setPower(FR);
 
-    }
 
     public void read_encoders(){
     y_encoder.getCurrentPosition();
@@ -114,42 +116,35 @@ public class Mecanum_Methods_Autonomus_Power_Curve {
     public void stopMotors() {setPowerAll(0);}
 
     public void turn90left (double power){
-        setRelativeTargetIndividual((int) Math.floor(-1440*1.2*.5),(int) Math.floor(-1440*1.2*.5),(int) Math.floor(1440*1.2*.5), (int) Math.floor(1440*1.2*.5));
-        setPowerIndividual(-power,power,power,-power);
+        setRelativeTargetIndividualsetPowerIndividual((int) Math.floor(-1440*1.2*.5),(int) Math.floor(-1440*1.2*.5),(int) Math.floor(1440*1.2*.5), (int) Math.floor(1440*1.2*.5), -power,power,power,-power);
         while (isBusy()){}
     }
     public void turn90right (double power){
-        setRelativeTargetIndividual((int) Math.floor(1440*1.2*.5),(int) Math.floor(1440*1.2*.5),(int) Math.floor(-1440*1.2*.5), (int) Math.floor(-1440*1.2*.5));
-        setPowerIndividual(power,-power,-power,power);
+        setRelativeTargetIndividualsetPowerIndividual((int) Math.floor(1440*1.2*.5),(int) Math.floor(1440*1.2*.5),(int) Math.floor(-1440*1.2*.5), (int) Math.floor(-1440*1.2*.5), power,-power,-power,power);
         while (isBusy()){}
     }
     public void turn45left (double power){
-        setRelativeTargetIndividual((int) Math.floor(-1440*1.2*.25),(int) Math.floor(-1440*1.2*.25),(int) Math.floor(1440*1.2*.25), (int) Math.floor(1440*1.2*.25));
-        setPowerIndividual(-power,power,power,-power);
+        setRelativeTargetIndividualsetPowerIndividual((int) Math.floor(-1440*1.2*.25),(int) Math.floor(-1440*1.2*.25),(int) Math.floor(1440*1.2*.25), (int) Math.floor(1440*1.2*.25),-power,power,power,-power);
         while (isBusy()){}
     }
     public void turn45right (double power){
-        setRelativeTargetIndividual((int) Math.floor(1440*1.2*.25),(int) Math.floor(1440*1.2*.25),(int) Math.floor(-1440*1.2*.25), (int) Math.floor(-1440*1.2*.25));
-        setPowerIndividual(power,-power,-power,power);
+        setRelativeTargetIndividualsetPowerIndividual((int) Math.floor(1440*1.2*.25),(int) Math.floor(1440*1.2*.25),(int) Math.floor(-1440*1.2*.25), (int) Math.floor(-1440*1.2*.25), power,-power,-power,power);
         while (isBusy()){}
     }
     public void turnByDegree (double power, double degrees){
-        setRelativeTargetIndividual((int) Math.floor(1440*1.2*(.25/45)*degrees),(int) Math.floor(1440*1.2*(2.5/45)*degrees),(int) Math.floor(-1440*1.2*(2.5/45)*degrees), (int) Math.floor(-1440*1.2*(2.5/45)*degrees));
-        setPowerIndividual(power,-power,-power,power);
+        setRelativeTargetIndividualsetPowerIndividual((int) Math.floor(1440*1.2*(.25/45)*degrees),(int) Math.floor(1440*1.2*(2.5/45)*degrees),(int) Math.floor(-1440*1.2*(2.5/45)*degrees), (int) Math.floor(-1440*1.2*(2.5/45)*degrees),power,-power,-power,power);
         while (isBusy()){}
     }
 
     public void strafeLeft(double power, double inches) {
         //107 ticks= 1 inch
         inches*=53.5;
-        setRelativeTargetIndividual((int)-inches,(int) inches,(int)inches,(int)-inches);
-        setPowerIndividual(-power, power, -power, power);
+        setRelativeTargetIndividualsetPowerIndividual((int)-inches,(int) inches,(int)inches,(int)-inches, -power, power, -power, power);
         while (isBusy()){}
     }
     public void strafeRight(double power, double inches) {
         inches*=53.5;
-        setRelativeTargetIndividual((int)inches,(int)-inches,(int)-inches,(int)inches);
-        setPowerIndividual(power, -power, power, -power);
+        setRelativeTargetIndividualsetPowerIndividual((int)inches,(int)-inches,(int)-inches,(int)inches, power, -power, power, -power);
         while (isBusy()){}
     }
 
